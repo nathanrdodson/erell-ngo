@@ -1,0 +1,43 @@
+@use './_theme.scss' as *;
+
+nav {
+	display: flex; //nowrap
+	flex-flow: column;
+
+	align-items: center;
+
+	background-color: $primary-green;
+	height: 170px;
+
+	a {
+		color: $font-dark;
+		text-decoration: none;
+	}
+
+	img {
+		order: 0;
+		width: 100px;
+		align-content: center;
+	}
+
+	div#nav__lower {
+		order: 1;
+
+		display: flex;
+		justify-content: space-between;
+
+		width: 100%;
+
+		div#nav__left {
+
+		}
+	
+		div#nav__middle {
+
+		}
+	
+		div#nav__right {
+	
+		}
+	}
+}

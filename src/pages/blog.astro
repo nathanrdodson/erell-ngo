@@ -1,6 +1,6 @@
 ---
 import '../assets/css/global.scss'
-import Navigation from '../components/Navigation.astro';
+import Navigation from "../components/Navigation.astro";
 ---
 <html lang="en">
 	<head>
@@ -8,11 +8,16 @@ import Navigation from '../components/Navigation.astro';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<style lang="scss" />
 		<title>Astro</title>
 	</head>
 	<body>
-		<Navigation />
-		<h1>Erell Institute</h1>
+		<Navigation />		
+		<h1>Blog</h1>
+		<h2>Content for the unwise</h2>
+		<p>Amazing, isnt it?</p>
+
+		<ul>
+			<li><a href="/posts/starting/">First Post :P</a></li>
+		</ul>
 	</body>
 </html>
