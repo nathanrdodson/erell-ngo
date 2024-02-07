@@ -1,4 +1,5 @@
 @use './_theme.scss' as *;
+@use './_mixins.scss' as *;
 
 nav {
 	display: flex; //nowrap
@@ -6,38 +7,88 @@ nav {
 
 	align-items: center;
 
-	background-color: $primary-green;
-	height: 170px;
+	background-color: $secondary;
+
+	font-family: "indivisible", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 14px;
+	text-transform: uppercase;
 
 	a {
 		color: $font-dark;
 		text-decoration: none;
 	}
 
-	img {
-		order: 0;
-		width: 100px;
-		align-content: center;
+	div#nav__middle {
+		@include respond-to('xsmall-mx') {
+			display: none;
+		}
+		a {
+			padding: 0 10px 0 10px;
+		}
+
+		padding-bottom: 14px;
 	}
 
-	div#nav__lower {
-		order: 1;
+	div#nav__upper {
+		@include respond-to('xsmall-mx') {
+			justify-content: space-between;
+		}
+
+		order: 0;
 
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-around;
+
+		align-items: center;
 
 		width: 100%;
 
-		div#nav__left {
-
+		div#nav__upper__left {
+			@include respond-to('small-mx') {
+				display: none;
+			}
+			width: 100px;
+			i {
+				font-size: 22px;
+				margin: 0 2.5px 0 2.5px;
+			}
 		}
 	
-		div#nav__middle {
+		img {
+			@include respond-to('small-mx') {
+				width: 75px;
+			}
+			@include respond-to('xsmall-mx') {
+				width: 50px;
+				padding: 15px;
+			}
 
+			width: 100px;
+			padding: 15px 0 15px 0;
 		}
 	
-		div#nav__right {
-	
+		div#nav__upper__right {
+			@include respond-to('small-mx') {
+				display: none;
+			}
+			width: 100px;
+			a {
+				border: 1px solid $font-dark;
+				padding: 8px;
+			}
+		}
+
+		div#nav__secondary {
+			@include respond-to('xsmall-mn') {
+				display: none;
+			}
+			padding: 15px;
+
+			i {
+				font-size: 25px;
+			}
 		}
 	}
 }

@@ -10,7 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.3.2"
+    "astro": "^4.3.2",
+    "iconoir": "^7.3.0"
   },
   "devDependencies": {
     "sass": "^1.70.0"

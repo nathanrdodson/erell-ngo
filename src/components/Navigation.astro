@@ -1,26 +1,33 @@
 ---
 import '../assets/css/navigation.scss'
 import logo from '../assets/img/logo.svg'
+import Donate from './Donate.astro'
 ---
 <nav>
-	<a href="/"><img src={ logo.src }></img></a>
+	<Donate />
 
-	<div id=nav__lower>
-		<div id="nav__left">
-			Left Content
+	<div id=nav__upper>
+		<div id="nav__upper__left">
+			<i class="iconoir-facebook-tag"></i>
+			<i class="iconoir-instagram"></i>
+			<i class="iconoir-brain-research"></i>
 		</div>
 	
-		<div id="nav__middle">
-			<a href="/about/">About</a>
-			<a href="/education/">Education</a>
-			<a href="/research/">Research</a>
-			<a href="/photos/">Photo Gallery</a>
-			<a href="/support/">Support</a>
+		<a href="/"><img src={ logo.src }></img></a>
+	
+		<div id="nav__upper__right">
 			<a href="/donate/">Donate</a>
 		</div>
-	
-		<div id="nav__right">
-			Socials go here
+		<div id="nav__secondary">
+			<i class="iconoir-menu"></i>
 		</div>
+	</div>
+
+	<div id="nav__middle">
+		<a href="/about/">About</a>
+		<a href="/education/">Education <i class="iconoir-nav-arrow-down"></i></a>
+		<a href="/research/">Research <i class="iconoir-nav-arrow-down"></i></a>
+		<a href="/photos/">Photo Gallery</a>
+		<a href="/support/">Support</a>
 	</div>
 </nav>
