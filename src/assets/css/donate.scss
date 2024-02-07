@@ -1,0 +1,15 @@
+@use './_theme.scss' as *;
+@use './_mixins.scss' as *;
+
+#global__donate {
+	@include respond-to('small-mn') {
+		display: none;
+	}
+	background-color: $secondary;
+	position: absolute;
+	bottom: 50px;
+	right: 50px;
+
+	border: 1px solid $font-dark;
+	padding: 8px;
+}
