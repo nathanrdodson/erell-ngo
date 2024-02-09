@@ -1,6 +1,7 @@
 ---
 import '../assets/css/global.scss'
 import Navigation from '../components/Navigation.astro';
+import {Content as Welcome} from './index.md';
 ---
 <html lang="en">
 	<head>
@@ -9,6 +10,11 @@ import Navigation from '../components/Navigation.astro';
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 
+		<!-- Pure.css -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+		
 		<!-- font and icon imports -->
 		<link rel="stylesheet" href="https://use.typekit.net/yhr4fyr.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css"/>
@@ -18,6 +24,10 @@ import Navigation from '../components/Navigation.astro';
 	</head>
 	<body>
 		<Navigation />
-		<h1>Erell Institute</h1>
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2 border">
+				<Welcome />
+			</div>
+		</div>
 	</body>
 </html>
