@@ -1,40 +1,399 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import {Content as AboutContent} from '../about-content.md';
+const b = import.meta.env.BASE_URL;
 ---
 <style lang="scss">
 @use '../assets/css/_theme.scss' as *;
+@use '../assets/css/_mixins.scss' as *;
 
-.about-content {
-	padding: 48px 24px 80px;
+// ── Mission ───────────────────────────────────
+.mission-block {
+	padding: 80px 0 64px;
 
 	h1 {
-		font-size: 2.2rem;
-		margin-bottom: 8px;
+		font-size: clamp(2rem, 5vw, 3rem);
+		line-height: 1.2;
+		color: $green-dark;
+		margin-bottom: 28px;
 	}
 
-	h2 {
-		font-size: 1rem;
+	&__lead {
+		font-size: 1.2rem;
+		line-height: 1.85;
+		color: $font-mid;
+		max-width: 58ch;
+		margin-bottom: 0;
+	}
+}
+
+// ── Approach cards ────────────────────────────
+.approach {
+	background: $secondary;
+	padding: 72px 40px;
+
+	@include respond-to('small-mx') {
+		padding: 48px 24px;
+	}
+
+	&__heading {
+		text-align: center;
+		margin-bottom: 48px;
+
+		h2 {
+			font-size: 1.6rem;
+			color: $green-dark;
+			margin-bottom: 10px;
+		}
+
+		p {
+			color: $font-light;
+			font-size: 0.95rem;
+		}
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 24px;
+		max-width: 960px;
+		margin: 0 auto;
+
+		@include respond-to('medium-mx') {
+			grid-template-columns: 1fr;
+			max-width: 560px;
+		}
+	}
+
+	&__card {
+		background: $primary;
+		padding: 32px 28px;
+
+		&__num {
+			font-family: "indivisible", sans-serif;
+			font-size: 11px;
+			text-transform: uppercase;
+			letter-spacing: 0.14em;
+			color: $green-light;
+			margin-bottom: 14px;
+		}
+
+		h3 {
+			font-size: 1rem;
+			color: $green-dark;
+			margin-bottom: 10px;
+		}
+
+		p {
+			font-size: 0.9rem;
+			line-height: 1.75;
+			color: $font-mid;
+			margin: 0;
+		}
+	}
+}
+
+// ── Values strip ──────────────────────────────
+.values {
+	padding: 72px 40px;
+
+	@include respond-to('small-mx') {
+		padding: 48px 24px;
+	}
+
+	&__heading {
+		margin-bottom: 40px;
+
+		h2 {
+			font-size: 1.5rem;
+			color: $green-dark;
+		}
+	}
+
+	&__list {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 24px 48px;
+
+		@include respond-to('small-mx') {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&__item {
+		border-top: 2px solid $green-light;
+		padding-top: 18px;
+
+		h3 {
+			font-size: 0.95rem;
+			color: $green-dark;
+			text-transform: uppercase;
+			letter-spacing: 0.07em;
+			margin-bottom: 8px;
+		}
+
+		p {
+			font-size: 0.9rem;
+			line-height: 1.75;
+			color: $font-mid;
+			margin: 0;
+		}
+	}
+}
+
+// ── Updates ───────────────────────────────────
+.updates {
+	background: $green-dark;
+	padding: 72px 40px;
+
+	@include respond-to('small-mx') {
+		padding: 48px 24px;
+	}
+
+	&__heading {
+		margin-bottom: 40px;
+
+		h2 {
+			font-size: 1.5rem;
+			color: $primary;
+		}
+
+		p {
+			color: rgba(247, 243, 238, 0.6);
+			font-size: 0.9rem;
+			margin-top: 6px;
+		}
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+		max-width: 960px;
+
+		@include respond-to('medium-mx') {
+			grid-template-columns: 1fr;
+			max-width: 560px;
+		}
+	}
+
+	&__card {
+		background: rgba(247, 243, 238, 0.07);
+		border: 1px solid rgba(247, 243, 238, 0.12);
+		padding: 28px 24px;
+
+		&__tag {
+			font-family: "indivisible", sans-serif;
+			font-size: 9px;
+			text-transform: uppercase;
+			letter-spacing: 0.15em;
+			color: $green-light;
+			margin-bottom: 12px;
+		}
+
+		h3 {
+			font-size: 0.9rem;
+			color: $primary;
+			line-height: 1.5;
+			margin-bottom: 10px;
+		}
+
+		p {
+			font-size: 0.82rem;
+			line-height: 1.7;
+			color: rgba(247, 243, 238, 0.55);
+			margin: 0;
+		}
+	}
+}
+
+// ── CTA row ───────────────────────────────────
+.about-ctas {
+	padding: 64px 40px;
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+
+	@include respond-to('small-mx') {
+		padding: 48px 24px;
+		flex-direction: column;
+	}
+
+	a {
+		font-family: "indivisible", sans-serif;
+		font-size: 11px;
 		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: $green-mid;
-		margin-top: 40px;
-		margin-bottom: 12px;
-	}
+		letter-spacing: 0.1em;
+		padding: 14px 32px;
+		border: 1px solid $green-dark;
+		color: $green-dark;
+		text-decoration: none;
+		transition: background 0.2s ease, color 0.2s ease;
 
-	p {
-		font-size: 1.05rem;
-		line-height: 1.8;
-		max-width: 65ch;
+		&:hover {
+			background: $green-dark;
+			color: $primary;
+		}
+
+		&.filled {
+			background: $green-dark;
+			color: $primary;
+
+			&:hover {
+				background: $green-mid;
+				border-color: $green-mid;
+			}
+		}
 	}
 }
 </style>
-<Layout title="About">
+
+<Layout title="About" description="Erell Institute develops the curiosity and creativity of the next generation of scientists through field research experiences in behavioral ecology, open to everyone.">
+
+	<!-- Mission -->
+	<main class="page-main">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+				<div class="mission-block fade-up">
+					<h1>Education Through Research</h1>
+					<p class="mission-block__lead">
+						We aim to develop the curiosity and creativity of the next generation of
+						scientists in behavioral ecology. To do this we organize research experiences
+						that enable people from all backgrounds to take part in the process of science.
+						Each experience brings a team of diverse researchers together to develop a
+						question, work together to collect and analyze data, and present their answers
+						to the scientific community as well as the general public.
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- How We Work -->
+	<section class="approach">
+		<div class="approach__heading fade-up">
+			<h2>How We Work</h2>
+			<p>Every project follows the same three-part process.</p>
+		</div>
+		<div class="approach__grid">
+			<div class="approach__card fade-up">
+				<div class="approach__card__num">Step 01</div>
+				<h3>Develop a Question</h3>
+				<p>
+					Teams arrive in the field and spend time observing before forming a focused,
+					testable research question. No experience required — curiosity is the only prerequisite.
+				</p>
+			</div>
+			<div class="approach__card fade-up">
+				<div class="approach__card__num">Step 02</div>
+				<h3>Collect & Analyze Data</h3>
+				<p>
+					Participants design methods, gather field data, and analyze results collaboratively.
+					Faculty mentors guide the process without removing ownership from the team.
+				</p>
+			</div>
+			<div class="approach__card fade-up">
+				<div class="approach__card__num">Step 03</div>
+				<h3>Share with the World</h3>
+				<p>
+					Results are presented at scientific conferences and written up for peer-reviewed
+					publication. Participants also share findings with general audiences and local communities.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Values -->
+	<section class="values">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-4-5 pure-u-xxl-3-5">
+				<div class="values__heading fade-up">
+					<h2>What We Stand For</h2>
+				</div>
+				<div class="values__list">
+					<div class="values__item fade-up">
+						<h3>Inclusion</h3>
+						<p>
+							Scientific discovery belongs to everyone. We actively recruit participants
+							from underrepresented backgrounds and design experiences that are accessible
+							regardless of prior training.
+						</p>
+					</div>
+					<div class="values__item fade-up">
+						<h3>Authentic Science</h3>
+						<p>
+							Every participant engages in real research — not simulations. Questions are
+							open, outcomes are unknown, and contributions matter to the broader scientific record.
+						</p>
+					</div>
+					<div class="values__item fade-up">
+						<h3>Mentorship</h3>
+						<p>
+							We pair early-career researchers with experienced scientists in a team
+							structure where everyone teaches and everyone learns. The goal is confidence
+							and capability, not just credentials.
+						</p>
+					</div>
+					<div class="values__item fade-up">
+						<h3>Community</h3>
+						<p>
+							Our alumni network spans dozens of universities, field sites on four continents,
+							and careers ranging from graduate research to science policy. Once part of Erell,
+							always part of Erell.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Recent Updates -->
+	<section class="updates">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-4-5 pure-u-xxl-3-5">
+				<div class="updates__heading fade-up">
+					<h2>Recent News</h2>
+					<p>What the team has been up to.</p>
+				</div>
+				<div class="updates__grid">
+					<div class="updates__card fade-up">
+						<div class="updates__card__tag">Research · March 2026</div>
+						<h3>Baja California Sur, Mexico</h3>
+						<p>
+							A two-week collaborative expedition pairing US students with Mexican student
+							and faculty teams to study lizard behavioral ecology in Baja Sur.
+						</p>
+					</div>
+					<div class="updates__card fade-up">
+						<div class="updates__card__tag">Research · In Development</div>
+						<h3>Chaco, Paraguay</h3>
+						<p>
+							Following successful 2025 pilot trips, local collaborators are developing
+							methods to study red tegu movement ecology in the Chaco region.
+						</p>
+					</div>
+					<div class="updates__card fade-up">
+						<div class="updates__card__tag">Presentation · November 2025</div>
+						<h3>Penn State Ecology Seminar</h3>
+						<p>
+							Doug and Maria Eifler presented to the Huck Institutes of Life Sciences
+							at Pennsylvania State University's Ecology Seminar Series.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTAs -->
 	<div class="pure-g center">
 		<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
-			<div class="about-content">
-				<AboutContent />
+			<div class="about-ctas fade-up">
+				<a href={`${b}about/meet-the-team/`} class="filled">Meet the Team</a>
+				<a href={`${b}education/`}>Our Programs</a>
+				<a href={`${b}research/publications/`}>Publications</a>
+				<a href={`${b}support/`}>Support Us</a>
 			</div>
 		</div>
 	</div>
+
 </Layout>

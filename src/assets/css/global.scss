@@ -61,6 +61,20 @@ em {
 
 .center {
 	justify-content: center;
+	max-width: 1600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// ─────────────────────────────────────────────
+// Pure CSS xxl breakpoint (≥ 1600px)
+// Pure's responsive grids stop at xl (1280px); these extend the system.
+// ─────────────────────────────────────────────
+
+@media (min-width: 1600px) {
+	.pure-u-xxl-1-2 { display: inline-block; width: 50%; }
+	.pure-u-xxl-3-5 { display: inline-block; width: 60%; }
+	.pure-u-xxl-4-5 { display: inline-block; width: 80%; }
 }
 
 .border {

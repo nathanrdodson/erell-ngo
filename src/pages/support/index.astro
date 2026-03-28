@@ -34,6 +34,11 @@ import Layout from '../../layouts/Layout.astro';
 	}
 }
 
+.paypal-wrap {
+	margin: 24px auto;
+	max-width: 400px;
+}
+
 .tax-note {
 	font-size: 0.85rem;
 	color: $font-light;
@@ -84,12 +89,15 @@ import Layout from '../../layouts/Layout.astro';
 						to the next generation of scientists. Every dollar supports field research
 						experiences, student mentorship, and science education programs.
 					</p>
-					<p>
-						To donate, contact us directly or use the form below:
-					</p>
-					<a href="mailto:deifler@erell.ngo?subject=Donation%20to%20Erell%20Institute" class="donate-cta">
-						Contact to Donate
-					</a>
+					<div class="paypal-wrap">
+						<script is:inline src="https://www.paypal.com/sdk/js?client-id=BAAF8gY-rlR6onQGMeRNLfnlOrwSNJVeXlGS43129g-S6JewYGNPwGwkRBSyV8q_RLKcglm4jyUXbBraH8&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
+						<div id="paypal-container-HLXSZPC9359X8"></div>
+						<script is:inline>
+							paypal.HostedButtons({
+								hostedButtonId: "HLXSZPC9359X8",
+							}).render("#paypal-container-HLXSZPC9359X8");
+						</script>
+					</div>
 					<p class="tax-note">Erell Institute is a registered 501(c)(3). Donations are tax-deductible to the extent permitted by law.</p>
 				</div>
 
