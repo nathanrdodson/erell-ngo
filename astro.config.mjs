@@ -6,8 +6,8 @@ export default defineConfig({
 	// Enable React to support React JSX components.
 	integrations: [react()],
 
-	// GitHub Pages deployment with custom domain.
-	// DNS: CNAME www.erell.ngo → nathanrdodson.github.io
-	// GitHub: Settings → Pages → Custom domain → www.erell.ngo
-	site: 'https://www.erell.ngo',
+	// GitHub Pages — subdirectory deployment (no custom domain)
+	site: 'https://nathanrdodson.github.io',
+	base: '/erell-ngo',
+	trailingSlash: 'always',
 });

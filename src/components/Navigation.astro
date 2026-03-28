@@ -2,6 +2,7 @@
 import '../assets/css/navigation.scss'
 import logo from '../assets/img/logo.svg'
 import Donate from './Donate.astro'
+const b = import.meta.env.BASE_URL;
 ---
 <nav>
 	<Donate />
@@ -19,10 +20,10 @@ import Donate from './Donate.astro'
 			</a>
 		</div>
 
-		<a href="/" class="nav__logo"><img src={logo.src} alt="Erell Institute" /></a>
+		<a href={b} class="nav__logo"><img src={logo.src} alt="Erell Institute" /></a>
 
 		<div id="nav__upper__right">
-			<a href="/support/">Donate</a>
+			<a href={`${b}support/`}>Donate</a>
 		</div>
 		<div id="nav__secondary">
 			<i class="iconoir-menu"></i>
@@ -31,30 +32,30 @@ import Donate from './Donate.astro'
 
 	<div id="nav__middle">
 		<div class="nav__dropdown">
-			<a href="/about/">About <i class="iconoir-nav-arrow-down"></i></a>
+			<a href={`${b}about/`}>About <i class="iconoir-nav-arrow-down"></i></a>
 			<div class="nav__submenu">
-				<a href="/about/meet-the-team/">Meet the Team</a>
-				<a href="/about/newsletter-archive/">Newsletter Archive</a>
+				<a href={`${b}about/meet-the-team/`}>Meet the Team</a>
+				<a href={`${b}about/newsletter-archive/`}>Newsletter Archive</a>
 			</div>
 		</div>
 		<div class="nav__dropdown">
-			<a href="/education/">Education <i class="iconoir-nav-arrow-down"></i></a>
+			<a href={`${b}education/`}>Education <i class="iconoir-nav-arrow-down"></i></a>
 			<div class="nav__submenu">
-				<a href="/education/lizard-camp/">Lizard Camp</a>
-				<a href="/education/netp/">NETP</a>
+				<a href={`${b}education/lizard-camp/`}>Lizard Camp</a>
+				<a href={`${b}education/netp/`}>NETP</a>
 			</div>
 		</div>
 		<div class="nav__dropdown">
-			<a href="/research/">Research <i class="iconoir-nav-arrow-down"></i></a>
+			<a href={`${b}research/`}>Research <i class="iconoir-nav-arrow-down"></i></a>
 			<div class="nav__submenu">
-				<a href="/research/social-systems/">Social Systems</a>
-				<a href="/research/movement-ecology/">Movement Ecology</a>
-				<a href="/research/italian-wall-lizards/">Italian Wall Lizards</a>
-				<a href="/research/publications/">Publications</a>
+				<a href={`${b}research/social-systems/`}>Social Systems</a>
+				<a href={`${b}research/movement-ecology/`}>Movement Ecology</a>
+				<a href={`${b}research/italian-wall-lizards/`}>Italian Wall Lizards</a>
+				<a href={`${b}research/publications/`}>Publications</a>
 			</div>
 		</div>
-		<a href="/photos/">Photo Gallery</a>
-		<a href="/support/">Support</a>
-		<a href="/contact/">Contact</a>
+		<a href={`${b}photos/`}>Photo Gallery</a>
+		<a href={`${b}support/`}>Support</a>
+		<a href={`${b}contact/`}>Contact</a>
 	</div>
 </nav>

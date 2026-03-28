@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const b = import.meta.env.BASE_URL;
 ---
 <style lang="scss">
 @use '../../assets/css/_theme.scss' as *;
@@ -81,7 +82,7 @@ import Layout from '../../layouts/Layout.astro';
 						in desert ecosystems around the world. Running annually since 2017, Lizard Camp
 						has trained participants across sites in the US, Tunisia, and beyond.
 					</p>
-					<a href="/education/lizard-camp/" class="learn-more">Learn more about Lizard Camp</a>
+					<a href={`${b}education/lizard-camp/`} class="learn-more">Learn more about Lizard Camp</a>
 				</div>
 
 				<div class="program-card fade-up">
@@ -91,7 +92,7 @@ import Layout from '../../layouts/Layout.astro';
 						development, research skills, and preparedness for graduate school or biology careers.
 						85% of NETP graduates have continued as professional biologists.
 					</p>
-					<a href="/education/netp/" class="learn-more">Learn more about NETP</a>
+					<a href={`${b}education/netp/`} class="learn-more">Learn more about NETP</a>
 				</div>
 			</div>
 		</div>

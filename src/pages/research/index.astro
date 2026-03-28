@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const b = import.meta.env.BASE_URL;
 ---
 <style lang="scss">
 @use '../../assets/css/_theme.scss' as *;
@@ -81,7 +82,7 @@ import Layout from '../../layouts/Layout.astro';
 						use habitat, forage, and avoid predators — across field sites from the Gobi Desert
 						to the Chihuahuan Desert.
 					</p>
-					<a href="/research/movement-ecology/" class="learn-more">Explore movement ecology</a>
+					<a href={`${b}research/movement-ecology/`} class="learn-more">Explore movement ecology</a>
 				</div>
 
 				<div class="research-card fade-up">
@@ -91,7 +92,7 @@ import Layout from '../../layouts/Layout.astro';
 						We explore how social structures allow animals to exist in areas where individuals
 						on their own might not succeed.
 					</p>
-					<a href="/research/social-systems/" class="learn-more">Explore social systems</a>
+					<a href={`${b}research/social-systems/`} class="learn-more">Explore social systems</a>
 				</div>
 
 				<div class="research-card fade-up">
@@ -101,7 +102,7 @@ import Layout from '../../layouts/Layout.astro';
 						Kansas. This work examines habitat preferences, behavioral syndromes of successful
 						invaders, and relationships with native species.
 					</p>
-					<a href="/research/italian-wall-lizards/" class="learn-more">Explore Italian wall lizard research</a>
+					<a href={`${b}research/italian-wall-lizards/`} class="learn-more">Explore Italian wall lizard research</a>
 				</div>
 
 				<div class="research-card fade-up">
@@ -110,7 +111,7 @@ import Layout from '../../layouts/Layout.astro';
 						Recent publications from Erell Institute researchers, with links to freely available
 						PDFs where possible.
 					</p>
-					<a href="/research/publications/" class="learn-more">View publications</a>
+					<a href={`${b}research/publications/`} class="learn-more">View publications</a>
 				</div>
 			</div>
 		</div>
