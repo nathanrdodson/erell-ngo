@@ -1,0 +1,74 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+<style lang="scss">
+@use '../../../assets/css/_theme.scss' as *;
+
+.project-block {
+	border-left: 3px solid $green-light;
+	padding: 16px 24px;
+	margin-bottom: 20px;
+
+	h3 {
+		font-size: 1rem;
+		margin-bottom: 6px;
+	}
+
+	p {
+		margin: 0;
+		font-size: 0.95rem;
+	}
+}
+</style>
+<Layout title="Social Systems" description="Erell Institute research on animal social systems in behavioral ecology — how social structures help animals survive and reproduce.">
+	<main class="page-main">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+				<header class="page-header">
+					<h1>Social Systems</h1>
+					<p class="page-header__lead">
+						Animals use social systems to increase their odds of surviving and reproducing.
+						We explore how these social systems allow animals to exist in areas where individuals
+						on their own might not be so successful.
+					</p>
+				</header>
+
+				<h2 class="section-title">Current & Recent Projects</h2>
+
+				<div class="project-block">
+					<h3>Little Scrub Island Ground Lizard — Anguilla</h3>
+					<p>
+						Examining social behavior and group dynamics in <em>Pholidoscelis corax</em> on
+						Little Scrub Island. This isolated population provides a natural laboratory for
+						studying how social structure develops and functions.
+					</p>
+				</div>
+
+				<div class="project-block">
+					<h3>Social Networks and Social Foraging — Atacama Lava Lizard</h3>
+					<p>
+						Social network analysis and social foraging behavior in <em>Microlophus atacamensis</em>,
+						a lava lizard inhabiting the Pacific coast of the Atacama Desert, Chile.
+					</p>
+				</div>
+
+				<div class="project-block">
+					<h3>Collective Behavior — Dominica Ground Lizard</h3>
+					<p>
+						Collective behavior and group decision-making in <em>Pholidoscelis fuscatus</em>
+						on Dominica.
+					</p>
+				</div>
+
+				<div class="project-block">
+					<h3>Upcoming: Social Behavior in Baja Blue Rock Lizard</h3>
+					<p>
+						Future work will examine social behavior in <em>Petrosaurus thalassinus</em>,
+						the Baja California rock lizard, as part of our collaborative research in Baja
+						California Sur, Mexico.
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>

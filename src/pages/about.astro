@@ -1,20 +1,40 @@
 ---
-import '../assets/css/global.scss'
-import Navigation from "../components/Navigation.astro";
+import Layout from '../layouts/Layout.astro';
+import {Content as AboutContent} from '../about-content.md';
 ---
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<Navigation />
+<style lang="scss">
+@use '../assets/css/_theme.scss' as *;
 
-		<h1>About</h1>
-		<h2>There is something creepy and crawly going on over here...</h2>
-		<p>Amazing, isnt it?</p>
-	</body>
-</html>
+.about-content {
+	padding: 48px 24px 80px;
+
+	h1 {
+		font-size: 2.2rem;
+		margin-bottom: 8px;
+	}
+
+	h2 {
+		font-size: 1rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $green-mid;
+		margin-top: 40px;
+		margin-bottom: 12px;
+	}
+
+	p {
+		font-size: 1.05rem;
+		line-height: 1.8;
+		max-width: 65ch;
+	}
+}
+</style>
+<Layout title="About">
+	<div class="pure-g center">
+		<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+			<div class="about-content">
+				<AboutContent />
+			</div>
+		</div>
+	</div>
+</Layout>

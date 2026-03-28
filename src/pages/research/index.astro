@@ -1,0 +1,118 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<style lang="scss">
+@use '../../assets/css/_theme.scss' as *;
+
+.research-card {
+	border: 1px solid $border-subtle;
+	border-left: 3px solid $green-light;
+	padding: 32px;
+	margin-bottom: 20px;
+	background: $secondary;
+	transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+	            box-shadow 0.22s ease,
+	            border-color 0.22s ease;
+
+	&:hover {
+		transform: translateX(4px);
+		box-shadow: 0 6px 24px rgba(44, 36, 22, 0.07);
+		border-left-color: $green-mid;
+	}
+
+	h2 {
+		font-size: 1.25rem;
+		margin-bottom: 10px;
+	}
+
+	p {
+		margin-bottom: 20px;
+		font-size: 0.95rem;
+	}
+
+	a.learn-more {
+		font-family: "indivisible", sans-serif;
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $green-dark;
+		position: relative;
+		padding-bottom: 3px;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background: $green-light;
+			transition: background 0.2s ease;
+		}
+
+		&:hover {
+			color: $earth-brown;
+
+			&::after {
+				background: $earth-warm;
+			}
+		}
+	}
+}
+</style>
+<Layout title="Research" description="Erell Institute research in behavioral ecology: movement ecology, social systems, and invasive species.">
+	<main class="page-main">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+				<header class="page-header">
+					<h1>Research</h1>
+					<p class="page-header__lead">
+						We study how animals make decisions — how they move, how they interact socially,
+						and how they survive in challenging environments. Our research spans desert
+						ecosystems across four continents.
+					</p>
+				</header>
+
+				<div class="research-card fade-up">
+					<h2>Movement Ecology</h2>
+					<p>
+						Movement patterns provide a window into an animal's decision-making. We study
+						movement to examine how individuals monitor their environment, interact socially,
+						use habitat, forage, and avoid predators — across field sites from the Gobi Desert
+						to the Chihuahuan Desert.
+					</p>
+					<a href="/research/movement-ecology/" class="learn-more">Explore movement ecology</a>
+				</div>
+
+				<div class="research-card fade-up">
+					<h2>Social Systems</h2>
+					<p>
+						Animals use social systems to increase their odds of surviving and reproducing.
+						We explore how social structures allow animals to exist in areas where individuals
+						on their own might not succeed.
+					</p>
+					<a href="/research/social-systems/" class="learn-more">Explore social systems</a>
+				</div>
+
+				<div class="research-card fade-up">
+					<h2>Italian Wall Lizards</h2>
+					<p>
+						Community science research on invasive <em>Podarcis siculus</em> in Douglas County,
+						Kansas. This work examines habitat preferences, behavioral syndromes of successful
+						invaders, and relationships with native species.
+					</p>
+					<a href="/research/italian-wall-lizards/" class="learn-more">Explore Italian wall lizard research</a>
+				</div>
+
+				<div class="research-card fade-up">
+					<h2>Publications</h2>
+					<p>
+						Recent publications from Erell Institute researchers, with links to freely available
+						PDFs where possible.
+					</p>
+					<a href="/research/publications/" class="learn-more">View publications</a>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>

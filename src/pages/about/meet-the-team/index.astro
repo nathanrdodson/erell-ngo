@@ -1,0 +1,623 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Image, getImage } from 'astro:assets';
+
+import dougPhoto    from '../../../assets/img/meet-the-team/doug.eifler.jpg';
+import mariaPhoto   from '../../../assets/img/meet-the-team/maria.eifler.jpg';
+import kaeraPhoto   from '../../../assets/img/meet-the-team/kaiara.utsumi.jpg';
+import dahtiyaPhoto from '../../../assets/img/meet-the-team/dahtiya.stanley.jpg';
+import aliciaPhoto  from '../../../assets/img/meet-the-team/alicia.pham.jpg';
+import kellyPhoto   from '../../../assets/img/meet-the-team/kelly.diamond.jpg';
+import drewPhoto    from '../../../assets/img/meet-the-team/drew.dittmer.jpg';
+import miaPhoto     from '../../../assets/img/meet-the-team/mia.phillips.jpg';
+import luluPhoto    from '../../../assets/img/meet-the-team/Lulu.Gomez.jpg';
+import rebeccaPhoto from '../../../assets/img/meet-the-team/Rebecca.Upton.jpg';
+import vickyPhoto   from '../../../assets/img/meet-the-team/Vicky.Zero.jpg';
+import nathanPhoto  from '../../../assets/img/meet-the-team/Nathan.Dodson.jpg';
+
+const zoom = async (src: ImageMetadata) =>
+	(await getImage({ src, width: 900, format: 'webp' })).src;
+
+const dougZoom    = await zoom(dougPhoto);
+const mariaZoom   = await zoom(mariaPhoto);
+const kaeraZoom   = await zoom(kaeraPhoto);
+const dahtiyaZoom = await zoom(dahtiyaPhoto);
+const aliciaZoom  = await zoom(aliciaPhoto);
+const kellyZoom   = await zoom(kellyPhoto);
+const drewZoom    = await zoom(drewPhoto);
+const miaZoom     = await zoom(miaPhoto);
+const luluZoom    = await zoom(luluPhoto);
+const rebeccaZoom = await zoom(rebeccaPhoto);
+const vickyZoom   = await zoom(vickyPhoto);
+const nathanZoom  = await zoom(nathanPhoto);
+---
+<style lang="scss">
+@use '../../../assets/css/_theme.scss' as *;
+
+// ── Leadership ────────────────────────────────────
+
+.leadership-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 24px;
+	margin-bottom: 64px;
+
+	@media (max-width: 600px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.leader-card {
+	background: $secondary;
+	border: 1px solid $border-subtle;
+	padding-top: 36px;
+	transition: transform 0.22s ease, box-shadow 0.22s ease;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 32px rgba(44, 36, 22, 0.08);
+	}
+
+	&__photo-btn {
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: zoom-in;
+		display: block;
+		margin: 0 auto 24px;
+		border-radius: 50%;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+		&:hover {
+			transform: scale(1.04);
+			box-shadow: 0 8px 24px rgba(44, 36, 22, 0.14);
+		}
+	}
+
+	&__photo {
+		width: 180px;
+		height: 180px;
+		border-radius: 50%;
+		object-fit: cover;
+		object-position: center top;
+		display: block;
+		border: 3px solid $surface;
+	}
+
+	&__body {
+		padding: 0 24px 28px;
+		text-align: center;
+	}
+
+	&__name {
+		font-size: 1.1rem;
+		color: $font-dark;
+		margin-bottom: 4px;
+	}
+
+	&__title {
+		font-family: "indivisible", sans-serif;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: $green-mid;
+		margin-bottom: 14px;
+	}
+
+	&__bio {
+		font-size: 0.88rem;
+		color: $font-mid;
+		line-height: 1.75;
+		margin: 0;
+		text-align: left;
+	}
+}
+
+// ── Research team ─────────────────────────────────
+
+.research-team {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	margin-bottom: 64px;
+}
+
+.staff-member {
+	display: flex;
+	align-items: flex-start;
+	gap: 24px;
+
+	&__photo-btn {
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: zoom-in;
+		flex-shrink: 0;
+		border-radius: 50%;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+		&:hover {
+			transform: scale(1.05);
+			box-shadow: 0 6px 18px rgba(44, 36, 22, 0.14);
+		}
+	}
+
+	&__photo {
+		width: 88px;
+		height: 88px;
+		border-radius: 50%;
+		object-fit: cover;
+		object-position: center top;
+		display: block;
+		border: 2px solid $surface;
+	}
+
+	&__info { flex: 1; padding-top: 4px; }
+
+	&__name {
+		font-size: 1rem;
+		color: $font-dark;
+		margin-bottom: 2px;
+	}
+
+	&__title {
+		font-family: "indivisible", sans-serif;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $green-mid;
+		margin-bottom: 8px;
+	}
+
+	&__bio {
+		font-size: 0.88rem;
+		color: $font-mid;
+		line-height: 1.7;
+		margin: 0;
+	}
+}
+
+// ── Advisory board ────────────────────────────────
+
+.advisory-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	margin-bottom: 64px;
+
+	@media (max-width: 650px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (max-width: 400px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.advisory-card {
+	background: $secondary;
+	padding: 24px 16px 20px;
+	text-align: center;
+	transition: transform 0.2s ease;
+
+	&:hover {
+		transform: translateY(-3px);
+	}
+
+	&__photo-btn {
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: zoom-in;
+		display: block;
+		margin: 0 auto 14px;
+		border-radius: 50%;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+		&:hover {
+			transform: scale(1.05);
+			box-shadow: 0 6px 16px rgba(44, 36, 22, 0.14);
+		}
+	}
+
+	&__photo {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		object-fit: cover;
+		object-position: center top;
+		display: block;
+		border: 2px solid $surface;
+	}
+
+	h3 {
+		font-size: 0.9rem;
+		color: $font-dark;
+		margin-bottom: 4px;
+		line-height: 1.3;
+	}
+
+	&__institution {
+		font-family: "indivisible", sans-serif;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.07em;
+		color: $font-light;
+		margin: 0 0 8px;
+	}
+
+	&__note {
+		font-size: 0.78rem;
+		color: $font-mid;
+		line-height: 1.55;
+		margin: 0;
+	}
+}
+
+// ── IT ────────────────────────────────────────────
+
+.it-member {
+	display: flex;
+	align-items: flex-start;
+	gap: 24px;
+	background: $secondary;
+	padding: 24px;
+	margin-bottom: 64px;
+
+	&__photo-btn {
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: zoom-in;
+		flex-shrink: 0;
+		border-radius: 50%;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+		&:hover {
+			transform: scale(1.05);
+			box-shadow: 0 6px 18px rgba(44, 36, 22, 0.14);
+		}
+	}
+
+	&__photo {
+		width: 72px;
+		height: 72px;
+		border-radius: 50%;
+		object-fit: cover;
+		object-position: center top;
+		display: block;
+		border: 2px solid $surface;
+	}
+
+	&__info { flex: 1; padding-top: 2px; }
+
+	&__name {
+		font-size: 1rem;
+		color: $font-dark;
+		margin-bottom: 2px;
+	}
+
+	&__title {
+		font-family: "indivisible", sans-serif;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $green-mid;
+		margin-bottom: 8px;
+	}
+
+	p {
+		font-size: 0.88rem;
+		color: $font-mid;
+		line-height: 1.7;
+		margin: 0;
+	}
+}
+
+// ── Lightbox ──────────────────────────────────────
+
+.lightbox {
+	position: fixed;
+	inset: 0;
+	background: rgba(44, 36, 22, 0.92);
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: zoom-out;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.25s ease;
+
+	&.active {
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	&__img {
+		max-width: min(560px, 88vw);
+		max-height: 88vh;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		display: block;
+		box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
+		transform: scale(0.9);
+		transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.18s ease;
+	}
+
+	&.active &__img { transform: scale(1); }
+
+	&__img.loading { opacity: 0; }
+
+	&__close {
+		position: absolute;
+		top: 20px;
+		right: 24px;
+		background: none;
+		border: 1px solid rgba(247, 243, 238, 0.35);
+		color: rgba(247, 243, 238, 0.8);
+		font-size: 1rem;
+		width: 36px;
+		height: 36px;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: background 0.18s ease, color 0.18s ease;
+		font-family: "indivisible", sans-serif;
+
+		&:hover {
+			background: rgba(247, 243, 238, 0.12);
+			color: #F7F3EE;
+		}
+	}
+}
+</style>
+<Layout title="Meet the Team" description="Meet the Erell Institute team — the people behind behavioral ecology education and research.">
+	<main class="page-main">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+
+				<header class="page-header">
+					<h1>Meet the Team</h1>
+					<p class="page-header__lead">
+						Erell Institute is a small, dedicated team of researchers, educators, and collaborators
+						united by curiosity about the natural world and a commitment to making science
+						accessible to everyone.
+					</p>
+				</header>
+
+				<!-- Leadership -->
+				<h2 class="section-title">Leadership</h2>
+				<div class="leadership-grid">
+
+					<div class="leader-card fade-up">
+						<button class="leader-card__photo-btn zoomable" data-zoom={dougZoom} aria-label="View photo of Doug Eifler">
+							<Image src={dougPhoto} alt="Doug Eifler" class="leader-card__photo" width={480} />
+						</button>
+						<div class="leader-card__body">
+							<h3 class="leader-card__name">Doug Eifler</h3>
+							<div class="leader-card__title">Chief Curiosity Officer</div>
+							<p class="leader-card__bio">
+								Doug is a behavioral ecologist whose research focuses on movement ecology,
+								social systems, and anti-predator behavior in lizards across desert ecosystems
+								worldwide — from the Chihuahuan Desert to the Gobi. He co-founded Erell Institute
+								to bring the same spirit of open inquiry into formal education, designing
+								field programs that give students from all backgrounds real ownership of the
+								scientific process. He leads Lizard Camp, NETP, and collaborative expeditions
+								in Mexico, Paraguay, and beyond.
+							</p>
+						</div>
+					</div>
+
+					<div class="leader-card fade-up">
+						<button class="leader-card__photo-btn zoomable" data-zoom={mariaZoom} aria-label="View photo of Maria Eifler">
+							<Image src={mariaPhoto} alt="Maria Eifler" class="leader-card__photo" width={480} />
+						</button>
+						<div class="leader-card__body">
+							<h3 class="leader-card__name">Maria Eifler</h3>
+							<div class="leader-card__title">Chief of Operations and Organization</div>
+							<p class="leader-card__bio">
+								Maria keeps Erell Institute running. She coordinates logistics for field
+								expeditions, manages the organization's programs and partnerships, and ensures
+								that every student and collaborator has what they need to do good science.
+								She also brings her own expertise in natural history to the public — speaking
+								on wetlands mammals and reptiles and amphibians of Kansas through the Baker
+								Wetlands Discovery Center and beyond.
+							</p>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- Research Team -->
+				<h2 class="section-title">Research Team</h2>
+				<div class="research-team">
+
+					<div class="staff-member fade-up">
+						<button class="staff-member__photo-btn zoomable" data-zoom={kaeraZoom} aria-label="View photo of Kaera Utsumi">
+							<Image src={kaeraPhoto} alt="Kaera Utsumi" class="staff-member__photo" width={200} />
+						</button>
+						<div class="staff-member__info">
+							<h3 class="staff-member__name">Kaera Utsumi</h3>
+							<div class="staff-member__title">Research Associate</div>
+							<p class="staff-member__bio">
+								Kaera completed her Master's degree at the University of Kansas studying social
+								networks in lizard populations. Her work has contributed to multiple publications
+								from Erell's international field programs, including research in Tunisia, Texas,
+								and the Namib Desert. She is currently preparing manuscripts and scoping
+								the next phase of her research career.
+							</p>
+						</div>
+					</div>
+
+					<div class="staff-member fade-up">
+						<button class="staff-member__photo-btn zoomable" data-zoom={dahtiyaZoom} aria-label="View photo of Dahtiya Stanley">
+							<Image src={dahtiyaPhoto} alt="Dahtiya Stanley" class="staff-member__photo" width={200} />
+						</button>
+						<div class="staff-member__info">
+							<h3 class="staff-member__name">Dahtiya Stanley</h3>
+							<div class="staff-member__title">Research Assistant</div>
+							<p class="staff-member__bio">
+								Dahtiya is a sophomore at Haskell Indian Nations University studying Environmental
+								Science. She works with the Italian Wall Lizard Task Force, contributing to
+								community science research on invasive <em>Podarcis siculus</em> populations
+								in Douglas County, Kansas.
+							</p>
+						</div>
+					</div>
+
+					<div class="staff-member fade-up">
+						<button class="staff-member__photo-btn zoomable" data-zoom={aliciaZoom} aria-label="View photo of Alicia Pham">
+							<Image src={aliciaPhoto} alt="Alicia Pham" class="staff-member__photo" width={200} />
+						</button>
+						<div class="staff-member__info">
+							<h3 class="staff-member__name">Alicia Pham</h3>
+							<div class="staff-member__title">Research Assistant</div>
+							<p class="staff-member__bio">
+								Alicia is a sophomore at the University of Kansas double-majoring in Ecology
+								&amp; Evolutionary Biology and Geology. She works with the Italian Wall Lizard
+								Task Force, helping to document and study the distribution and behavior of
+								invasive wall lizards in the Lawrence area.
+							</p>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- Scientific Advisory Board -->
+				<h2 class="section-title">Scientific Advisory Board</h2>
+				<div class="advisory-grid">
+
+					<div class="advisory-card fade-up">
+						<button class="advisory-card__photo-btn zoomable" data-zoom={kellyZoom} aria-label="View photo of Kelly Diamond">
+							<Image src={kellyPhoto} alt="Kelly Diamond" class="advisory-card__photo" width={160} />
+						</button>
+						<h3>Kelly Diamond</h3>
+						<p class="advisory-card__institution">Rhodes College</p>
+						<p class="advisory-card__note">Behavioral ecologist and longtime collaborator on lizard ecology research.</p>
+					</div>
+
+					<div class="advisory-card fade-up">
+						<button class="advisory-card__photo-btn zoomable" data-zoom={drewZoom} aria-label="View photo of Drew Dittmer">
+							<Image src={drewPhoto} alt="Drew Dittmer" class="advisory-card__photo" width={160} />
+						</button>
+						<h3>Drew Dittmer</h3>
+						<p class="advisory-card__institution">Johnny Morris Institute, University of Missouri</p>
+						<p class="advisory-card__note">Independent researcher with expertise in wildlife conservation and ecology.</p>
+					</div>
+
+					<div class="advisory-card fade-up">
+						<button class="advisory-card__photo-btn zoomable" data-zoom={miaZoom} aria-label="View photo of Mia Phillips">
+							<Image src={miaPhoto} alt="Mia Phillips" class="advisory-card__photo" width={160} />
+						</button>
+						<h3>Mia Phillips</h3>
+						<p class="advisory-card__institution">Post-doc, University of Wisconsin Entomology</p>
+						<p class="advisory-card__note">Completed her PhD at Dartmouth on vibrational communication in beetles. A former Erell mentee and a model of the program's impact.</p>
+					</div>
+
+					<div class="advisory-card fade-up">
+						<button class="advisory-card__photo-btn zoomable" data-zoom={luluZoom} aria-label="View photo of Lulu de Lourdes Ruiz-Gómez">
+							<Image src={luluPhoto} alt="Lulu de Lourdes Ruiz-Gómez" class="advisory-card__photo" width={160} />
+						</button>
+						<h3>Lulu (María) de Lourdes Ruiz-Gómez</h3>
+						<p class="advisory-card__institution">Universidad Autónoma del Estado de México</p>
+						<p class="advisory-card__note">Collaborator in Mexico with expertise in lizard cognition and thermal ecology.</p>
+					</div>
+
+					<div class="advisory-card fade-up">
+						<button class="advisory-card__photo-btn zoomable" data-zoom={rebeccaZoom} aria-label="View photo of Rebecca Upton">
+							<Image src={rebeccaPhoto} alt="Rebecca Upton" class="advisory-card__photo" width={160} />
+						</button>
+						<h3>Rebecca Upton</h3>
+						<p class="advisory-card__institution">Colgate University</p>
+						<p class="advisory-card__note">Hosted Erell's seminar on reptile movement and connectivity. Brings a strong academic network to the advisory board.</p>
+					</div>
+
+					<div class="advisory-card fade-up">
+						<button class="advisory-card__photo-btn zoomable" data-zoom={vickyZoom} aria-label="View photo of Vicky Zero">
+							<Image src={vickyPhoto} alt="Vicky Zero" class="advisory-card__photo" width={160} />
+						</button>
+						<h3>Vicky Zero</h3>
+						<p class="advisory-card__institution">Western EcoSystems Technology</p>
+						<p class="advisory-card__note">Senior Biologist in applied ecology and environmental consulting, providing an industry perspective to the board.</p>
+					</div>
+
+				</div>
+
+				<!-- Information Technology -->
+				<h2 class="section-title">Information Technology</h2>
+				<div class="it-member fade-up">
+					<button class="it-member__photo-btn zoomable" data-zoom={nathanZoom} aria-label="View photo of Nathan Dodson">
+						<Image src={nathanPhoto} alt="Nathan Dodson" class="it-member__photo" width={144} />
+					</button>
+					<div class="it-member__info">
+						<h3 class="it-member__name">Nathan Dodson</h3>
+						<div class="it-member__title">Information Technology</div>
+						<p>
+							Nathan manages the website, infrastructure, and technology stack for Erell Institute.
+							He is pursuing an MBA and a degree in Computer Science at the University of Kansas,
+							with professional experience in technical architecture and data management.
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</main>
+
+	<!-- Lightbox -->
+	<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+		<button class="lightbox__close" id="lightbox-close" aria-label="Close">✕</button>
+		<img id="lightbox-img" src="" alt="" class="lightbox__img" />
+	</div>
+</Layout>
+
+<script>
+	const lightbox    = document.getElementById('lightbox') as HTMLElement;
+	const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+
+	function openLightbox(btn: HTMLElement) {
+		const zoomSrc = btn.dataset.zoom;
+		const thumb   = btn.querySelector('img') as HTMLImageElement;
+		const newSrc  = zoomSrc || thumb?.src || '';
+		const newAlt  = thumb?.alt || '';
+
+		if (lightbox.classList.contains('active')) {
+			lightboxImg.classList.add('loading');
+			setTimeout(() => swapImage(newSrc, newAlt), 180);
+		} else {
+			lightboxImg.classList.add('loading');
+			lightbox.classList.add('active');
+			document.body.style.overflow = 'hidden';
+			swapImage(newSrc, newAlt);
+		}
+	}
+
+	function swapImage(src: string, alt: string) {
+		lightboxImg.onload = () => lightboxImg.classList.remove('loading');
+		lightboxImg.src = src;
+		lightboxImg.alt = alt;
+		if (lightboxImg.complete) lightboxImg.classList.remove('loading');
+	}
+
+	function closeLightbox() {
+		lightbox.classList.remove('active');
+		document.body.style.overflow = '';
+	}
+
+	document.querySelectorAll<HTMLElement>('.zoomable').forEach(btn => {
+		btn.addEventListener('click', () => openLightbox(btn));
+	});
+
+	document.getElementById('lightbox-close')?.addEventListener('click', (e) => {
+		e.stopPropagation();
+		closeLightbox();
+	});
+
+	lightbox.addEventListener('click', closeLightbox);
+
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') closeLightbox();
+	});
+</script>

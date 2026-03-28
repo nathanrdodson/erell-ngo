@@ -1,0 +1,405 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+import img2025 from '../../../assets/img/lizard-camp/2025.jpg';
+import img2024 from '../../../assets/img/lizard-camp/2024.jpg';
+import img2023 from '../../../assets/img/lizard-camp/2023.jpg';
+import img2022 from '../../../assets/img/lizard-camp/2022.jpg';
+import img2021 from '../../../assets/img/lizard-camp/2021.jpg';
+import img2020 from '../../../assets/img/lizard-camp/2020.jpg';
+import img2019 from '../../../assets/img/lizard-camp/2019.jpg';
+import img2018 from '../../../assets/img/lizard-camp/2018.jpg';
+import img2017 from '../../../assets/img/lizard-camp/2017.jpg';
+---
+<style lang="scss">
+@use '../../../assets/css/_theme.scss' as *;
+@use '../../../assets/css/_mixins.scss' as *;
+
+// ── Intro ─────────────────────────────────────
+
+.camp-intro {
+	padding: 64px 24px 56px;
+
+	p {
+		font-size: 0.95rem;
+		line-height: 1.8;
+		margin-bottom: 16px;
+
+		&:last-child { margin-bottom: 0; }
+	}
+}
+
+// ── Stats bar ─────────────────────────────────
+
+.camp-stats {
+	background: $green-dark;
+	padding: 0 24px;
+	display: flex;
+	justify-content: center;
+
+	&__inner {
+		display: flex;
+		gap: 0;
+		width: 100%;
+		max-width: 860px;
+
+		@include respond-to('small-mx') {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__item {
+		flex: 1;
+		text-align: center;
+		padding: 36px 20px;
+		border-right: 1px solid rgba(247, 243, 238, 0.1);
+
+		&:last-child { border-right: none; }
+
+		@include respond-to('small-mx') {
+			flex: 0 0 50%;
+			border-bottom: 1px solid rgba(247, 243, 238, 0.1);
+			&:nth-child(2) { border-right: none; }
+		}
+	}
+
+	&__number {
+		font-family: "apparat-light", sans-serif;
+		font-size: 2.2rem;
+		font-weight: 300;
+		color: $text-on-green;
+		line-height: 1;
+		margin-bottom: 8px;
+		letter-spacing: -0.02em;
+	}
+
+	&__label {
+		font-family: "indivisible", sans-serif;
+		font-size: 9px;
+		text-transform: uppercase;
+		letter-spacing: 0.13em;
+		color: rgba(247, 243, 238, 0.45);
+		line-height: 1.5;
+	}
+}
+
+// ── Year cards ────────────────────────────────
+
+.camp-years {
+	background: $primary;
+}
+
+.camp-year-card {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	min-height: 480px;
+	border-bottom: 1px solid $border-subtle;
+
+	&:last-child { border-bottom: none; }
+
+	@include respond-to('medium-mx') {
+		grid-template-columns: 1fr;
+		min-height: unset;
+	}
+
+	// Flip: photo on right
+	&--flip &__photo { order: 2; }
+	&--flip &__content { order: 1; }
+
+	@include respond-to('medium-mx') {
+		&--flip &__photo { order: 1; }
+		&--flip &__content { order: 2; }
+	}
+
+	&__photo {
+		overflow: hidden;
+		position: relative;
+
+		@include respond-to('medium-mx') {
+			min-height: 300px;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			display: block;
+			transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		&:hover img {
+			transform: scale(1.04);
+		}
+	}
+
+	&__content {
+		padding: 56px 64px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background: $primary;
+		position: relative;
+
+		@include respond-to('medium-mx') {
+			padding: 40px 32px;
+		}
+
+		@include respond-to('xsmall-mx') {
+			padding: 32px 24px;
+		}
+	}
+
+	// Large ghost year number
+	&__year-bg {
+		font-family: "apparat-light", sans-serif;
+		font-size: 7rem;
+		font-weight: 300;
+		color: $green-light;
+		opacity: 0.12;
+		line-height: 1;
+		letter-spacing: -0.04em;
+		margin-bottom: -20px;
+		margin-left: -4px;
+		display: block;
+		pointer-events: none;
+		user-select: none;
+
+		@include respond-to('xsmall-mx') {
+			font-size: 5rem;
+		}
+	}
+
+	&__location {
+		font-family: "indivisible", sans-serif;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.13em;
+		color: $green-mid;
+		margin-bottom: 12px;
+	}
+
+	h3 {
+		font-size: 1.3rem;
+		color: $green-dark;
+		margin-bottom: 14px;
+		line-height: 1.3;
+	}
+
+	p {
+		font-size: 0.9rem;
+		color: $font-mid;
+		line-height: 1.75;
+		margin: 0;
+		max-width: 44ch;
+	}
+
+	&__pub {
+		margin-top: 20px;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		font-family: "indivisible", sans-serif;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $font-light;
+
+		&::before {
+			content: '';
+			width: 20px;
+			height: 1px;
+			background: $green-light;
+			flex-shrink: 0;
+		}
+	}
+
+	&__students {
+		margin-top: 16px;
+		font-family: "indivisible", sans-serif;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: $font-light;
+	}
+}
+</style>
+<Layout title="Lizard Camp" description="Lizard Camp provides hands-on field research training for students from underrepresented backgrounds in behavioral ecology.">
+
+	<!-- Intro -->
+	<div class="camp-intro">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+				<header class="page-header">
+					<h1>Lizard Camp</h1>
+					<p class="page-header__lead">
+						Hands-on training that enables students from underrepresented backgrounds
+						to learn how to be a scientist.
+					</p>
+				</header>
+				<p>
+					Teams of undergraduate, post-baccalaureate, and graduate students work together to
+					study lizards in desert ecosystems worldwide. Each team develops a research question,
+					designs methods, collects and analyzes data, and presents results to broad audiences —
+					including the scientific community and the general public.
+				</p>
+				<p>
+					Running every year since 2017, Lizard Camp has taken participants to field sites across
+					the American Southwest, North Africa, and beyond. Work from the program has been
+					featured on Marfa Public Radio and has produced multiple peer-reviewed publications.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Stats bar -->
+	<div class="camp-stats">
+		<div class="camp-stats__inner">
+			<div class="camp-stats__item">
+				<div class="camp-stats__number">9</div>
+				<div class="camp-stats__label">Seasons<br>Running</div>
+			</div>
+			<div class="camp-stats__item">
+				<div class="camp-stats__number">7+</div>
+				<div class="camp-stats__label">Field<br>Sites</div>
+			</div>
+			<div class="camp-stats__item">
+				<div class="camp-stats__number">80+</div>
+				<div class="camp-stats__label">Student<br>Participants</div>
+			</div>
+			<div class="camp-stats__item">
+				<div class="camp-stats__number">10+</div>
+				<div class="camp-stats__label">Peer-Reviewed<br>Publications</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Year-by-year cards -->
+	<div class="camp-years">
+
+		<div class="camp-year-card fade-up">
+			<div class="camp-year-card__photo">
+				<Image src={img2025} alt="Lizard Camp 2025, Chihuahuan Desert, Texas" />
+			</div>
+			<div class="camp-year-card__content">
+				<span class="camp-year-card__year-bg">2025</span>
+				<div class="camp-year-card__location">Chihuahuan Desert, Texas</div>
+				<h3>Sex-based differences in habitat use via drone imagery</h3>
+				<p>Field test of step-selection analysis using drone imagery to examine sex-based differences in habitat use in a desert lizard community.</p>
+				<div class="camp-year-card__students">11 Students</div>
+			</div>
+		</div>
+
+		<div class="camp-year-card camp-year-card--flip fade-up">
+			<div class="camp-year-card__photo">
+				<Image src={img2024} alt="Lizard Camp 2024, Chihuahuan Desert, Texas" loading="lazy" />
+			</div>
+			<div class="camp-year-card__content">
+				<span class="camp-year-card__year-bg">2024</span>
+				<div class="camp-year-card__location">Chihuahuan Desert, Texas</div>
+				<h3>Collaborative field research across institutions</h3>
+				<p>Students from three universities across four states collaborated on field research in the Chihuahuan Desert — one of the program's most geographically diverse cohorts.</p>
+				<div class="camp-year-card__students">8 Students · 3 Universities · 4 States</div>
+			</div>
+		</div>
+
+		<div class="camp-year-card fade-up">
+			<div class="camp-year-card__photo">
+				<Image src={img2023} alt="Lizard Camp 2023, Bouhedma National Park, Tunisia" loading="lazy" />
+			</div>
+			<div class="camp-year-card__content">
+				<span class="camp-year-card__year-bg">2023</span>
+				<div class="camp-year-card__location">Bouhedma National Park, Tunisia</div>
+				<h3>Morphology–habitat relationships in Saharan lizards</h3>
+				<p>An international cohort examined the relationship between body morphology and microhabitat use in a North African desert ecosystem — Lizard Camp's first session on the African continent.</p>
+				<div class="camp-year-card__students">8 Tunisian + 2 US Students</div>
+				<div class="camp-year-card__pub">Utsumi et al., in press</div>
+			</div>
+		</div>
+
+		<div class="camp-year-card camp-year-card--flip fade-up">
+			<div class="camp-year-card__photo">
+				<Image src={img2022} alt="Lizard Camp 2022, Salt Basin Sand Dunes, Texas" loading="lazy" />
+			</div>
+			<div class="camp-year-card__content">
+				<span class="camp-year-card__year-bg">2022</span>
+				<div class="camp-year-card__location">Salt Basin Sand Dunes, Texas</div>
+				<h3>Habitat use and escape behavior in sand dune lizards</h3>
+				<p>Students studied how lizards in the Salt Basin Sand Dunes select and use habitat and respond to predation risk — producing two separate lines of research from a single field season.</p>
+				<div class="camp-year-card__students">5 Students + 1 Post-doc</div>
+				<div class="camp-year-card__pub">Orton et al. 2024 · Utsumi et al. 2026</div>
+			</div>
+		</div>
+
+		<div class="camp-year-card fade-up">
+			<div class="camp-year-card__photo">
+				<Image src={img2021} alt="Lizard Camp 2021, Chihuahuan Desert, Texas" loading="lazy" />
+			</div>
+			<div class="camp-year-card__content">
+				<span class="camp-year-card__year-bg">2021</span>
+				<div class="camp-year-card__location">Chihuahuan Desert, Texas</div>
+				<h3>Food and space partitioning among desert lizard species</h3>
+				<p>The team examined how multiple lizard species partition food resources and space in a shared desert environment — a question at the intersection of community ecology and behavior.</p>
+				<div class="camp-year-card__students">7 Students</div>
+				<div class="camp-year-card__pub">Tryban et al. 2024</div>
+			</div>
+		</div>
+
+		<div class="camp-year-card camp-year-card--flip fade-up">
+			<div class="camp-year-card__photo">
+				<Image src={img2020} alt="Lizard Camp 2020, Great Basin Desert, Oregon" loading="lazy" />
+			</div>
+			<div class="camp-year-card__content">
+				<span class="camp-year-card__year-bg">2020</span>
+				<div class="camp-year-card__location">Great Basin Desert, Oregon</div>
+				<h3>Social networks and space use in Great Basin lizard communities</h3>
+				<p>Students mapped social network structure and home range overlap in a diverse Great Basin lizard community — one of the program's largest cohorts, conducted in a challenging field season.</p>
+				<div class="camp-year-card__students">10 Students</div>
+			</div>
+		</div>
+
+		<div class="camp-year-card fade-up">
+			<div class="camp-year-card__photo">
+				<Image src={img2019} alt="Lizard Camp 2019, Chihuahuan Desert, Colorado" loading="lazy" />
+			</div>
+			<div class="camp-year-card__content">
+				<span class="camp-year-card__year-bg">2019</span>
+				<div class="camp-year-card__location">Chihuahuan Desert, Colorado</div>
+				<h3>Age-based differences in movement patterns</h3>
+				<p>The program's largest cohort examined how age shapes movement decisions in lizards — tracking juvenile and adult individuals across the same landscape to reveal distinct behavioral strategies.</p>
+				<div class="camp-year-card__students">13 Students</div>
+				<div class="camp-year-card__pub">Kusaka et al. 2021</div>
+			</div>
+		</div>
+
+		<div class="camp-year-card camp-year-card--flip fade-up">
+			<div class="camp-year-card__photo">
+				<Image src={img2018} alt="Lizard Camp 2018, Chihuahuan Desert, Colorado" loading="lazy" />
+			</div>
+			<div class="camp-year-card__content">
+				<span class="camp-year-card__year-bg">2018</span>
+				<div class="camp-year-card__location">Chihuahuan Desert, Colorado</div>
+				<h3>How habitat structure shapes lizard behavior</h3>
+				<p>Students investigated how variation in physical habitat structure — vegetation density, substrate type, and cover availability — influences activity, movement, and social interactions.</p>
+				<div class="camp-year-card__students">12 Students</div>
+				<div class="camp-year-card__pub">Utsumi et al. 2019</div>
+			</div>
+		</div>
+
+		<div class="camp-year-card fade-up">
+			<div class="camp-year-card__photo">
+				<Image src={img2017} alt="Lizard Camp 2017, Great Basin Desert, Southeast Oregon" loading="lazy" />
+			</div>
+			<div class="camp-year-card__content">
+				<span class="camp-year-card__year-bg">2017</span>
+				<div class="camp-year-card__location">Great Basin Desert, Southeast Oregon</div>
+				<h3>Foraging mode influences on lizard community ecology</h3>
+				<p>The inaugural Lizard Camp session examined how foraging mode — sit-and-wait versus active foraging — structures the ecology of a Great Basin desert lizard community. The program has run every year since.</p>
+				<div class="camp-year-card__students">8 Students · Inaugural Season</div>
+			</div>
+		</div>
+
+	</div>
+
+</Layout>

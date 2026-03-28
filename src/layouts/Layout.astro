@@ -1,0 +1,55 @@
+---
+import '../assets/css/global.scss';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Erell Institute',
+	description = 'Education through research in behavioral ecology. Erell Institute organizes research experiences for people from all backgrounds.'
+} = Astro.props;
+
+const pageTitle = title === 'Erell Institute' ? title : `${title} | Erell Institute`;
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+
+		<!-- Pure.css -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+
+		<!-- Fonts & Icons -->
+		<link rel="stylesheet" href="https://use.typekit.net/yhr4fyr.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css"/>
+
+		<title>{pageTitle}</title>
+	</head>
+	<body>
+		<Navigation />
+		<slot />
+		<Footer />
+	</body>
+	<script>
+		// Scroll-triggered fade-up animations
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('in-view');
+					observer.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+		document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+	</script>
+</html>

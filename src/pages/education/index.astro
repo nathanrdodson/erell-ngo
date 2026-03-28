@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<style lang="scss">
+@use '../../assets/css/_theme.scss' as *;
+
+.program-card {
+	border: 1px solid $border-subtle;
+	border-left: 3px solid $green-light;
+	padding: 32px;
+	margin-bottom: 20px;
+	background: $secondary;
+	transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+	            box-shadow 0.22s ease,
+	            border-color 0.22s ease;
+
+	&:hover {
+		transform: translateX(4px);
+		box-shadow: 0 6px 24px rgba(44, 36, 22, 0.07);
+		border-left-color: $green-mid;
+	}
+
+	h2 {
+		font-size: 1.25rem;
+		margin-bottom: 10px;
+	}
+
+	p {
+		margin-bottom: 20px;
+		font-size: 0.95rem;
+	}
+
+	a.learn-more {
+		font-family: "indivisible", sans-serif;
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $green-dark;
+		position: relative;
+		padding-bottom: 3px;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background: $green-light;
+			transform-origin: left;
+			transition: background 0.2s ease;
+		}
+
+		&:hover {
+			color: $earth-brown;
+
+			&::after {
+				background: $earth-warm;
+			}
+		}
+	}
+}
+</style>
+<Layout title="Education" description="Erell Institute education programs: Lizard Camp and NETP provide hands-on research experiences for students from all backgrounds.">
+	<main class="page-main">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+				<header class="page-header">
+					<h1>Education</h1>
+					<p class="page-header__lead">
+						We believe science belongs to everyone. Our programs give participants from all
+						backgrounds the chance to take part in real research — from forming questions in
+						the field to publishing results.
+					</p>
+				</header>
+
+				<div class="program-card fade-up">
+					<h2>Lizard Camp</h2>
+					<p>
+						Teams of undergraduate, post-baccalaureate, and graduate students study lizards
+						in desert ecosystems around the world. Running annually since 2017, Lizard Camp
+						has trained participants across sites in the US, Tunisia, and beyond.
+					</p>
+					<a href="/education/lizard-camp/" class="learn-more">Learn more about Lizard Camp</a>
+				</div>
+
+				<div class="program-card fade-up">
+					<h2>NETP — Naturalist-Ecologist Training Program</h2>
+					<p>
+						A post-baccalaureate experience for recently graduated women focused on professional
+						development, research skills, and preparedness for graduate school or biology careers.
+						85% of NETP graduates have continued as professional biologists.
+					</p>
+					<a href="/education/netp/" class="learn-more">Learn more about NETP</a>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>

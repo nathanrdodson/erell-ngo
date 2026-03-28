@@ -1,0 +1,282 @@
+---
+import logo from '../assets/img/logo.svg';
+---
+<style lang="scss">
+@use '../assets/css/_theme.scss' as *;
+@use '../assets/css/_mixins.scss' as *;
+
+footer {
+	background: $font-dark;
+	color: rgba(247, 243, 238, 0.55);
+	font-family: "indivisible", sans-serif;
+}
+
+// ── Main footer body ──────────────────────────
+
+.footer-body {
+	padding: 72px 40px 56px;
+	display: grid;
+	grid-template-columns: 1.6fr 1fr 1fr 1fr;
+	gap: 48px;
+	max-width: 1200px;
+	margin: 0 auto;
+
+	@include respond-to('medium-mx') {
+		grid-template-columns: 1fr 1fr;
+		gap: 40px;
+	}
+
+	@include respond-to('small-mx') {
+		grid-template-columns: 1fr;
+		padding: 48px 24px 40px;
+		gap: 36px;
+	}
+}
+
+// ── Brand column ──────────────────────────────
+
+.footer-brand {
+	&__logo {
+		display: block;
+		margin-bottom: 20px;
+		width: 72px;
+		opacity: 0.75;
+		filter: brightness(0) invert(1);
+		transition: opacity 0.2s ease;
+
+		&:hover { opacity: 1; }
+	}
+
+	&__tagline {
+		font-size: 0.82rem;
+		line-height: 1.75;
+		color: rgba(247, 243, 238, 0.5);
+		margin-bottom: 28px;
+		max-width: 26ch;
+		font-family: "apparat-light", sans-serif;
+	}
+
+	&__social {
+		display: flex;
+		gap: 6px;
+
+		a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 34px;
+			height: 34px;
+			border: 1px solid rgba(247, 243, 238, 0.12);
+			color: rgba(247, 243, 238, 0.45);
+			font-size: 16px;
+			transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+
+			&:hover {
+				border-color: rgba(247, 243, 238, 0.35);
+				color: rgba(247, 243, 238, 0.9);
+				background: rgba(247, 243, 238, 0.06);
+			}
+		}
+	}
+}
+
+// ── Nav columns ───────────────────────────────
+
+.footer-col {
+	&__heading {
+		font-size: 9px;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		color: rgba(247, 243, 238, 0.28);
+		margin-bottom: 18px;
+		padding-bottom: 12px;
+		border-bottom: 1px solid rgba(247, 243, 238, 0.07);
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		li { margin-bottom: 10px; }
+
+		a {
+			font-size: 12px;
+			letter-spacing: 0.04em;
+			color: rgba(247, 243, 238, 0.55);
+			text-decoration: none;
+			text-transform: uppercase;
+			transition: color 0.2s ease;
+
+			&:hover { color: rgba(247, 243, 238, 0.95); }
+		}
+
+		li.footer-col__sub a {
+			font-size: 11px;
+			color: rgba(247, 243, 238, 0.35);
+			padding-left: 10px;
+
+			&:hover { color: rgba(247, 243, 238, 0.75); }
+		}
+	}
+}
+
+// ── Contact column ────────────────────────────
+
+.footer-contact {
+	p, address {
+		font-style: normal;
+		font-size: 11px;
+		line-height: 1.8;
+		color: rgba(247, 243, 238, 0.45);
+		font-family: "apparat-light", sans-serif;
+		margin-bottom: 16px;
+	}
+
+	a {
+		color: rgba(247, 243, 238, 0.55);
+		text-decoration: none;
+		transition: color 0.2s ease;
+
+		&:hover { color: rgba(247, 243, 238, 0.9); }
+	}
+
+	&__donate {
+		display: inline-block;
+		margin-top: 8px;
+		font-family: "indivisible", sans-serif;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: rgba(247, 243, 238, 0.8);
+		border: 1px solid rgba(247, 243, 238, 0.25);
+		padding: 10px 20px;
+		transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+
+		&:hover {
+			background: rgba(247, 243, 238, 0.08);
+			border-color: rgba(247, 243, 238, 0.5);
+			color: rgba(247, 243, 238, 0.95);
+		}
+	}
+}
+
+// ── Bottom bar ────────────────────────────────
+
+.footer-bottom {
+	border-top: 1px solid rgba(247, 243, 238, 0.07);
+	padding: 20px 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	max-width: 1200px;
+	margin: 0 auto;
+	flex-wrap: wrap;
+
+	@include respond-to('small-mx') {
+		padding: 20px 24px;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	&__copy {
+		font-size: 10px;
+		letter-spacing: 0.06em;
+		color: rgba(247, 243, 238, 0.22);
+		text-transform: uppercase;
+	}
+
+	&__legal {
+		font-size: 10px;
+		letter-spacing: 0.05em;
+		color: rgba(247, 243, 238, 0.18);
+		text-transform: uppercase;
+		text-align: right;
+
+		@include respond-to('small-mx') {
+			text-align: left;
+		}
+	}
+}
+</style>
+
+<footer>
+	<div class="footer-body">
+
+		<!-- Brand -->
+		<div class="footer-brand">
+			<a href="/" class="footer-brand__logo">
+				<img src={logo.src} alt="Erell Institute" />
+			</a>
+			<p class="footer-brand__tagline">
+				Education through research in behavioral ecology — open to everyone.
+			</p>
+			<div class="footer-brand__social">
+				<a href="https://www.facebook.com/erellinstitute" aria-label="Facebook" target="_blank" rel="noopener">
+					<i class="iconoir-facebook-tag"></i>
+				</a>
+				<a href="https://www.instagram.com/erellinstitute" aria-label="Instagram" target="_blank" rel="noopener">
+					<i class="iconoir-instagram"></i>
+				</a>
+				<a href="https://www.researchgate.net" aria-label="ResearchGate" target="_blank" rel="noopener">
+					<i class="iconoir-brain-research"></i>
+				</a>
+			</div>
+		</div>
+
+		<!-- About -->
+		<div class="footer-col">
+			<div class="footer-col__heading">About</div>
+			<ul>
+				<li><a href="/about/">Our Mission</a></li>
+				<li class="footer-col__sub"><a href="/about/meet-the-team/">Meet the Team</a></li>
+				<li class="footer-col__sub"><a href="/about/newsletter-archive/">Newsletter Archive</a></li>
+				<li><a href="/photos/">Photo Gallery</a></li>
+				<li><a href="/contact/">Contact</a></li>
+			</ul>
+		</div>
+
+		<!-- Programs -->
+		<div class="footer-col">
+			<div class="footer-col__heading">Programs</div>
+			<ul>
+				<li><a href="/education/">Education</a></li>
+				<li class="footer-col__sub"><a href="/education/lizard-camp/">Lizard Camp</a></li>
+				<li class="footer-col__sub"><a href="/education/netp/">NETP</a></li>
+				<li><a href="/research/">Research</a></li>
+				<li class="footer-col__sub"><a href="/research/movement-ecology/">Movement Ecology</a></li>
+				<li class="footer-col__sub"><a href="/research/social-systems/">Social Systems</a></li>
+				<li class="footer-col__sub"><a href="/research/italian-wall-lizards/">Italian Wall Lizards</a></li>
+				<li class="footer-col__sub"><a href="/research/publications/">Publications</a></li>
+			</ul>
+		</div>
+
+		<!-- Contact -->
+		<div class="footer-col footer-contact">
+			<div class="footer-col__heading">Support</div>
+			<address>
+				Erell Institute<br>
+				2808 Meadow Drive<br>
+				Lawrence, KS 66047<br>
+				United States
+			</address>
+			<p>
+				<a href="mailto:info@erell.ngo">info@erell.ngo</a><br>
+				<a href="mailto:deifler@erell.ngo">deifler@erell.ngo</a>
+			</p>
+			<a href="/support/" class="footer-contact__donate">Donate</a>
+		</div>
+
+	</div>
+
+	<div class="footer-bottom">
+		<div class="footer-bottom__copy">
+			&copy; {new Date().getFullYear()} Erell Institute. All rights reserved.
+		</div>
+		<div class="footer-bottom__legal">
+			501(c)(3) Tax-Exempt Nonprofit &nbsp;·&nbsp; EIN on file
+		</div>
+	</div>
+</footer>

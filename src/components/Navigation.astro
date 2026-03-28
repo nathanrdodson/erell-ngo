@@ -6,17 +6,23 @@ import Donate from './Donate.astro'
 <nav>
 	<Donate />
 
-	<div id=nav__upper>
+	<div id="nav__upper">
 		<div id="nav__upper__left">
-			<i class="iconoir-facebook-tag"></i>
-			<i class="iconoir-instagram"></i>
-			<i class="iconoir-brain-research"></i>
+			<a href="https://www.facebook.com/erellinstitute" aria-label="Erell Institute on Facebook" target="_blank" rel="noopener">
+				<i class="iconoir-facebook-tag"></i>
+			</a>
+			<a href="https://www.instagram.com/erellinstitute" aria-label="Erell Institute on Instagram" target="_blank" rel="noopener">
+				<i class="iconoir-instagram"></i>
+			</a>
+			<a href="https://www.researchgate.net" aria-label="Erell Institute on ResearchGate" target="_blank" rel="noopener">
+				<i class="iconoir-brain-research"></i>
+			</a>
 		</div>
-	
-		<a href="/"><img src={ logo.src }></img></a>
-	
+
+		<a href="/" class="nav__logo"><img src={logo.src} alt="Erell Institute" /></a>
+
 		<div id="nav__upper__right">
-			<a href="/donate/">Donate</a>
+			<a href="/support/">Donate</a>
 		</div>
 		<div id="nav__secondary">
 			<i class="iconoir-menu"></i>
@@ -24,10 +30,31 @@ import Donate from './Donate.astro'
 	</div>
 
 	<div id="nav__middle">
-		<a href="/about/">About</a>
-		<a href="/education/">Education <i class="iconoir-nav-arrow-down"></i></a>
-		<a href="/research/">Research <i class="iconoir-nav-arrow-down"></i></a>
+		<div class="nav__dropdown">
+			<a href="/about/">About <i class="iconoir-nav-arrow-down"></i></a>
+			<div class="nav__submenu">
+				<a href="/about/meet-the-team/">Meet the Team</a>
+				<a href="/about/newsletter-archive/">Newsletter Archive</a>
+			</div>
+		</div>
+		<div class="nav__dropdown">
+			<a href="/education/">Education <i class="iconoir-nav-arrow-down"></i></a>
+			<div class="nav__submenu">
+				<a href="/education/lizard-camp/">Lizard Camp</a>
+				<a href="/education/netp/">NETP</a>
+			</div>
+		</div>
+		<div class="nav__dropdown">
+			<a href="/research/">Research <i class="iconoir-nav-arrow-down"></i></a>
+			<div class="nav__submenu">
+				<a href="/research/social-systems/">Social Systems</a>
+				<a href="/research/movement-ecology/">Movement Ecology</a>
+				<a href="/research/italian-wall-lizards/">Italian Wall Lizards</a>
+				<a href="/research/publications/">Publications</a>
+			</div>
+		</div>
 		<a href="/photos/">Photo Gallery</a>
 		<a href="/support/">Support</a>
+		<a href="/contact/">Contact</a>
 	</div>
 </nav>

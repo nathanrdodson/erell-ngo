@@ -1,0 +1,197 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+<style lang="scss">
+@use '../../../assets/css/_theme.scss' as *;
+
+.newsletter-item {
+	border: 1px solid $border-subtle;
+	padding: 24px;
+	margin-bottom: 16px;
+	background: $secondary;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+
+	@media (max-width: 550px) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	h3 {
+		font-size: 1rem;
+		margin-bottom: 4px;
+		color: $font-dark;
+	}
+
+	p {
+		font-size: 0.9rem;
+		color: $font-light;
+		margin: 0;
+	}
+
+	a.download-link {
+		font-family: "indivisible", sans-serif;
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		white-space: nowrap;
+		color: $green-dark;
+		border: 1px solid $green-dark;
+		padding: 7px 14px;
+		flex-shrink: 0;
+
+		&:hover {
+			background: $green-dark;
+			color: $text-on-green;
+		}
+	}
+}
+
+.news-item {
+	padding: 16px 0;
+	border-bottom: 1px solid $border-subtle;
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	.news-item__date {
+		font-family: "indivisible", sans-serif;
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: $font-light;
+		margin-bottom: 4px;
+	}
+
+	h3 {
+		font-size: 1rem;
+		margin-bottom: 6px;
+	}
+
+	p {
+		font-size: 0.95rem;
+		margin: 0;
+	}
+}
+
+.presentation-item {
+	padding: 10px 0;
+	border-bottom: 1px solid $border-subtle;
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	p {
+		margin: 0;
+		font-size: 0.9rem;
+	}
+
+	.presentation-item__speaker {
+		font-size: 0.85rem;
+		color: $font-light;
+	}
+}
+</style>
+<Layout title="Newsletter Archive" description="Erell Institute newsletter archive — updates on research, education programs, and upcoming projects.">
+	<main class="page-main">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+				<header class="page-header">
+					<h1>Newsletter Archive</h1>
+					<p class="page-header__lead">
+						Stay up to date with Erell Institute's research, programs, and upcoming projects.
+					</p>
+				</header>
+
+				<div class="newsletter-item">
+					<div>
+						<h3>December 2025 Edition</h3>
+						<p>Latest news from the field, upcoming projects, and program updates.</p>
+					</div>
+					<a href="#" class="download-link">Download PDF</a>
+				</div>
+
+				<div class="newsletter-item">
+					<div>
+						<h3>July 2025 Edition</h3>
+						<p>Mongolia research, new SEEDS chapter, movement workshop, and more.</p>
+					</div>
+					<a href="#" class="download-link">Download PDF</a>
+				</div>
+
+				<h2 class="section-title">News Highlights</h2>
+
+				<div class="news-item">
+					<div class="news-item__date">July–August 2024</div>
+					<h3>Mongolia Research Expedition</h3>
+					<p>Doug, Maria, and two US students collaborated with Bazartseren Boldgiv (National University of Mongolia) in the Gobi Desert. The three-week project studied movement patterns of toad-headed agama lizards (<em>Phrynocephalus versicolor</em>). Published as Utsumi et al. 2025.</p>
+				</div>
+
+				<div class="news-item">
+					<div class="news-item__date">October 2024</div>
+					<h3>New SEEDS Ecology Club Chapter</h3>
+					<p>Erell Institute formed a regional Ecological Society of America SEEDS chapter, recruiting high school, undergraduate, and graduate students from eastern Kansas and western Missouri for hands-on outdoor activities.</p>
+				</div>
+
+				<div class="news-item">
+					<div class="news-item__date">2024</div>
+					<h3>Movement Workshop</h3>
+					<p>Facilitated a movement ecology workshop at Baker University Wetlands Discovery Center, focused on collaborations and education.</p>
+				</div>
+
+				<div class="news-item">
+					<div class="news-item__date">May 2024</div>
+					<h3>Mexico Collaboration</h3>
+					<p>Doug and Maria visited the Ecology &amp; Behavior Lab in Toluca, Mexico. Attended the ribbon-cutting for a renovated lab and the Master's defense of Ingrid Morales Méndez on temperature effects on cognitive performance in <em>Aspidoscelis costatus</em> lizards.</p>
+				</div>
+
+				<div class="news-item">
+					<div class="news-item__date">June 2024</div>
+					<h3>Student Achievement: Mia Phillips Completes PhD</h3>
+					<p>Mia Phillips (Scientific Advisory Board) completed her PhD from Dartmouth on vibrational communication in beetles.</p>
+				</div>
+
+				<h2 class="section-title">Recent Presentations (2023–2024)</h2>
+
+				<div class="presentation-item">
+					<p>Doug Eifler — "Healthy Ways and Dangerous Liaisons: Reptiles, Movement and Connectivity"</p>
+					<p class="presentation-item__speaker">Colgate University, October 25, 2024</p>
+				</div>
+
+				<div class="presentation-item">
+					<p>Doug Eifler — "Risky business: Decisions in the fear landscape"</p>
+					<p class="presentation-item__speaker">Baker University, April 10, 2024</p>
+				</div>
+
+				<div class="presentation-item">
+					<p>Doug &amp; Maria Eifler — "I like to move it, move it" &amp; "Movement ecology: lizards and the path to enlightenment"</p>
+					<p class="presentation-item__speaker">UAEM Toluca, Mexico, May 21–27, 2024</p>
+				</div>
+
+				<div class="presentation-item">
+					<p>Doug Eifler — "Movement ecology: lizards and the path to enlightenment"</p>
+					<p class="presentation-item__speaker">Rhodes College Memphis, October 9, 2023</p>
+				</div>
+
+				<div class="presentation-item">
+					<p>Doug Eifler — "Lizard Tales: Creative Challenges to Life's Solutions"</p>
+					<p class="presentation-item__speaker">Baker Wetlands Discovery Center, December 2, 2023</p>
+				</div>
+
+				<div class="presentation-item">
+					<p>Maria Eifler — "Wetlands Mammals in Kansas"</p>
+					<p class="presentation-item__speaker">Baker Wetlands Discovery Center, May 9, 2024</p>
+				</div>
+
+				<div class="presentation-item">
+					<p>Maria Eifler — "Reptiles and Amphibians of Kansas"</p>
+					<p class="presentation-item__speaker">Baker Wetlands Discovery Center, April 25, 2024</p>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>

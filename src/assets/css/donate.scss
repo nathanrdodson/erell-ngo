@@ -5,11 +5,25 @@
 	@include respond-to('small-mn') {
 		display: none;
 	}
-	background-color: $secondary;
-	position: absolute;
-	bottom: 50px;
-	right: 50px;
+	position: fixed;
+	bottom: 32px;
+	right: 32px;
+	z-index: 200;
 
-	border: 1px solid $font-dark;
-	padding: 8px;
+	background: $green-dark;
+	color: $text-on-green;
+	border: none;
+	font-family: "indivisible", sans-serif;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	padding: 13px 22px;
+	box-shadow: 0 4px 20px rgba(44, 36, 22, 0.22);
+	transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+	&:hover {
+		background: $green-mid;
+		box-shadow: 0 8px 28px rgba(44, 36, 22, 0.28);
+		transform: translateY(-2px);
+	}
 }

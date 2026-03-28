@@ -1,0 +1,113 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<style lang="scss">
+@use '../../assets/css/_theme.scss' as *;
+
+.support-block {
+	border: 1px solid $border-subtle;
+	padding: 32px;
+	margin-bottom: 24px;
+	background: $secondary;
+
+	h2 {
+		font-size: 1.3rem;
+		margin-bottom: 12px;
+	}
+}
+
+.donate-cta {
+	display: inline-block;
+	background: $green-dark;
+	color: $text-on-green;
+	padding: 14px 36px;
+	font-family: "indivisible", sans-serif;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	margin-top: 16px;
+	transition: background 0.15s ease;
+
+	&:hover {
+		background: $green-mid;
+		color: $text-on-green;
+	}
+}
+
+.tax-note {
+	font-size: 0.85rem;
+	color: $font-light;
+	margin-top: 8px;
+}
+
+.involvement-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		padding: 10px 0;
+		border-bottom: 1px solid $border-subtle;
+		color: $font-mid;
+		display: flex;
+		gap: 10px;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		&::before {
+			content: "—";
+			color: $green-light;
+			flex-shrink: 0;
+		}
+	}
+}
+</style>
+<Layout title="Support" description="Support the Erell Institute — a 501(c)(3) nonprofit building a more inclusive scientific community through behavioral ecology research and education.">
+	<main class="page-main">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+				<header class="page-header">
+					<h1>Support Erell Institute</h1>
+					<p class="page-header__lead">
+						Erell Institute is a 501(c)(3) nonprofit organization aiming to build a community
+						of scholars pursuing education through ecological research. Your support makes
+						that possible.
+					</p>
+				</header>
+
+				<div class="support-block">
+					<h2>Make a Donation</h2>
+					<p>
+						Tax-deductible contributions help spread the passion for curiosity and creativity
+						to the next generation of scientists. Every dollar supports field research
+						experiences, student mentorship, and science education programs.
+					</p>
+					<p>
+						To donate, contact us directly or use the form below:
+					</p>
+					<a href="mailto:deifler@erell.ngo?subject=Donation%20to%20Erell%20Institute" class="donate-cta">
+						Contact to Donate
+					</a>
+					<p class="tax-note">Erell Institute is a registered 501(c)(3). Donations are tax-deductible to the extent permitted by law.</p>
+				</div>
+
+				<div class="support-block">
+					<h2>Other Ways to Get Involved</h2>
+					<ul class="involvement-list">
+						<li>Volunteer your time or expertise for field research or mentorship</li>
+						<li>Share our work with your network and community</li>
+						<li>Follow us on social media to stay connected</li>
+						<li>Contact us about collaboration opportunities</li>
+					</ul>
+				</div>
+
+				<p>
+					For all inquiries about supporting Erell Institute, contact
+					<a href="mailto:deifler@erell.ngo">deifler@erell.ngo</a>.
+				</p>
+			</div>
+		</div>
+	</main>
+</Layout>

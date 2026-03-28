@@ -1,0 +1,203 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import mainBanner from '../../assets/img/main-banner.jpg';
+---
+<style lang="scss">
+@use '../../assets/css/_theme.scss' as *;
+
+.gallery-intro {
+	margin-bottom: 40px;
+}
+
+.species-family {
+	margin-bottom: 40px;
+
+	h2 {
+		font-size: 1rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $green-mid;
+		border-bottom: 1px solid $border-subtle;
+		padding-bottom: 8px;
+		margin-bottom: 12px;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		columns: 2;
+		column-gap: 16px;
+
+		@media (max-width: 550px) {
+			columns: 1;
+		}
+	}
+
+	li {
+		font-size: 0.9rem;
+		color: $font-mid;
+		padding: 4px 0;
+		border-bottom: 1px solid $surface;
+
+		em {
+			color: $font-light;
+		}
+	}
+}
+
+.gallery-banner {
+	width: 100%;
+	margin-bottom: 40px;
+	display: block;
+}
+
+.field-sites {
+	background: $secondary;
+	border: 1px solid $border-subtle;
+	padding: 24px;
+	margin-bottom: 40px;
+
+	h2 {
+		font-size: 1rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $green-mid;
+		margin-bottom: 12px;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		columns: 2;
+		column-gap: 16px;
+
+		@media (max-width: 550px) {
+			columns: 1;
+		}
+	}
+
+	li {
+		font-size: 0.9rem;
+		color: $font-mid;
+		padding: 4px 0;
+		border-bottom: 1px solid $surface;
+	}
+}
+</style>
+<Layout title="Photo Gallery" description="Photo gallery of Erell Institute field research — lizard species and field sites from around the world.">
+	<main class="page-main">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+				<header class="page-header">
+					<h1>Photo Gallery</h1>
+					<p class="page-header__lead gallery-intro">
+						Field sites and study species from Erell Institute research around the world.
+						More photos coming soon.
+					</p>
+				</header>
+
+				<Image src={mainBanner} alt="Erell Institute field research" class="gallery-banner" />
+
+				<div class="field-sites">
+					<h2>Field Sites</h2>
+					<ul>
+						<li>Gobi Desert, Dornogovi, Mongolia</li>
+						<li>Namib Desert dunes</li>
+						<li>Wichita Mountains NWR, Oklahoma</li>
+						<li>Great Basin Desert, SE Oregon</li>
+						<li>Little Scrub Island, Anguilla</li>
+						<li>Kino Bay, Sonora, Mexico</li>
+						<li>Chihuahuan Desert, Colorado &amp; Texas</li>
+						<li>Huasco Province, Atacama, Chile</li>
+						<li>Kalahari Desert, Botswana</li>
+						<li>Chiricahua Mountains, Arizona</li>
+						<li>Sierra La Laguna, Baja California Sur</li>
+						<li>Bouhedma National Park, Tunisia</li>
+					</ul>
+				</div>
+
+				<div class="species-family">
+					<h2>Agamidae</h2>
+					<ul>
+						<li>Ground agama <em>(Agama aculeata)</em></li>
+						<li>Tuvan toad-headed agama <em>(Phrynocephalus versicolor)</em></li>
+					</ul>
+				</div>
+
+				<div class="species-family">
+					<h2>Cordylidae</h2>
+					<ul>
+						<li>Graceful crag lizard <em>(Hemicordylus capensis)</em></li>
+					</ul>
+				</div>
+
+				<div class="species-family">
+					<h2>Crotaphytidae</h2>
+					<ul>
+						<li>Collared lizard <em>(Crotaphytus collaris)</em></li>
+						<li>Long-nosed leopard lizard <em>(Gambelia wislizenii)</em></li>
+					</ul>
+				</div>
+
+				<div class="species-family">
+					<h2>Dactyloidae</h2>
+					<ul>
+						<li>Water anole <em>(Anolis aquaticus)</em></li>
+					</ul>
+				</div>
+
+				<div class="species-family">
+					<h2>Gekkonidae</h2>
+					<ul>
+						<li>Turner's thick-toed gecko <em>(Chondrodactylus turneri)</em></li>
+						<li>Palmato gecko <em>(Pachydactylus rangei)</em></li>
+						<li>Namib day gecko <em>(Rhoptropus afer)</em></li>
+					</ul>
+				</div>
+
+				<div class="species-family">
+					<h2>Lacertidae</h2>
+					<ul>
+						<li>Nidua fringe-toed lizard <em>(Acanthodactylus scutellatus)</em></li>
+						<li>Bushveld lizard <em>(Heliobolus lugubris)</em></li>
+						<li>Wedge-snouted sand lizard <em>(Meroles cunierostris)</em></li>
+						<li>Namaqua sand lizard <em>(Pedioplanis namaquensis)</em></li>
+						<li><em>Liolaemus silvai</em></li>
+					</ul>
+				</div>
+
+				<div class="species-family">
+					<h2>Phrynosomatidae</h2>
+					<ul>
+						<li>Lesser earless lizard <em>(Holbrookia maculata)</em></li>
+						<li>Baja California rock lizard <em>(Petrosaurus thalassinus)</em></li>
+						<li>Texas horned lizard <em>(Phrynosoma cornutum)</em></li>
+						<li>Desert horned lizard — juvenile <em>(Phrynosoma platyrhinos)</em></li>
+					</ul>
+				</div>
+
+				<div class="species-family">
+					<h2>Teiidae</h2>
+					<ul>
+						<li>Little striped whiptail <em>(Aspidoscelis inornatus)</em></li>
+						<li>Colorado checkered whiptail <em>(Aspidoscelis neotesselatus)</em></li>
+						<li>Desert grassland whiptail <em>(Aspidoscelis uniparens)</em></li>
+						<li>Little Scrub Island ground lizard <em>(Pholidoscelis corax)</em></li>
+						<li>Dominican ground lizard <em>(Pholidoscelis fuscatus)</em></li>
+						<li>Red tegu <em>(Salvator rufescens)</em></li>
+					</ul>
+				</div>
+
+				<div class="species-family">
+					<h2>Tropiduridae</h2>
+					<ul>
+						<li>Atacama Pacific iguana <em>(Microlophus atacamensis)</em></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>

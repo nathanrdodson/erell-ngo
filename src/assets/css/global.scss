@@ -1,14 +1,143 @@
 @use './_theme.scss' as *;
 
+// ─────────────────────────────────────────────
+// Base
+// ─────────────────────────────────────────────
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0;
 	background-color: $primary;
+	font-family: "apparat-light", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
+
+// ─────────────────────────────────────────────
+// Typography
+// ─────────────────────────────────────────────
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "apparat-light", sans-serif;
+	font-weight: 300;
+	color: $green-dark;
+	line-height: 1.25;
+	margin-top: 0;
+	letter-spacing: -0.01em;
+}
+
+h1 { font-size: 2.4rem; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.2rem; }
+
+p {
+	color: $font-mid;
+	line-height: 1.75;
+	margin-top: 0;
+}
+
+a {
+	color: $earth-brown;
+	text-decoration: none;
+	transition: color 0.2s ease;
+
+	&:hover {
+		color: $green-dark;
+	}
+}
+
+em {
+	font-style: italic;
+}
+
+// ─────────────────────────────────────────────
+// Layout helpers
+// ─────────────────────────────────────────────
 
 .center {
 	justify-content: center;
 }
 
 .border {
-	border: 1px solid black;
+	border: 1px solid $border-subtle;
+}
+
+// ─────────────────────────────────────────────
+// Page structure
+// ─────────────────────────────────────────────
+
+.page-main {
+	padding: 64px 24px 96px;
+	animation: pageFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.page-header {
+	margin-bottom: 48px;
+	h1 {
+		margin-bottom: 12px;
+	}
+
+	&__lead {
+		font-size: 1.1rem;
+		color: $font-mid;
+		line-height: 1.7;
+		margin: 0;
+	}
+}
+
+// ─────────────────────────────────────────────
+// Section title accent
+// ─────────────────────────────────────────────
+
+.section-title {
+	font-family: "indivisible", sans-serif;
+	font-size: 0.7rem;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: $green-mid;
+	margin-bottom: 20px;
+	margin-top: 52px;
+}
+
+// ─────────────────────────────────────────────
+// Scroll-triggered fade-up animation
+// ─────────────────────────────────────────────
+
+.fade-up {
+	opacity: 0;
+	transform: translateY(22px);
+	transition:
+		opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+		transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+	&.in-view {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// Stagger when siblings
+.fade-up:nth-child(2) { transition-delay: 80ms; }
+.fade-up:nth-child(3) { transition-delay: 160ms; }
+.fade-up:nth-child(4) { transition-delay: 240ms; }
+
+// ─────────────────────────────────────────────
+// Page load animation
+// ─────────────────────────────────────────────
+
+@keyframes pageFadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

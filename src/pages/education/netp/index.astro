@@ -1,0 +1,125 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+<style lang="scss">
+@use '../../../assets/css/_theme.scss' as *;
+
+.outcome-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+	margin: 24px 0;
+
+	@media (max-width: 550px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.outcome-item {
+	background: $secondary;
+	border: 1px solid $border-subtle;
+	padding: 20px;
+
+	.outcome-item__number {
+		font-size: 2rem;
+		color: $green-dark;
+		line-height: 1;
+		margin-bottom: 4px;
+	}
+
+	.outcome-item__label {
+		font-size: 0.9rem;
+		color: $font-mid;
+	}
+}
+
+.skills-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		padding: 10px 0;
+		border-bottom: 1px solid $border-subtle;
+		color: $font-mid;
+		display: flex;
+		align-items: flex-start;
+		gap: 10px;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		&::before {
+			content: "—";
+			color: $green-light;
+			flex-shrink: 0;
+		}
+	}
+}
+</style>
+<Layout title="NETP" description="The Naturalist-Ecologist Training Program (NETP) is a post-baccalaureate experience for recently graduated women focused on research skills and professional development in behavioral ecology.">
+	<main class="page-main">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+				<header class="page-header">
+					<h1>NETP</h1>
+					<p class="page-header__lead">Naturalist-Ecologist Training Program</p>
+				</header>
+
+				<p>
+					NETP is a post-baccalaureate experience for recently graduated women that focuses on
+					professional development and preparedness to build foundations for internship, job, or
+					graduate school applications. We aim to develop curiosity and creativity while participants
+					develop research skills with a strong field emphasis.
+				</p>
+
+				<p>
+					Participants actively engage in the entire research process — from idea inception to
+					publication and the presentation of results.
+				</p>
+
+				<h2 class="section-title">Skills Developed</h2>
+				<p>Through fortnightly meetings, participants build:</p>
+				<ul class="skills-list">
+					<li>Confidence in the scientific community</li>
+					<li>Communication skills for collaborations and presenting findings</li>
+					<li>Critical reading of scientific literature</li>
+					<li>Analytical skills — statistical analysis in R, GIS modeling</li>
+					<li>Scientific writing</li>
+				</ul>
+
+				<h2 class="section-title">Program Outcomes (2019–2022, 13 Students)</h2>
+
+				<div class="outcome-grid">
+					<div class="outcome-item">
+						<div class="outcome-item__number">85%</div>
+						<div class="outcome-item__label">Continued as professional biologists</div>
+					</div>
+					<div class="outcome-item">
+						<div class="outcome-item__number">4</div>
+						<div class="outcome-item__label">Students enrolled in PhD programs</div>
+					</div>
+					<div class="outcome-item">
+						<div class="outcome-item__number">2</div>
+						<div class="outcome-item__label">Students enrolled in MS programs</div>
+					</div>
+					<div class="outcome-item">
+						<div class="outcome-item__number">3</div>
+						<div class="outcome-item__label">In non-academic biology positions (state parks, aquariums, museums)</div>
+					</div>
+				</div>
+
+				<h2 class="section-title">Current Status</h2>
+				<p>
+					From 2023 onward, one-on-one mentoring continues for participants at various career stages.
+					Formal group activities are resuming as students' career timelines allow.
+				</p>
+
+				<p>
+					Interested in NETP? Contact us at <a href="mailto:deifler@erell.ngo">deifler@erell.ngo</a>.
+				</p>
+			</div>
+		</div>
+	</main>
+</Layout>

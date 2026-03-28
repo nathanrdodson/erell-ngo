@@ -1,0 +1,452 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const pdfFiles = import.meta.glob('/src/assets/pdf/*.pdf', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+
+function pdf(filename: string): string {
+	return pdfFiles[`/src/assets/pdf/${filename}`] ?? '';
+}
+---
+<style lang="scss">
+@use '../../../assets/css/_theme.scss' as *;
+
+.pub-note {
+	background: $secondary;
+	border-left: 3px solid $green-light;
+	padding: 16px 20px;
+	margin-bottom: 40px;
+	font-size: 0.88rem;
+	color: $font-mid;
+	line-height: 1.7;
+
+	a { color: $green-dark; }
+}
+
+.pub-section {
+	margin-bottom: 48px;
+}
+
+.pub-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.pub-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 18px;
+	padding: 14px 0;
+	border-bottom: 1px solid $border-subtle;
+
+	&:last-child { border-bottom: none; }
+}
+
+.pub-badge-col {
+	flex-shrink: 0;
+	width: 84px;
+	padding-top: 2px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.pub-text {
+	flex: 1;
+	font-size: 0.88rem;
+	line-height: 1.75;
+	color: $font-mid;
+
+	em { font-style: italic; }
+}
+
+.pub-pdf {
+	display: block;
+	font-family: "indivisible", sans-serif;
+	font-size: 9px;
+	text-transform: uppercase;
+	letter-spacing: 0.09em;
+	color: $green-dark;
+	border: 1px solid $green-light;
+	padding: 3px 0;
+	text-align: center;
+	transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+
+	&:hover {
+		background: $green-dark;
+		color: $text-on-green;
+		border-color: $green-dark;
+	}
+}
+
+.pub-request {
+	display: block;
+	font-family: "indivisible", sans-serif;
+	font-size: 9px;
+	text-transform: uppercase;
+	letter-spacing: 0.09em;
+	color: $font-light;
+	border: 1px solid $border-subtle;
+	padding: 3px 0;
+	text-align: center;
+	transition: color 0.18s ease, border-color 0.18s ease;
+
+	&:hover {
+		color: $earth-brown;
+		border-color: $earth-warm;
+	}
+}
+
+.pub-doi {
+	font-family: "indivisible", sans-serif;
+	font-size: 9px;
+	color: $font-light;
+	letter-spacing: 0.04em;
+
+	&:hover { color: $green-dark; }
+}
+
+.pub-inpress {
+	font-family: "indivisible", sans-serif;
+	font-size: 9px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: $earth-warm;
+}
+
+.rg-links {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+	margin-top: 20px;
+
+	a {
+		background: $green-dark;
+		color: $text-on-green;
+		padding: 10px 22px;
+		font-family: "indivisible", sans-serif;
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.07em;
+		transition: background 0.18s ease;
+
+		&:hover {
+			background: $green-mid;
+			color: $text-on-green;
+		}
+	}
+}
+</style>
+<Layout title="Publications" description="Publications from Erell Institute researchers in behavioral ecology, movement ecology, and herpetology.">
+	<main class="page-main">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+
+				<header class="page-header">
+					<h1>Publications</h1>
+					<p class="page-header__lead">
+						Research from Erell Institute across behavioral ecology, movement ecology,
+						and herpetology. Asterisks (*) denote student co-authors.
+					</p>
+				</header>
+
+				<div class="pub-note">
+					Papers marked <strong>PDF</strong> are freely available. For all others, email
+					<a href="mailto:deifler@erell.ngo">deifler@erell.ngo</a> to request a copy.
+				</div>
+
+				<!-- ── Movement & Space Use ──────────────────── -->
+				<div class="pub-section">
+					<h2 class="section-title">Movement &amp; Space Use</h2>
+					<ul class="pub-list">
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Eifler DA, Sebati N, Eifler MA (2026) Movement in juvenile bushveld lizards (<em>Heliobolus lugubris</em>). <em>African Journal of Ecology</em> 64:e70158. <a href="https://doi.org/10.1111/aje.70158" class="pub-doi" target="_blank" rel="noopener">doi:10.1111/aje.70158</a></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('Copy of 2025 Utsumi et al--Mongolia Phrynocephalus [Diversity].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Utsumi K, Pham A*, Erdenetsetseg B, Eifler M, Eifler D (2025) Demographic differences in behavior, movement, and habitat use in the toad-headed agama (<em>Phrynocephalus versicolor</em>) of the Gobi Desert. <em>Diversity</em> 17(9):659. <a href="https://doi.org/10.3390/d17090659" class="pub-doi" target="_blank" rel="noopener">doi:10.3390/d17090659</a></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Eifler DA, Nguluka L*, Baipidi K*, Dittmer D*, Underwood A*, Eifler MA (2025) Movement path characteristics for the Kalahari Desert lizard (<em>Pedioplanis namaquensis</em>). <em>African Journal of Ecology</em> 63(6):e70099. <a href="https://doi.org/10.1111/aje.70099" class="pub-doi" target="_blank" rel="noopener">doi:10.1111/aje.70099</a></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Orton MM, Eifler MA, Utsumi KL, Laurentino TG, Siddiqui D, Haddock JB, Quock R, Eifler DA (2024) <em>Holbrookia maculata</em> space use in the Salt Basin Dunes of the Guadalupe Mountains National Park. <em>Herpetological Review</em> 55(1):7–10.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Tryban ME, Utsumi KL, Olson CNB, Yang JL, Reynolds H, Eifler MA, Eifler DA (2024) Sex-based variation in behavior for the little striped whiptail (<em>Aspidoscelis inornatus</em>). <em>Southwestern Naturalist</em> 68:112–120.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Utsumi KL, Eifler MA, Muradzikwa TE, Luyanda B, Kanyanga MK, Liu EF, Buchanan CA, Eifler DA (2024) Movement characteristics and habitat use of the short blind dart skink, <em>Typhlacontias brevipes</em>. <em>African Journal of Ecology</em> 62:e13307. <a href="https://doi.org/10.1111/aje.13307" class="pub-doi" target="_blank" rel="noopener">doi:10.1111/aje.13307</a></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Eifler DA, Eifler MA, Orton M, Utsumi KL, Jarray M, Zaidi A, Chammem M (2023) Movement and space use in three sympatric lacertid lizards (<em>Acanthodactylus</em>): inter- and intraspecific comparisons. <em>African Journal of Ecology</em> 62:e13247.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2023 McAlpine\u2010Bellis et al.--OR sympatric movement [Ecol Evol].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">McAlpine-Bellis E, Utsumi K, Diamond K, Klein J, Gilbert-Smith S, Garrison G, Eifler M, Eifler D (2023) Movement patterns and habitat use for the sympatric species <em>Gambelia wislizenii</em> and <em>Aspidoscelis tigris</em>. <em>Ecology and Evolution</em> 13:e10422.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Eifler DA, Eifler MA, Liu EF, Luyanda B, Utsumi KL, Muradzikwa TE, Kanyanga MK, Buchanan CA (2020) Slip slidin' away: intraspecific variation in movement behavior for the dune-dwelling lizard <em>Meroles anchietae</em>. <em>Journal of Arid Environments</em> 183:104286.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2019 Eifler & Eifler--Movement of Phrynocephalus in Gobi.pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Eifler DA, Eifler MA (2019) Movement and habitat use by adult and juvenile toad-headed agama lizards (<em>Phrynocephalus versicolor</em>) in the eastern Gobi Desert, Mongolia. <em>Herpetology Notes</em> 12:717–719.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2017 Garrison et al--Gambelia habitat & movement [SW Nat].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Garrison GE, Zecchini Gebin JC, Penner JF, Jacobson FE, Eifler MA, Eifler DA (2017) Intraspecific variation in habitat use and movement in long-nosed leopard lizards, <em>Gambelia wislizenii</em>. <em>Southwestern Naturalist</em> 62:187–192.</div>
+						</li>
+
+					</ul>
+				</div>
+
+				<!-- ── Foraging & Diet ───────────────────────── -->
+				<div class="pub-section">
+					<h2 class="section-title">Foraging &amp; Diet</h2>
+					<ul class="pub-list">
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('Copy of 2026 Eifler et al--Cnemi food addition [Diversity].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Eifler DA, Stanley MC, Ward DF, Eifler MA, Orton MM* (2026) The influence of prey distribution on the search strategies for foraging desert grassland whiptails, <em>Aspidoscelis uniparens</em>. <em>Diversity</em> 18(1):15. <a href="https://doi.org/10.3390/d18010015" class="pub-doi" target="_blank" rel="noopener">doi:10.3390/d18010015</a></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Dittmer DE, Eifler DA, Bipidi K*, Sebati N, Eifler MA (2025) Foraging behaviours in excavated microhabitats: a study of <em>Agama aculeata</em>. <em>African Journal of Ecology</em> 63:e70082. <a href="https://doi.org/10.1111/aje.70082" class="pub-doi" target="_blank" rel="noopener">doi:10.1111/aje.70082</a></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2021 Kusaka et al--COCW age-dependent search [WNAN].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Kusaka C, Utsumi K, Staley C, Pedersen R, Valdivia J, Liu E, Caracalas H, Reynolds H, Eifler MA, Eifler DA (2021) Age-dependent search behavior in the Colorado checkered whiptail (<em>Aspidoscelis neotesselata</em>). <em>Western North American Naturalist</em> 81(4):518–528.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2020 Utsumi et al --COCW search [WNAN].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Utsumi K, Kusaka C, Pedersen R, Staley C, Dunlap L, Gilbert-Smith S, Eifler MA, Eifler DA (2020) Habitat-dependent search behavior in the Colorado checkered whiptail lizard (<em>Aspidoscelis neotesselata</em>). <em>Western North American Naturalist</em> 80:11–18.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2016 Garrison, Phillips, Eifler & Eifler--A. corax resource use [AMRE].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Garrison G, Phillips M, Eifler M, Eifler D (2016) Intraspecific variation in opportunistic use of trophic resources by the lizard <em>Ameiva corax</em>. <em>Amphibia-Reptilia</em> 37:331–334.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2014 Eifler & Eifler--Ameiva soc forag [BehavEcol].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Eifler DA, Eifler MA (2014) Social foraging in the lizard <em>Ameiva corax</em>. <em>Behavioral Ecology</em> 25:1347–1352.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2012 Eifler et al--Pedioplanis [J Ethol].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Eifler DA, Baipidi K, Eifler MA, Dittmer D, Nguluka L (2012) Influence of prey encounter and prey identity on area-restricted searching in the lizard <em>Pedioplanis namaquensis</em>. <em>Journal of Ethology</em> 30:197–200.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2012 Eifler, Eifler, Brown--Horned Lizards [SW Nat].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Eifler DA, Eifler MA, Brown TK (2012) Habitat selection by foraging Texas horned lizards, <em>Phrynosoma cornutum</em>. <em>Southwestern Naturalist</em> 57:39–43.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2011 Eifler & Eifler--Ameiva corax feeding [Herp Rev].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Eifler MA, Eifler DA (2011) <em>Ameiva corax</em>, Little Scrub Island ground lizard, feeding behavior. <em>Herpetological Review</em> 42:270–271.</div>
+						</li>
+
+					</ul>
+				</div>
+
+				<!-- ── Habitat Use, Activity, & Population Biology -->
+				<div class="pub-section">
+					<h2 class="section-title">Habitat Use, Activity, &amp; Population Biology</h2>
+					<ul class="pub-list">
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Utsumi KL, Chakroun IK, Saidi H, Dahmen MH*, Nasri W*, Alouadi Y, Boubaker HB, Kmira G, Orton MM*, Eifler MA, Eifler DA (in press) Habitat use and morphology of Bosc's fringe-toed lizard, <em>Acanthodactylus boskianus</em>, in central Tunisia. <em>Reptiles and Amphibians</em>. <span class="pub-inpress">In press</span></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('Copy of 2025 Eifler et al--Anolis aquaticus habitat [Diversity].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Eifler DA, Dittmer DE*, Dick L*, Rowe B*, Johnson JJ*, Stanley DR*, Eifler MA (2025) Differences in habitat use, thermal ecology, and behavior of the semiaquatic lizard <em>Anolis aquaticus</em> at a high- and low-elevation site. <em>Diversity</em> 17(10):673. <a href="https://doi.org/10.3390/d17100673" class="pub-doi" target="_blank" rel="noopener">doi:10.3390/d17100673</a></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('Copy of 2025 Eifler&Eifler--tjakura burrows [Diversity].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Eifler MA, Eifler DA (2025) Ecological factors associated with burrow system occupancy by great desert skinks (<em>Liopholis kintorei</em>). <em>Diversity</em> 17(2):134. <a href="https://doi.org/10.3390/d17020134" class="pub-doi" target="_blank" rel="noopener">doi:10.3390/d17020134</a></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Buchanan CA, Eifler MA, Kanyanga MK, Utsumi KL, Liu EF, Luyanda B, Muradzikwa TE, Eifler DA (2023) The lizard with kaleidoscope eyes: population characteristics of the Namib web-footed gecko, <em>Pachydactylus rangei</em>. <em>Journal of Arid Environments</em> 214:104985.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2023 Friestad et al--Wall lizard and Skink [Herpetol Notes].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Friestad AC, Orton MM, Eifler DA (2023) Microhabitat use for sympatric introduced Italian wall lizard, <em>Podarcis siculus</em>, and native five-lined skink, <em>Plestiodon fasciatus</em>. <em>Herpetology Notes</em> 16:5–8.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Hedman HD, Chuga SC, Eifler DA, Hanghome GPK, Eifler MA (2021) Microhabitat use of two sympatric geckos, Turner's thick-toed gecko (<em>Chondrodactylus turneri</em>) and the common Namib day gecko (<em>Rhoptropus afer</em>). <em>Journal of Arid Environments</em> 188:104448.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2021 Utsumi et al--Liolaemus color variation [SAJH].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Utsumi K, Staley C, Eifler M, Núñez H, Eifler D (2021) Color variation and habitat use in <em>Liolaemus silvai</em>. <em>South American Journal of Herpetology</em> 21:80–84.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2017 Eifler et al.--Chondrodactylus [Herpetologica].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Eifler MA, Marchand R, Eifler DA, Malela K (2017) Habitat use and activity patterns in the nocturnal gecko, <em>Chondrodactylus turneri</em>. <em>Herpetologica</em> 73:43–47.</div>
+						</li>
+
+					</ul>
+				</div>
+
+				<!-- ── Behavior, Sociality, & Networks ──────── -->
+				<div class="pub-section">
+					<h2 class="section-title">Behavior, Sociality, &amp; Networks</h2>
+					<ul class="pub-list">
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Zimmerman JD, Eifler MA, Stanley DR*, Walker JM, Eifler DA (2025) Social interactions within and between species by little striped whiptails (<em>Aspidoscelis inornatus</em>). <em>Western Wildlife</em> 12:31–33.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Diamond KM, Olson C, Utsumi K, Eifler MA, Eifler DA (2024) Differences between juveniles and adults in habitat use, sprint performance, and morphology in the desert horned lizard, <em>Phrynosoma platyrhinos</em>. <em>Ichthyology and Herpetology</em> 112(3):347–352. <a href="https://doi.org/10.1643/h2023042" class="pub-doi" target="_blank" rel="noopener">doi:10.1643/h2023042</a></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2024 Morales-Mendez et al--Baja blue rock liz [Revista LatinAm Herp].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Morales-Méndez IC, Orton MM, Haddock JB, Siles-Cervantes L, Valenzuela-Molina MY, Eifler MA, Ruiz-Gomez ML, Eifler DA (2024) Behavioral assessment reveals social aggregations in <em>Petrosaurus thalassinus</em>. <em>Revista Latinoamericana de Herpetología</em> e812:19–32.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2022 Utsumi et al--Microlophus social [Revista Chilena].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Utsumi K, Staley C, Núñez H, Eifler MA, Eifler DA (2022) The social system of the lava lizard, <em>Microlophus atacamensis</em>: the interplay between social structure and social organization. <em>Revista Chilena de Historia Natural</em> 95:9.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Penner JF, Eifler MA, Eifler DA (2021) Patterns of visual and ultraviolet reflectance in femoral gland secretions of two desert lizards. <em>Ichthyology &amp; Herpetology</em> 109:705–709.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2019 Grotbeck et al--Dominca Grouping [Herp Notes].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Grotbeck VL, Garrison GE, Eifler MA, Eifler DA (2019) Characteristics of grouping in the Dominican ground lizard, <em>Pholidoscelis fuscatus</em>. <em>Herpetological Notes</em> 12:273–278.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2016 Eifler et al.--Ameiva social networks [J Etho].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Eifler D, Eifler M, Malela K, Childers J (2016) Social networks in the Little Scrub Island ground lizard (<em>Ameiva corax</em>). <em>Journal of Ethology</em> 34:343–348.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2015 Childers & Eifler--Meroles [Afr J Zool].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Childers JL, Eifler DA (2015) Intraspecific behavioural variation in the lacertid lizard <em>Meroles cuneirostris</em>. <em>African Journal of Herpetology</em> 64:54–66.</div>
+						</li>
+
+					</ul>
+				</div>
+
+				<!-- ── Anti-predator Behavior ────────────────── -->
+				<div class="pub-section">
+					<h2 class="section-title">Anti-predator Behavior</h2>
+					<ul class="pub-list">
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('Copy of 2026 Utsumi et al--Holbrookia escape [Diversity].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Utsumi KL, Siddiqui D, Haddock JB, Orton MM, Laurentino TG, Eifler MA, Eifler DA (2026) Escape tactics used by blanched lesser earless lizards (<em>Holbrookia maculata</em>). <em>Diversity</em> 18(2):80. <a href="https://doi.org/10.3390/d18020080" class="pub-doi" target="_blank" rel="noopener">doi:10.3390/d18020080</a></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Eifler DA, Eifler MA, Godoy WB (2025) Nowhere to run, nowhere to hide: escape behavior of the lizard <em>Microlophus atacamensis</em>. <em>South American Journal of Herpetology</em> 37(1):41–46. <a href="https://doi.org/10.2994/SAJH-D-20-00061.1" class="pub-doi" target="_blank" rel="noopener">doi:10.2994/SAJH-D-20-00061.1</a></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('Copy of 2024 Chhoumi et al--Acanthodactylus escape [J Ethology].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Chhoumi O, Eifler MA, Orton MM*, Eifler DA, Selmi S (2024) Multiple vs. single predator effects: differing experimental responses by the spotted fringe-fingered lizard (<em>Acanthodactylus maculatus</em>) facing aerial and terrestrial predators. <em>Journal of Ethology</em>. <a href="https://doi.org/10.1007/s10164-024-00833-5" class="pub-doi" target="_blank" rel="noopener">doi:10.1007/s10164-024-00833-5</a></div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Eifler DA, Eifler MA, Garrison GE, Grotbeck VL (2022) Escape angles for solitary animals and groups of the lizard <em>Pholidoscelis fuscatus</em>. <em>Ethology Ecology &amp; Evolution</em> 35(2):125–133.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2021 Liu et al--Aspidoscelis inornatus FID [Herp Notes].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Liu EF, Eifler MA, Buchanan CA, Gilbert-Smith S, Eifler DA (2021) Escape by juvenile little striped whiptail lizards (<em>Aspidoscelis inornata</em>) in response to predator approach speed. <em>Herpetology Notes</em> 14:479–483.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href="mailto:deifler@erell.ngo" class="pub-request">Request PDF</a></div>
+							<div class="pub-text">Evans JS, Eifler DA, Eifler MA (2017) Sand-diving as an escape tactic in the lizard <em>Meroles anchietae</em>. <em>Journal of Arid Environments</em> 140:1–5.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2016 Jacobson et al--Gambelia escape [AMRE].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Jacobson F, Garrison G, Penner J, Zecchini Gebin J, Eifler M, Eifler D (2016) Escape behaviour in the leopard lizard (<em>Gambelia wislizenii</em>): effects of starting distance and sex. <em>Amphibia-Reptilia</em> 37:320–324.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2014 Eifler & Eifler--Meroles cuneirostris escape [AMRE].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Eifler DA, Eifler MA (2014) Escape tactics in the lizard <em>Meroles cuneirostris</em>. <em>Amphibia-Reptilia</em> 35:383–389.</div>
+						</li>
+
+					</ul>
+				</div>
+
+				<!-- ── Popular Science ───────────────────────── -->
+				<div class="pub-section">
+					<h2 class="section-title">Popular Science</h2>
+					<ul class="pub-list">
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2015 Dittmer et al--Australia popular [IRCF].pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Dittmer DE, Eifler MA, Eifler DA (2015) Reptiles, rarely seen amphibians and rainfall: the trifecta of optimal herping in the Outback. <em>IRCF Reptiles &amp; Amphibians</em> 22(3):111–125.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2014 Hedman et al--Gobabeb Reptiles (IRCF).pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">Hedman HD, Alvarez HM, Hanghome GPK, Eifler MA, Eifler DA (2014) Reptiles of the Gobabeb Research and Training Centre. <em>IRCF Reptiles &amp; Amphibians</em> 21(2):73–79.</div>
+						</li>
+
+						<li class="pub-item">
+							<div class="pub-badge-col"><a href={pdf('2022 lizard camp ZINE.pdf')} class="pub-pdf" target="_blank">PDF</a></div>
+							<div class="pub-text">The Lizard Squad (2022) A guide to the Salt Basin Sand Dunes, Guadalupe National Park. Zine produced by Lizard Camp 2022 participants for Guadalupe Mountains National Park.</div>
+						</li>
+
+					</ul>
+				</div>
+
+				<!-- ── ResearchGate ──────────────────────────── -->
+				<h2 class="section-title">ResearchGate Profiles</h2>
+				<p style="font-size:0.9rem;">Find a complete and up-to-date list of publications on ResearchGate.</p>
+				<div class="rg-links">
+					<a href="https://www.researchgate.net/profile/Doug-Eifler" target="_blank" rel="noopener">Doug Eifler</a>
+					<a href="https://www.researchgate.net/profile/Maria-Eifler" target="_blank" rel="noopener">Maria Eifler</a>
+				</div>
+
+			</div>
+		</div>
+	</main>
+</Layout>

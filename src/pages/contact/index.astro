@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<style lang="scss">
+@use '../../assets/css/_theme.scss' as *;
+
+.contact-block {
+	border: 1px solid $border-subtle;
+	padding: 32px;
+	margin-bottom: 24px;
+	background: $secondary;
+
+	h2 {
+		font-size: 1.1rem;
+		margin-bottom: 12px;
+	}
+
+	p {
+		margin-bottom: 8px;
+		font-size: 0.95rem;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	a {
+		color: $green-dark;
+		font-weight: 400;
+	}
+
+	.contact-block__label {
+		font-family: "indivisible", sans-serif;
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: $font-light;
+		margin-bottom: 4px;
+	}
+}
+</style>
+<Layout title="Contact" description="Contact the Erell Institute — behavioral ecology education and research nonprofit based in Lawrence, Kansas.">
+	<main class="page-main">
+		<div class="pure-g center">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+				<header class="page-header">
+					<h1>Contact</h1>
+					<p class="page-header__lead">
+						We'd love to hear from you — whether you're interested in our programs, want to
+						collaborate, or have questions about our research.
+					</p>
+				</header>
+
+				<div class="contact-block">
+					<h2>General Inquiries</h2>
+					<div class="contact-block__label">Email</div>
+					<p><a href="mailto:deifler@erell.ngo">deifler@erell.ngo</a></p>
+				</div>
+
+				<div class="contact-block">
+					<h2>Italian Wall Lizard Task Force</h2>
+					<p>For sightings, questions, or involvement with the Italian wall lizard community science project:</p>
+					<div class="contact-block__label">Email</div>
+					<p><a href="mailto:info@erell.ngo">info@erell.ngo</a></p>
+				</div>
+
+				<div class="contact-block">
+					<h2>Mailing Address</h2>
+					<p>
+						Erell Institute<br />
+						2808 Meadow Drive<br />
+						Lawrence, KS 66047<br />
+						USA
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
