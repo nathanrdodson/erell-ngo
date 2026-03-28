@@ -9,5 +9,7 @@ export default defineConfig({
 	// GitHub Pages deployment — set site to custom domain.
 	// If deploying to nathanrdodson.github.io/erell-ngo instead,
 	// change site to 'https://nathanrdodson.github.io' and add base: '/erell-ngo'.
-	site: 'https://www.erell.ngo',
+	//site: 'https://www.erell.ngo',
+	site: 'https://nathanrdodson.github.io',
+  	base: '/erell-ngo',
 });
