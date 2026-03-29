@@ -691,6 +691,22 @@ const b = import.meta.env.BASE_URL;
 		margin-bottom: 10px;
 	}
 
+	&__archive {
+		font-family: "indivisible", sans-serif;
+		font-size: 10.5px;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $font-light;
+		margin-bottom: 32px !important;
+
+		a {
+			color: $green-mid;
+			text-decoration: underline;
+			text-underline-offset: 3px;
+			&:hover { color: $green-dark; }
+		}
+	}
+
 	p {
 		color: $font-mid;
 		font-size: 0.9rem;
@@ -915,6 +931,7 @@ const b = import.meta.env.BASE_URL;
 
 	<!-- Newsletter strip -->
 	<div class="newsletter-strip fade-up">
+		<p class="newsletter-strip__archive">Looking for previous newsletters or announcements? <a href={`${b}about/newsletter-archive/`}>Access the archive</a></p>
 		<h2>Stay Connected</h2>
 		<p>Field updates, research results, and upcoming expeditions — delivered to your inbox.</p>
 		<a href={`${b}about/newsletter-archive/`} class="newsletter-link">Read the Newsletter</a>

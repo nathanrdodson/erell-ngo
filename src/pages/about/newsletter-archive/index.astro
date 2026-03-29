@@ -22,6 +22,17 @@ function pdf(filename: string): string {
 @use '../../../assets/css/_theme.scss' as *;
 @use '../../../assets/css/_mixins.scss' as *;
 
+.archive-subheading {
+	font-size: 0.8rem;
+	font-family: "indivisible", sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: $font-light;
+	border-bottom: 1px solid $border-subtle;
+	padding-bottom: 8px;
+	margin: 40px 0 0;
+}
+
 .jump-link {
 	display: inline-flex;
 	align-items: center;
@@ -208,13 +219,13 @@ function pdf(filename: string): string {
 }
 </style>
 
-<Layout title="Newsletter Archive" description="Erell Institute newsletter archive — updates on research, education programs, and upcoming projects.">
+<Layout title="Archive" description="Erell Institute newsletter archive — updates on research, education programs, and upcoming projects.">
 	<main class="page-main">
 		<div class="pure-g center">
 			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
 
 				<header class="page-header">
-					<h1>Newsletter Archive</h1>
+					<h1>Archive</h1>
 					<p class="page-header__lead">
 						Field updates, research results, program news, and events from Erell Institute.
 					</p>
@@ -222,6 +233,10 @@ function pdf(filename: string): string {
 				</header>
 
 				<div class="archive-feed">
+
+					<h2 class="section-title">Newsletters and Announcements</h2>
+
+					<h3 class="archive-subheading">Newsletter Archive</h3>
 
 					<!-- ── July 2025 Edition ────────────────────── -->
 					<div class="archive-entry fade-up">
@@ -421,6 +436,8 @@ function pdf(filename: string): string {
 							</p>
 						</div>
 					</div>
+
+					<h3 class="archive-subheading">Announcement Archive</h3>
 
 					<!-- ── Recent Presentations ──────────────────── -->
 					<div class="archive-entry fade-up" id="presentations">
