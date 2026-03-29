@@ -1,84 +1,107 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-const base = import.meta.env.BASE_URL;
+import type { ImageMetadata } from 'astro';
+
+const allPhotos = import.meta.glob<{ default: ImageMetadata }>(
+	'/src/assets/img/photos/*.{jpg,png,JPG}',
+	{ eager: true }
+);
+
+function img(filename: string): ImageMetadata | null {
+	const mod = allPhotos[`/src/assets/img/photos/${filename}`];
+	return mod?.default ?? null;
+}
 
 const families = [
 	{
 		name: 'Agamidae',
 		photos: [
-			{ file: 'Ground agama (Agama aculeata).jpg',                          label: 'Ground agama',                    sci: 'Agama aculeata' },
-			{ file: 'Tuvan toad-headed agama (Phrynocephalus versicolor).jpg',    label: 'Tuvan toad-headed agama',         sci: 'Phrynocephalus versicolor' },
+			{ file: 'ground-agama.jpg',                    label: 'Ground agama',                      sci: 'Agama aculeata' },
+			{ file: 'tuvan-toad-headed-agama.jpg',         label: 'Tuvan toad-headed agama',           sci: 'Phrynocephalus versicolor' },
 		],
 	},
 	{
 		name: 'Cordylidae',
 		photos: [
-			{ file: 'Graceful crag lizard (Hemicordylus capensis).jpg',           label: 'Graceful crag lizard',            sci: 'Hemicordylus capensis' },
+			{ file: 'graceful-crag-lizard.jpg',            label: 'Graceful crag lizard',              sci: 'Hemicordylus capensis' },
 		],
 	},
 	{
 		name: 'Crotaphytidae',
 		photos: [
-			{ file: 'Collared lizard (Crotaphytus collaris).jpg',                 label: 'Collared lizard',                 sci: 'Crotaphytus collaris' },
-			{ file: 'Long-nosed leopard lizard (Gambelia wislizenii).jpg',        label: 'Long-nosed leopard lizard',       sci: 'Gambelia wislizenii' },
+			{ file: 'collared-lizard.jpg',                 label: 'Collared lizard',                   sci: 'Crotaphytus collaris' },
+			{ file: 'long-nosed-leopard-lizard.jpg',       label: 'Long-nosed leopard lizard',         sci: 'Gambelia wislizenii' },
 		],
 	},
 	{
 		name: 'Dactyloidae',
 		photos: [
-			{ file: 'Water anole (Anolis aquaticus).jpg',                         label: 'Water anole',                     sci: 'Anolis aquaticus' },
+			{ file: 'water-anole.jpg',                     label: 'Water anole',                       sci: 'Anolis aquaticus' },
 		],
 	},
 	{
 		name: 'Gekkonidae',
 		photos: [
-			{ file: "Turner's thick-toed gecko (Chondrodactylus turneri).jpg",    label: "Turner's thick-toed gecko",       sci: 'Chondrodactylus turneri' },
-			{ file: 'Palmato gecko (Pachydactylus rangei).jpg',                   label: 'Palmato gecko',                   sci: 'Pachydactylus rangei' },
-			{ file: 'Namib day gecko (Rhoptropus afer).jpg',                      label: 'Namib day gecko',                 sci: 'Rhoptropus afer' },
+			{ file: 'turners-thick-toed-gecko.jpg',        label: "Turner's thick-toed gecko",         sci: 'Chondrodactylus turneri' },
+			{ file: 'palmato-gecko.jpg',                   label: 'Palmato gecko',                     sci: 'Pachydactylus rangei' },
+			{ file: 'namib-day-gecko.jpg',                 label: 'Namib day gecko',                   sci: 'Rhoptropus afer' },
 		],
 	},
 	{
 		name: 'Lacertidae',
 		photos: [
-			{ file: 'Nidua fringe-toed lizard (Acanthodactylus scutellatus).jpg',  label: 'Nidua fringe-toed lizard',        sci: 'Acanthodactylus scutellatus' },
-			{ file: 'Bushveld lizard (Heliobolus lugubris).jpg',                   label: 'Bushveld lizard',                 sci: 'Heliobolus lugubris' },
-			{ file: 'Wedge-snouted sand lizard (Meroles cuneirostris).jpg',        label: 'Wedge-snouted sand lizard',       sci: 'Meroles cuneirostris' },
-			{ file: 'Shovel-snouted sand lizard (Meroles anchietae).jpg',          label: 'Shovel-snouted sand lizard',      sci: 'Meroles anchietae' },
-			{ file: 'Namaqua sand lizard (Pedioplanis namaquensis).jpg',           label: 'Namaqua sand lizard',             sci: 'Pedioplanis namaquensis' },
+			{ file: 'nidua-fringe-toed-lizard.jpg',        label: 'Nidua fringe-toed lizard',          sci: 'Acanthodactylus scutellatus' },
+			{ file: 'bushveld-lizard.jpg',                 label: 'Bushveld lizard',                   sci: 'Heliobolus lugubris' },
+			{ file: 'wedge-snouted-sand-lizard.jpg',       label: 'Wedge-snouted sand lizard',         sci: 'Meroles cuneirostris' },
+			{ file: 'namaqua-sand-lizard.jpg',             label: 'Namaqua sand lizard',               sci: 'Pedioplanis namaquensis' },
 		],
 	},
 	{
 		name: 'Liolaemidae',
 		photos: [
-			{ file: 'Liolaemus silvai.jpg',                                        label: 'Liolaemus silvai',                sci: 'Liolaemus silvai' },
+			{ file: 'liolaemus-silvai.jpg',                label: 'Liolaemus silvai',                  sci: 'Liolaemus silvai' },
 		],
 	},
 	{
 		name: 'Phrynosomatidae',
 		photos: [
-			{ file: 'Lesser earless lizard (Holbrookia maculata).jpg',            label: 'Lesser earless lizard',           sci: 'Holbrookia maculata' },
-			{ file: 'Baja California rock lizard (Petrosaurus thalassinus).jpg',  label: 'Baja California rock lizard',     sci: 'Petrosaurus thalassinus' },
-			{ file: 'Texas horned lizard (Phrynosoma cornutum).jpg',              label: 'Texas horned lizard',             sci: 'Phrynosoma cornutum' },
-			{ file: 'Desert horned lizard juvenile (Phrynosoma platyrhinos).jpg', label: 'Desert horned lizard (juvenile)', sci: 'Phrynosoma platyrhinos' },
+			{ file: 'lesser-earless-lizard.jpg',           label: 'Lesser earless lizard',             sci: 'Holbrookia maculata' },
+			{ file: 'baja-california-rock-lizard.jpg',     label: 'Baja California rock lizard',       sci: 'Petrosaurus thalassinus' },
+			{ file: 'texas-horned-lizard.jpg',             label: 'Texas horned lizard',               sci: 'Phrynosoma cornutum' },
+			{ file: 'desert-horned-lizard-juvenile.jpg',   label: 'Desert horned lizard (juvenile)',   sci: 'Phrynosoma platyrhinos' },
 		],
 	},
 	{
 		name: 'Teiidae',
 		photos: [
-			{ file: 'Little striped whiptail (Aspidoscelis inornatus).jpg',       label: 'Little striped whiptail',         sci: 'Aspidoscelis inornatus' },
-			{ file: 'Colorado checkered whiptail (Aspidoscelis neotesselatus).jpg',label:'Colorado checkered whiptail',     sci: 'Aspidoscelis neotesselatus' },
-			{ file: 'Desert grassland whiptail (Aspidoscelis uniparens).jpg',     label: 'Desert grassland whiptail',       sci: 'Aspidoscelis uniparens' },
-			{ file: 'Little Scrub Island ground lizard (Pholidoscelis corax).jpg',label: 'Little Scrub Island ground lizard',sci:'Pholidoscelis corax' },
-			{ file: 'Dominican ground lizard (Pholidoscelis fuscatus).jpg',       label: 'Dominican ground lizard',         sci: 'Pholidoscelis fuscatus' },
-			{ file: 'Red tegu (Salvator rufescens).jpg',                           label: 'Red tegu',                        sci: 'Salvator rufescens' },
+			{ file: 'little-striped-whiptail.jpg',         label: 'Little striped whiptail',           sci: 'Aspidoscelis inornatus' },
+			{ file: 'colorado-checkered-whiptail.jpg',     label: 'Colorado checkered whiptail',       sci: 'Aspidoscelis neotesselatus' },
+			{ file: 'desert-grassland-whiptail.jpg',       label: 'Desert grassland whiptail',         sci: 'Aspidoscelis uniparens' },
+			{ file: 'little-scrub-island-ground-lizard.jpg', label: 'Little Scrub Island ground lizard', sci: 'Pholidoscelis corax' },
+			{ file: 'dominican-ground-lizard.jpg',         label: 'Dominican ground lizard',           sci: 'Pholidoscelis fuscatus' },
+			{ file: 'red-tegu.jpg',                        label: 'Red tegu',                          sci: 'Salvator rufescens' },
 		],
 	},
 	{
 		name: 'Tropiduridae',
 		photos: [
-			{ file: 'Atacama Pacific iguana (Microlophus atacamensis).jpg',       label: 'Atacama Pacific iguana',          sci: 'Microlophus atacamensis' },
+			{ file: 'atacama-pacific-iguana.jpg',          label: 'Atacama Pacific iguana',            sci: 'Microlophus atacamensis' },
 		],
 	},
+];
+
+const sites = [
+	{ file: 'site-gobi-desert-mongolia.jpg',          label: 'Gobi Desert, Dornogovi, Mongolia' },
+	{ file: 'site-namib-desert.jpg',                  label: 'Namib Desert dunes' },
+	{ file: 'site-wichita-mountains-oklahoma.jpg',    label: 'Wichita Mountains National Wildlife Refuge, Oklahoma' },
+	{ file: 'site-great-basin-desert-oregon.jpg',     label: 'Great Basin Desert, southeastern Oregon' },
+	{ file: 'site-little-scrub-island-anguilla.jpg',  label: 'Little Scrub Island, Anguilla' },
+	{ file: 'site-kino-bay-mexico.jpg',               label: 'Kino Bay, Sonora, Mexico' },
+	{ file: 'site-chihuahua-desert-colorado.jpg',     label: 'Chihuahua Desert, Colorado' },
+	{ file: 'site-atacama-chile.jpg',                 label: 'Huasco Province, Atacama Region, Chile' },
+	{ file: 'site-kalahari-desert-botswana.jpg',      label: 'Kalahari Desert, Botswana' },
+	{ file: 'site-chiricahua-mountains-arizona.jpg',  label: 'Chiricahua Mountains, Cochise Co., Arizona' },
+	{ file: 'site-sierra-la-laguna-baja.jpg',         label: 'Sierra La Laguna, Baja California Sur, Mexico' },
 ];
 ---
 <style lang="scss">
@@ -154,6 +177,54 @@ const families = [
 	}
 }
 
+// Site grid — wider images, landscape crop
+.site-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+
+	@include respond-to('small-mx') {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (max-width: 380px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.site-item {
+	overflow: hidden;
+	background: $secondary;
+	cursor: zoom-in;
+
+	&:hover .site-item__img {
+		transform: scale(1.04);
+	}
+}
+
+.site-item__img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	object-position: center;
+	display: block;
+	transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.site-item__caption {
+	padding: 8px 10px;
+
+	strong {
+		display: block;
+		font-family: "indivisible", sans-serif;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.07em;
+		color: $font-dark;
+		line-height: 1.4;
+	}
+}
+
 // Lightbox
 .lightbox {
 	display: none;
@@ -215,35 +286,73 @@ const families = [
 				<header class="page-header">
 					<h1>Photo Gallery</h1>
 					<p class="page-header__lead">
-						Study species from Erell Institute field research around the world.
+						Study species and field sites from Erell Institute research around the world.
 					</p>
 				</header>
+
+				<h2 class="section-title">Study Species</h2>
 
 				{families.map(family => (
 					<div class="gallery-section fade-up">
 						<div class="gallery-section__heading">{family.name}</div>
 						<div class="photo-grid">
-							{family.photos.map(photo => (
-								<div
-									class="photo-item"
-									data-src={`${base}gallery/lizards/${encodeURIComponent(photo.file)}`}
-									data-caption={`${photo.label} — ${photo.sci}`}
-								>
-									<img
-										src={`${base}gallery/lizards/${encodeURIComponent(photo.file)}`}
-										alt={`${photo.label} (${photo.sci})`}
-										class="photo-item__img"
-										loading="lazy"
-									/>
-									<div class="photo-item__caption">
-										<strong>{photo.label}</strong>
-										<em>{photo.sci}</em>
+							{family.photos.map(photo => {
+								const image = img(photo.file);
+								if (!image) return null;
+								return (
+									<div
+										class="photo-item"
+										data-src={image.src}
+										data-caption={`${photo.label} — ${photo.sci}`}
+									>
+										<img
+											src={image.src}
+											alt={`${photo.label} (${photo.sci})`}
+											class="photo-item__img"
+											loading="lazy"
+											width={image.width}
+											height={image.height}
+										/>
+										<div class="photo-item__caption">
+											<strong>{photo.label}</strong>
+											<em>{photo.sci}</em>
+										</div>
 									</div>
-								</div>
-							))}
+								);
+							})}
 						</div>
 					</div>
 				))}
+
+				<h2 class="section-title" style="margin-top: 32px;">Field Sites</h2>
+
+				<div class="gallery-section fade-up">
+					<div class="site-grid">
+						{sites.map(site => {
+							const image = img(site.file);
+							if (!image) return null;
+							return (
+								<div
+									class="site-item"
+									data-src={image.src}
+									data-caption={site.label}
+								>
+									<img
+										src={image.src}
+										alt={site.label}
+										class="site-item__img"
+										loading="lazy"
+										width={image.width}
+										height={image.height}
+									/>
+									<div class="site-item__caption">
+										<strong>{site.label}</strong>
+									</div>
+								</div>
+							);
+						})}
+					</div>
+				</div>
 
 			</div>
 		</div>
@@ -261,7 +370,7 @@ const families = [
 	const lbImg    = document.getElementById('lightbox-img') as HTMLImageElement;
 	const lbCap    = document.getElementById('lightbox-caption')!;
 
-	document.querySelectorAll('.photo-item').forEach(item => {
+	document.querySelectorAll('.photo-item, .site-item').forEach(item => {
 		item.addEventListener('click', () => {
 			const src     = item.getAttribute('data-src') ?? '';
 			const caption = item.getAttribute('data-caption') ?? '';
