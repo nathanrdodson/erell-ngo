@@ -1,24 +1,24 @@
 // theme-related constants
 
 // Backgrounds
-$primary:      #F7F3EE;   // warm parchment — page background
-$secondary:    #EDE8E0;   // warm cream — nav, card backgrounds
-$surface:      #DDD4C4;   // muted tan — dividers, borders
+$primary:      #F9F7F4;   // clean off-white — page background
+$secondary:    #EEEBE4;   // warm cream — nav, card backgrounds
+$surface:      #E2DDD3;   // muted tan — dividers, active states
 
 // Brand greens
-$green-dark:   #3D5A3E;   // deep forest green — headings, CTA buttons
-$green-mid:    #5C7A5D;   // sage — accents, hover
-$green-light:  #8FA882;   // light sage — tags, highlights
+$green-dark:   #233D25;   // deep forest, near-black — headings, CTA
+$green-mid:    #4E7550;   // saturated sage — accents, hover
+$green-light:  #89B08C;   // fresh sage — tags, highlights
 
-// Earthy accents
-$earth-brown:  #7A5C3C;   // bark brown — accent links
-$earth-warm:   #C4956A;   // sandy amber — CTA hover
+// Desert accents
+$earth-brown:  #B5642A;   // sienna — accent links
+$earth-warm:   #D4915C;   // amber — CTA hover
 
 // Typography
-$font-dark:    #1C1710;   // warm near-black — primary text
-$font-mid:     #3D3022;   // warm dark brown — body text
-$font-light:   #6B5E4A;   // muted — captions, meta
+$font-dark:    #141210;   // warm near-black — primary text
+$font-mid:     #352A1C;   // warm dark brown — body text
+$font-light:   #6B5840;   // muted — captions, meta
 
 // Semantic
-$text-on-green: #F7F3EE;  // text on dark green backgrounds
-$border-subtle: #CEC5B5;  // soft warm border
+$text-on-green: #F9F7F4;  // text on dark green backgrounds
+$border-subtle: #D5CEBF;  // soft warm border

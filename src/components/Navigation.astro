@@ -4,58 +4,117 @@ import logo from '../assets/img/logo.svg'
 import Donate from './Donate.astro'
 const b = import.meta.env.BASE_URL;
 ---
-<nav>
+
+<nav id="site-nav">
 	<Donate />
+	<div class="nav__inner">
 
-	<div id="nav__upper">
-		<div id="nav__upper__left">
-			<a href="https://www.facebook.com/erellinstitute" aria-label="Erell Institute on Facebook" target="_blank" rel="noopener">
-				<i class="iconoir-facebook-tag"></i>
-			</a>
-			<a href="https://www.instagram.com/erellinstitute" aria-label="Erell Institute on Instagram" target="_blank" rel="noopener">
-				<i class="iconoir-instagram"></i>
-			</a>
-			<a href="https://www.researchgate.net" aria-label="Erell Institute on ResearchGate" target="_blank" rel="noopener">
-				<i class="iconoir-brain-research"></i>
-			</a>
+		<!-- Left: social icons + nav -->
+		<div class="nav__left">
+			<div class="nav__social">
+				<a href="https://www.facebook.com/erellinstitute" aria-label="Facebook" target="_blank" rel="noopener">
+					<i class="iconoir-facebook-tag"></i>
+				</a>
+				<a href="https://www.instagram.com/erellinstitute" aria-label="Instagram" target="_blank" rel="noopener">
+					<i class="iconoir-instagram"></i>
+				</a>
+				<a href="https://www.researchgate.net" aria-label="ResearchGate" target="_blank" rel="noopener">
+					<i class="iconoir-brain-research"></i>
+				</a>
+			</div>
+			<div class="nav__links">
+				<div class="nav__dropdown">
+					<a href={`${b}about/`}>About <i class="iconoir-nav-arrow-down"></i></a>
+					<div class="nav__submenu">
+						<a href={`${b}about/meet-the-team/`}>Meet the Team</a>
+						<a href={`${b}about/newsletter-archive/`}>Newsletter Archive</a>
+					</div>
+				</div>
+				<div class="nav__dropdown">
+					<a href={`${b}education/`}>Education <i class="iconoir-nav-arrow-down"></i></a>
+					<div class="nav__submenu">
+						<a href={`${b}education/lizard-camp/`}>Lizard Camp</a>
+						<a href={`${b}education/netp/`}>NETP</a>
+					</div>
+				</div>
+				<div class="nav__dropdown">
+					<a href={`${b}research/`}>Research <i class="iconoir-nav-arrow-down"></i></a>
+					<div class="nav__submenu">
+						<a href={`${b}research/social-systems/`}>Social Systems</a>
+						<a href={`${b}research/movement-ecology/`}>Movement Ecology</a>
+						<a href={`${b}research/italian-wall-lizards/`}>Italian Wall Lizards</a>
+						<a href={`${b}research/publications/`}>Publications</a>
+					</div>
+				</div>
+			</div>
 		</div>
 
-		<a href={b} class="nav__logo"><img src={logo.src} alt="Erell Institute" /></a>
+		<!-- Center: logo -->
+		<a href={b} class="nav__logo">
+			<img src={logo.src} alt="Erell Institute" />
+		</a>
 
-		<div id="nav__upper__right">
-			<a href={`${b}support/`}>Donate</a>
+		<!-- Right: nav + donate -->
+		<div class="nav__right">
+			<div class="nav__links">
+				<a href={`${b}photos/`} class="nav__link">Photo Gallery</a>
+				<a href={`${b}support/`} class="nav__link">Support</a>
+				<a href={`${b}contact/`} class="nav__link">Contact</a>
+			</div>
+			<a href={`${b}support/`} class="nav__donate">Donate</a>
 		</div>
-		<div id="nav__secondary">
-			<i class="iconoir-menu"></i>
-		</div>
+
+		<!-- Mobile hamburger -->
+		<button class="nav__hamburger" id="nav-toggle" aria-label="Toggle menu">
+			<i class="iconoir-menu" id="nav-icon"></i>
+		</button>
+
 	</div>
 
-	<div id="nav__middle">
-		<div class="nav__dropdown">
-			<a href={`${b}about/`}>About <i class="iconoir-nav-arrow-down"></i></a>
-			<div class="nav__submenu">
-				<a href={`${b}about/meet-the-team/`}>Meet the Team</a>
-				<a href={`${b}about/newsletter-archive/`}>Newsletter Archive</a>
-			</div>
+	<!-- Mobile drawer -->
+	<div class="nav__drawer" id="nav-drawer">
+		<a href={`${b}about/`}>About</a>
+		<div class="nav__drawer-sub">
+			<a href={`${b}about/meet-the-team/`}>Meet the Team</a>
+			<a href={`${b}about/newsletter-archive/`}>Newsletter Archive</a>
 		</div>
-		<div class="nav__dropdown">
-			<a href={`${b}education/`}>Education <i class="iconoir-nav-arrow-down"></i></a>
-			<div class="nav__submenu">
-				<a href={`${b}education/lizard-camp/`}>Lizard Camp</a>
-				<a href={`${b}education/netp/`}>NETP</a>
-			</div>
+		<a href={`${b}education/`}>Education</a>
+		<div class="nav__drawer-sub">
+			<a href={`${b}education/lizard-camp/`}>Lizard Camp</a>
+			<a href={`${b}education/netp/`}>NETP</a>
 		</div>
-		<div class="nav__dropdown">
-			<a href={`${b}research/`}>Research <i class="iconoir-nav-arrow-down"></i></a>
-			<div class="nav__submenu">
-				<a href={`${b}research/social-systems/`}>Social Systems</a>
-				<a href={`${b}research/movement-ecology/`}>Movement Ecology</a>
-				<a href={`${b}research/italian-wall-lizards/`}>Italian Wall Lizards</a>
-				<a href={`${b}research/publications/`}>Publications</a>
-			</div>
+		<a href={`${b}research/`}>Research</a>
+		<div class="nav__drawer-sub">
+			<a href={`${b}research/social-systems/`}>Social Systems</a>
+			<a href={`${b}research/movement-ecology/`}>Movement Ecology</a>
+			<a href={`${b}research/italian-wall-lizards/`}>Italian Wall Lizards</a>
+			<a href={`${b}research/publications/`}>Publications</a>
 		</div>
 		<a href={`${b}photos/`}>Photo Gallery</a>
-		<a href={`${b}support/`}>Support</a>
 		<a href={`${b}contact/`}>Contact</a>
+		<a href={`${b}support/`} class="nav__drawer-donate">Donate</a>
 	</div>
 </nav>
+
+<script>
+	const nav    = document.getElementById('site-nav')!;
+	const toggle = document.getElementById('nav-toggle')!;
+	const drawer = document.getElementById('nav-drawer')!;
+	const icon   = document.getElementById('nav-icon')!;
+
+	window.addEventListener('scroll', () => {
+		nav.classList.toggle('scrolled', window.scrollY > 60);
+	}, { passive: true });
+
+	toggle.addEventListener('click', () => {
+		const open = drawer.classList.toggle('open');
+		icon.className = open ? 'iconoir-xmark' : 'iconoir-menu';
+	});
+
+	drawer.querySelectorAll('a').forEach(a => {
+		a.addEventListener('click', () => {
+			drawer.classList.remove('open');
+			icon.className = 'iconoir-menu';
+		});
+	});
+</script>

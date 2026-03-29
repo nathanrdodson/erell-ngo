@@ -1,29 +1,138 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+
+const b = import.meta.env.BASE_URL;
+function pdf(filename: string): string {
+	return `${b}pdf/${filename}`;
+}
 ---
 <style lang="scss">
 @use '../../../assets/css/_theme.scss' as *;
+@use '../../../assets/css/_mixins.scss' as *;
 
-.project-block {
-	border-left: 3px solid $green-light;
-	padding: 16px 24px;
-	margin-bottom: 20px;
+// ─────────────────────────────────────────────
+// Featured project
+// ─────────────────────────────────────────────
 
-	h3 {
-		font-size: 1rem;
-		margin-bottom: 6px;
+.project-feature {
+	background: $secondary;
+	border: 1px solid $border-subtle;
+	padding: 40px 40px 36px;
+	margin-bottom: 48px;
+	border-top: 3px solid $green-light;
+
+	@include respond-to('small-mx') {
+		padding: 28px 24px;
+	}
+
+	&__label {
+		font-family: "indivisible", sans-serif;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		color: $green-mid;
+		margin-bottom: 14px;
+	}
+
+	h2 {
+		font-size: 1.3rem;
+		color: $green-dark;
+		margin-bottom: 16px;
+		line-height: 1.3;
 	}
 
 	p {
-		margin: 0;
 		font-size: 0.95rem;
+		line-height: 1.8;
+		color: $font-mid;
+		margin: 0 0 24px;
+	}
+
+	&__video {
+		position: relative;
+		padding-bottom: 56.25%;
+		height: 0;
+		overflow: hidden;
+		margin-top: 28px;
+
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
+	}
+}
+
+// ─────────────────────────────────────────────
+// Related research list
+// ─────────────────────────────────────────────
+
+.related-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.related-item {
+	padding: 20px 0;
+	border-bottom: 1px solid $border-subtle;
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+
+	&:last-child { border-bottom: none; }
+}
+
+.related-item__body {
+	flex: 1;
+}
+
+.related-item__title {
+	font-size: 0.95rem;
+	color: $font-dark;
+	line-height: 1.5;
+	margin-bottom: 6px;
+
+	em { font-style: italic; }
+}
+
+.related-item__cite {
+	font-family: "indivisible", sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.07em;
+	color: $font-light;
+}
+
+.related-item__pdf {
+	flex-shrink: 0;
+	font-family: "indivisible", sans-serif;
+	font-size: 9px;
+	text-transform: uppercase;
+	letter-spacing: 0.09em;
+	color: $green-dark;
+	border: 1px solid $green-light;
+	padding: 4px 10px;
+	white-space: nowrap;
+	align-self: center;
+	transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+
+	&:hover {
+		background: $green-dark;
+		color: $text-on-green;
+		border-color: $green-dark;
 	}
 }
 </style>
-<Layout title="Social Systems" description="Erell Institute research on animal social systems in behavioral ecology — how social structures help animals survive and reproduce.">
+
+<Layout title="Social Systems" description="Erell Institute research on animal social systems — how social structures help animals survive and reproduce in behavioral ecology.">
 	<main class="page-main">
 		<div class="pure-g center">
 			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+
 				<header class="page-header">
 					<h1>Social Systems</h1>
 					<p class="page-header__lead">
@@ -33,41 +142,67 @@ import Layout from '../../../layouts/Layout.astro';
 					</p>
 				</header>
 
-				<h2 class="section-title">Current & Recent Projects</h2>
-
-				<div class="project-block">
-					<h3>Little Scrub Island Ground Lizard — Anguilla</h3>
+				<!-- Featured project -->
+				<div class="project-feature fade-up">
+					<div class="project-feature__label">Most Recent Project</div>
+					<h2>Little Scrub Island Ground Lizard project</h2>
 					<p>
-						Examining social behavior and group dynamics in <em>Pholidoscelis corax</em> on
-						Little Scrub Island. This isolated population provides a natural laboratory for
-						studying how social structure develops and functions.
+						Examining social behavior and group dynamics in the Little Scrub Island ground lizard
+						(<em>Pholidoscelis corax</em>) on Little Scrub Island, Anguilla. This small, isolated
+						population provides a natural laboratory for studying how social structure develops
+						and functions in a resource-limited environment.
 					</p>
+					<div class="project-feature__video">
+						<iframe
+							title="Little Scrub Island Ground Lizard"
+							src="https://player.vimeo.com/video/718391593?h=973fcc3600"
+							width="640"
+							height="360"
+							frameborder="0"
+							referrerpolicy="strict-origin-when-cross-origin"
+							allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+							allowfullscreen
+						></iframe>
+					</div>
 				</div>
 
-				<div class="project-block">
-					<h3>Social Networks and Social Foraging — Atacama Lava Lizard</h3>
-					<p>
-						Social network analysis and social foraging behavior in <em>Microlophus atacamensis</em>,
-						a lava lizard inhabiting the Pacific coast of the Atacama Desert, Chile.
-					</p>
-				</div>
+				<!-- Related research -->
+				<h2 class="section-title">Before you go... Check out some related research below!</h2>
 
-				<div class="project-block">
-					<h3>Collective Behavior — Dominica Ground Lizard</h3>
-					<p>
-						Collective behavior and group decision-making in <em>Pholidoscelis fuscatus</em>
-						on Dominica.
-					</p>
-				</div>
+				<ul class="related-list">
 
-				<div class="project-block">
-					<h3>Upcoming: Social Behavior in Baja Blue Rock Lizard</h3>
-					<p>
-						Future work will examine social behavior in <em>Petrosaurus thalassinus</em>,
-						the Baja California rock lizard, as part of our collaborative research in Baja
-						California Sur, Mexico.
-					</p>
-				</div>
+					<li class="related-item fade-up">
+						<div class="related-item__body">
+							<p class="related-item__title">
+								Social networks and social foraging of the lava lizard (<em>Microlophus atacamensis</em>)
+							</p>
+							<div class="related-item__cite">Utsumi et al. 2022 &nbsp;·&nbsp; Eifler and Eifler 2014</div>
+						</div>
+						<a href={pdf('2022 Utsumi et al--Microlophus social [Revista Chilena].pdf')} class="related-item__pdf" target="_blank">PDF</a>
+					</li>
+
+					<li class="related-item fade-up">
+						<div class="related-item__body">
+							<p class="related-item__title">
+								Collective behavior in the Dominica ground lizard (<em>Pholidoscelis fuscatus</em>)
+							</p>
+							<div class="related-item__cite">Grotbeck et al. 2019</div>
+						</div>
+						<a href={pdf('2019 Grotbeck et al--Dominca Grouping [Herp Notes].pdf')} class="related-item__pdf" target="_blank">PDF</a>
+					</li>
+
+					<li class="related-item fade-up">
+						<div class="related-item__body">
+							<p class="related-item__title">
+								Future project examining social behavior in the Baja blue rock lizard (<em>Petrosaurus thalassinus</em>)
+							</p>
+							<div class="related-item__cite">Morales-Mendez et al. 2024</div>
+						</div>
+						<a href={pdf('2024 Morales-Mendez et al--Baja blue rock liz [Revista LatinAm Herp].pdf')} class="related-item__pdf" target="_blank">PDF</a>
+					</li>
+
+				</ul>
+
 			</div>
 		</div>
 	</main>

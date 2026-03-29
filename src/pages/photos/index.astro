@@ -1,203 +1,273 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import mainBanner from '../../assets/img/main-banner.jpg';
+const base = import.meta.env.BASE_URL;
+
+const families = [
+	{
+		name: 'Agamidae',
+		photos: [
+			{ file: 'Ground agama (Agama aculeata).jpg',                          label: 'Ground agama',                    sci: 'Agama aculeata' },
+			{ file: 'Tuvan toad-headed agama (Phrynocephalus versicolor).jpg',    label: 'Tuvan toad-headed agama',         sci: 'Phrynocephalus versicolor' },
+		],
+	},
+	{
+		name: 'Cordylidae',
+		photos: [
+			{ file: 'Graceful crag lizard (Hemicordylus capensis).jpg',           label: 'Graceful crag lizard',            sci: 'Hemicordylus capensis' },
+		],
+	},
+	{
+		name: 'Crotaphytidae',
+		photos: [
+			{ file: 'Collared lizard (Crotaphytus collaris).jpg',                 label: 'Collared lizard',                 sci: 'Crotaphytus collaris' },
+			{ file: 'Long-nosed leopard lizard (Gambelia wislizenii).jpg',        label: 'Long-nosed leopard lizard',       sci: 'Gambelia wislizenii' },
+		],
+	},
+	{
+		name: 'Dactyloidae',
+		photos: [
+			{ file: 'Water anole (Anolis aquaticus).jpg',                         label: 'Water anole',                     sci: 'Anolis aquaticus' },
+		],
+	},
+	{
+		name: 'Gekkonidae',
+		photos: [
+			{ file: "Turner's thick-toed gecko (Chondrodactylus turneri).jpg",    label: "Turner's thick-toed gecko",       sci: 'Chondrodactylus turneri' },
+			{ file: 'Palmato gecko (Pachydactylus rangei).jpg',                   label: 'Palmato gecko',                   sci: 'Pachydactylus rangei' },
+			{ file: 'Namib day gecko (Rhoptropus afer).jpg',                      label: 'Namib day gecko',                 sci: 'Rhoptropus afer' },
+		],
+	},
+	{
+		name: 'Lacertidae',
+		photos: [
+			{ file: 'Nidua fringe-toed lizard (Acanthodactylus scutellatus).jpg', label: 'Nidua fringe-toed lizard',        sci: 'Acanthodactylus scutellatus' },
+			{ file: 'Bushveld lizard (Heliobolus lugubris).jpg',                  label: 'Bushveld lizard',                 sci: 'Heliobolus lugubris' },
+			{ file: 'Wedge-snouted sand lizard (Meroles cuneirostris).jpg',       label: 'Wedge-snouted sand lizard',       sci: 'Meroles cuneirostris' },
+			{ file: 'Namaqua sand lizard (Pedioplanis namaquensis).jpg',          label: 'Namaqua sand lizard',             sci: 'Pedioplanis namaquensis' },
+			{ file: 'Liolaemus silvai.jpg',                                        label: 'Liolaemus silvai',                sci: 'Liolaemus silvai' },
+		],
+	},
+	{
+		name: 'Phrynosomatidae',
+		photos: [
+			{ file: 'Lesser earless lizard (Holbrookia maculata).jpg',            label: 'Lesser earless lizard',           sci: 'Holbrookia maculata' },
+			{ file: 'Baja California rock lizard (Petrosaurus thalassinus).jpg',  label: 'Baja California rock lizard',     sci: 'Petrosaurus thalassinus' },
+			{ file: 'Texas horned lizard (Phrynosoma cornutum).jpg',              label: 'Texas horned lizard',             sci: 'Phrynosoma cornutum' },
+			{ file: 'Desert horned lizard juvenile (Phrynosoma platyrhinos).jpg', label: 'Desert horned lizard (juvenile)', sci: 'Phrynosoma platyrhinos' },
+		],
+	},
+	{
+		name: 'Teiidae',
+		photos: [
+			{ file: 'Little striped whiptail (Aspidoscelis inornatus).jpg',       label: 'Little striped whiptail',         sci: 'Aspidoscelis inornatus' },
+			{ file: 'Colorado checkered whiptail (Aspidoscelis neotesselatus).jpg',label:'Colorado checkered whiptail',     sci: 'Aspidoscelis neotesselatus' },
+			{ file: 'Desert grassland whiptail (Aspidoscelis uniparens).jpg',     label: 'Desert grassland whiptail',       sci: 'Aspidoscelis uniparens' },
+			{ file: 'Little Scrub Island ground lizard (Pholidoscelis corax).jpg',label: 'Little Scrub Island ground lizard',sci:'Pholidoscelis corax' },
+			{ file: 'Dominican ground lizard (Pholidoscelis fuscatus).jpg',       label: 'Dominican ground lizard',         sci: 'Pholidoscelis fuscatus' },
+			{ file: 'Red tegu (Salvator rufescens).jpg',                           label: 'Red tegu',                        sci: 'Salvator rufescens' },
+		],
+	},
+	{
+		name: 'Tropiduridae',
+		photos: [
+			{ file: 'Atacama Pacific iguana (Microlophus atacamensis).jpg',       label: 'Atacama Pacific iguana',          sci: 'Microlophus atacamensis' },
+		],
+	},
+];
 ---
 <style lang="scss">
 @use '../../assets/css/_theme.scss' as *;
+@use '../../assets/css/_mixins.scss' as *;
 
-.gallery-intro {
-	margin-bottom: 40px;
+.gallery-section {
+	margin-bottom: 56px;
 }
 
-.species-family {
-	margin-bottom: 40px;
+.gallery-section__heading {
+	font-family: "indivisible", sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	color: $green-mid;
+	border-bottom: 1px solid $border-subtle;
+	padding-bottom: 10px;
+	margin-bottom: 16px;
+}
 
-	h2 {
-		font-size: 1rem;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: $green-mid;
-		border-bottom: 1px solid $border-subtle;
-		padding-bottom: 8px;
-		margin-bottom: 12px;
+.photo-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+
+	@include respond-to('small-mx') {
+		grid-template-columns: repeat(2, 1fr);
 	}
 
-	ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		columns: 2;
-		column-gap: 16px;
-
-		@media (max-width: 550px) {
-			columns: 1;
-		}
-	}
-
-	li {
-		font-size: 0.9rem;
-		color: $font-mid;
-		padding: 4px 0;
-		border-bottom: 1px solid $surface;
-
-		em {
-			color: $font-light;
-		}
+	@media (max-width: 380px) {
+		grid-template-columns: 1fr;
 	}
 }
 
-.gallery-banner {
-	width: 100%;
-	margin-bottom: 40px;
-	display: block;
-}
-
-.field-sites {
+.photo-item {
+	overflow: hidden;
 	background: $secondary;
-	border: 1px solid $border-subtle;
-	padding: 24px;
-	margin-bottom: 40px;
+	cursor: zoom-in;
 
-	h2 {
-		font-size: 1rem;
+	&:hover .photo-item__img {
+		transform: scale(1.04);
+	}
+}
+
+.photo-item__img {
+	width: 100%;
+	height: 180px;
+	object-fit: cover;
+	object-position: center;
+	display: block;
+	transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.photo-item__caption {
+	padding: 8px 10px;
+
+	strong {
+		display: block;
+		font-family: "indivisible", sans-serif;
+		font-size: 10px;
 		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: $green-mid;
-		margin-bottom: 12px;
+		letter-spacing: 0.07em;
+		color: $font-dark;
+		line-height: 1.4;
 	}
 
-	ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		columns: 2;
-		column-gap: 16px;
+	em {
+		font-style: italic;
+		font-size: 10px;
+		color: $font-light;
+		font-family: "apparat-light", sans-serif;
+	}
+}
 
-		@media (max-width: 550px) {
-			columns: 1;
-		}
+// Lightbox
+.lightbox {
+	display: none;
+	position: fixed;
+	inset: 0;
+	background: rgba(28, 23, 16, 0.92);
+	z-index: 1000;
+	align-items: center;
+	justify-content: center;
+	cursor: zoom-out;
+
+	&.open {
+		display: flex;
 	}
 
-	li {
-		font-size: 0.9rem;
-		color: $font-mid;
-		padding: 4px 0;
-		border-bottom: 1px solid $surface;
+	img {
+		max-width: min(90vw, 1000px);
+		max-height: 85vh;
+		object-fit: contain;
+		display: block;
 	}
+}
+
+.lightbox__caption {
+	position: fixed;
+	bottom: 24px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	font-family: "indivisible", sans-serif;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: rgba(247, 243, 238, 0.7);
+	pointer-events: none;
+}
+
+.lightbox__close {
+	position: fixed;
+	top: 20px;
+	right: 24px;
+	background: none;
+	border: none;
+	color: rgba(247, 243, 238, 0.6);
+	font-size: 28px;
+	cursor: pointer;
+	line-height: 1;
+	transition: color 0.2s ease;
+
+	&:hover { color: #F7F3EE; }
 }
 </style>
-<Layout title="Photo Gallery" description="Photo gallery of Erell Institute field research — lizard species and field sites from around the world.">
+
+<Layout title="Photo Gallery" description="Photo gallery of Erell Institute field research — lizard species from around the world.">
 	<main class="page-main">
 		<div class="pure-g center">
-			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-4-5 pure-u-xxl-3-5">
+
 				<header class="page-header">
 					<h1>Photo Gallery</h1>
-					<p class="page-header__lead gallery-intro">
-						Field sites and study species from Erell Institute research around the world.
-						More photos coming soon.
+					<p class="page-header__lead">
+						Study species from Erell Institute field research around the world.
 					</p>
 				</header>
 
-				<Image src={mainBanner} alt="Erell Institute field research" class="gallery-banner" />
+				{families.map(family => (
+					<div class="gallery-section fade-up">
+						<div class="gallery-section__heading">{family.name}</div>
+						<div class="photo-grid">
+							{family.photos.map(photo => (
+								<div
+									class="photo-item"
+									data-src={`${base}gallery/lizards/${encodeURIComponent(photo.file)}`}
+									data-caption={`${photo.label} — ${photo.sci}`}
+								>
+									<img
+										src={`${base}gallery/lizards/${encodeURIComponent(photo.file)}`}
+										alt={`${photo.label} (${photo.sci})`}
+										class="photo-item__img"
+										loading="lazy"
+									/>
+									<div class="photo-item__caption">
+										<strong>{photo.label}</strong>
+										<em>{photo.sci}</em>
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				))}
 
-				<div class="field-sites">
-					<h2>Field Sites</h2>
-					<ul>
-						<li>Gobi Desert, Dornogovi, Mongolia</li>
-						<li>Namib Desert dunes</li>
-						<li>Wichita Mountains NWR, Oklahoma</li>
-						<li>Great Basin Desert, SE Oregon</li>
-						<li>Little Scrub Island, Anguilla</li>
-						<li>Kino Bay, Sonora, Mexico</li>
-						<li>Chihuahuan Desert, Colorado &amp; Texas</li>
-						<li>Huasco Province, Atacama, Chile</li>
-						<li>Kalahari Desert, Botswana</li>
-						<li>Chiricahua Mountains, Arizona</li>
-						<li>Sierra La Laguna, Baja California Sur</li>
-						<li>Bouhedma National Park, Tunisia</li>
-					</ul>
-				</div>
-
-				<div class="species-family">
-					<h2>Agamidae</h2>
-					<ul>
-						<li>Ground agama <em>(Agama aculeata)</em></li>
-						<li>Tuvan toad-headed agama <em>(Phrynocephalus versicolor)</em></li>
-					</ul>
-				</div>
-
-				<div class="species-family">
-					<h2>Cordylidae</h2>
-					<ul>
-						<li>Graceful crag lizard <em>(Hemicordylus capensis)</em></li>
-					</ul>
-				</div>
-
-				<div class="species-family">
-					<h2>Crotaphytidae</h2>
-					<ul>
-						<li>Collared lizard <em>(Crotaphytus collaris)</em></li>
-						<li>Long-nosed leopard lizard <em>(Gambelia wislizenii)</em></li>
-					</ul>
-				</div>
-
-				<div class="species-family">
-					<h2>Dactyloidae</h2>
-					<ul>
-						<li>Water anole <em>(Anolis aquaticus)</em></li>
-					</ul>
-				</div>
-
-				<div class="species-family">
-					<h2>Gekkonidae</h2>
-					<ul>
-						<li>Turner's thick-toed gecko <em>(Chondrodactylus turneri)</em></li>
-						<li>Palmato gecko <em>(Pachydactylus rangei)</em></li>
-						<li>Namib day gecko <em>(Rhoptropus afer)</em></li>
-					</ul>
-				</div>
-
-				<div class="species-family">
-					<h2>Lacertidae</h2>
-					<ul>
-						<li>Nidua fringe-toed lizard <em>(Acanthodactylus scutellatus)</em></li>
-						<li>Bushveld lizard <em>(Heliobolus lugubris)</em></li>
-						<li>Wedge-snouted sand lizard <em>(Meroles cunierostris)</em></li>
-						<li>Namaqua sand lizard <em>(Pedioplanis namaquensis)</em></li>
-						<li><em>Liolaemus silvai</em></li>
-					</ul>
-				</div>
-
-				<div class="species-family">
-					<h2>Phrynosomatidae</h2>
-					<ul>
-						<li>Lesser earless lizard <em>(Holbrookia maculata)</em></li>
-						<li>Baja California rock lizard <em>(Petrosaurus thalassinus)</em></li>
-						<li>Texas horned lizard <em>(Phrynosoma cornutum)</em></li>
-						<li>Desert horned lizard — juvenile <em>(Phrynosoma platyrhinos)</em></li>
-					</ul>
-				</div>
-
-				<div class="species-family">
-					<h2>Teiidae</h2>
-					<ul>
-						<li>Little striped whiptail <em>(Aspidoscelis inornatus)</em></li>
-						<li>Colorado checkered whiptail <em>(Aspidoscelis neotesselatus)</em></li>
-						<li>Desert grassland whiptail <em>(Aspidoscelis uniparens)</em></li>
-						<li>Little Scrub Island ground lizard <em>(Pholidoscelis corax)</em></li>
-						<li>Dominican ground lizard <em>(Pholidoscelis fuscatus)</em></li>
-						<li>Red tegu <em>(Salvator rufescens)</em></li>
-					</ul>
-				</div>
-
-				<div class="species-family">
-					<h2>Tropiduridae</h2>
-					<ul>
-						<li>Atacama Pacific iguana <em>(Microlophus atacamensis)</em></li>
-					</ul>
-				</div>
 			</div>
 		</div>
 	</main>
 </Layout>
+
+<div class="lightbox" id="lightbox">
+	<button class="lightbox__close" id="lightbox-close" aria-label="Close"><i class="iconoir-xmark"></i></button>
+	<img id="lightbox-img" src="" alt="" />
+	<div class="lightbox__caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+	const lightbox = document.getElementById('lightbox')!;
+	const lbImg    = document.getElementById('lightbox-img') as HTMLImageElement;
+	const lbCap    = document.getElementById('lightbox-caption')!;
+
+	document.querySelectorAll('.photo-item').forEach(item => {
+		item.addEventListener('click', () => {
+			const src     = item.getAttribute('data-src') ?? '';
+			const caption = item.getAttribute('data-caption') ?? '';
+			lbImg.src     = src;
+			lbImg.alt     = caption;
+			lbCap.textContent = caption;
+			lightbox.classList.add('open');
+		});
+	});
+
+	function close() { lightbox.classList.remove('open'); }
+	document.getElementById('lightbox-close')!.addEventListener('click', close);
+	lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
+	document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+</script>

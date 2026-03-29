@@ -1,24 +1,71 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import imgLizardCamp from '../../assets/img/education/lezard camp.jpg';
+import imgNetp       from '../../assets/img/education/netp.jpg';
+import imgUgResearch from '../../assets/img/education/ug research experiences.jpg';
 const b = import.meta.env.BASE_URL;
 ---
 <style lang="scss">
 @use '../../assets/css/_theme.scss' as *;
+@use '../../assets/css/_mixins.scss' as *;
+
+.programs-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 24px;
+}
 
 .program-card {
 	border: 1px solid $border-subtle;
-	border-left: 3px solid $green-light;
-	padding: 32px;
-	margin-bottom: 20px;
 	background: $secondary;
+	overflow: hidden;
+	display: grid;
+	grid-template-columns: 280px 1fr;
 	transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
 	            box-shadow 0.22s ease,
 	            border-color 0.22s ease;
 
+	@include respond-to('small-mx') {
+		grid-template-columns: 1fr;
+	}
+
 	&:hover {
-		transform: translateX(4px);
-		box-shadow: 0 6px 24px rgba(44, 36, 22, 0.07);
-		border-left-color: $green-mid;
+		transform: translateY(-4px);
+		box-shadow: 0 12px 36px rgba(44, 36, 22, 0.09);
+		border-color: $green-light;
+	}
+
+	&__photo {
+		width: 100%;
+		height: 100%;
+		min-height: 220px;
+		object-fit: cover;
+		object-position: center;
+		display: block;
+		transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	&:hover &__photo {
+		transform: scale(1.03);
+	}
+
+	&__photo-wrap {
+		overflow: hidden;
+
+		@include respond-to('small-mx') {
+			height: 200px;
+		}
+	}
+
+	&__body {
+		padding: 28px 32px 32px;
+		border-left: 3px solid $green-light;
+
+		@include respond-to('small-mx') {
+			border-left: none;
+			border-top: 3px solid $green-light;
+		}
 	}
 
 	h2 {
@@ -48,16 +95,12 @@ const b = import.meta.env.BASE_URL;
 			width: 100%;
 			height: 1px;
 			background: $green-light;
-			transform-origin: left;
 			transition: background 0.2s ease;
 		}
 
 		&:hover {
 			color: $earth-brown;
-
-			&::after {
-				background: $earth-warm;
-			}
+			&::after { background: $earth-warm; }
 		}
 	}
 }
@@ -69,30 +112,53 @@ const b = import.meta.env.BASE_URL;
 				<header class="page-header">
 					<h1>Education</h1>
 					<p class="page-header__lead">
-						We believe science belongs to everyone. Our programs give participants from all
-						backgrounds the chance to take part in real research — from forming questions in
-						the field to publishing results.
+						We believe the best way to teach people how to be a scientist is to bring them
+						into the field and let them explore and learn how to be curious and ask questions
+						inspired by the nature around them!
 					</p>
 				</header>
 
-				<div class="program-card fade-up">
-					<h2>Lizard Camp</h2>
-					<p>
-						Teams of undergraduate, post-baccalaureate, and graduate students study lizards
-						in desert ecosystems around the world. Running annually since 2017, Lizard Camp
-						has trained participants across sites in the US, Tunisia, and beyond.
-					</p>
-					<a href={`${b}education/lizard-camp/`} class="learn-more">Learn more about Lizard Camp</a>
-				</div>
+				<div class="programs-grid">
 
-				<div class="program-card fade-up">
-					<h2>NETP — Naturalist-Ecologist Training Program</h2>
-					<p>
-						A post-baccalaureate experience for recently graduated women focused on professional
-						development, research skills, and preparedness for graduate school or biology careers.
-						85% of NETP graduates have continued as professional biologists.
-					</p>
-					<a href={`${b}education/netp/`} class="learn-more">Learn more about NETP</a>
+					<div class="program-card fade-up">
+						<div class="program-card__photo-wrap">
+							<Image src={imgLizardCamp} alt="Lizard Camp field research" class="program-card__photo" />
+						</div>
+						<div class="program-card__body">
+							<h2>Lizard Camp</h2>
+							<p>
+								Using hands on learning in desert ecosystems to teach students how to be a scientist!
+							</p>
+							<a href={`${b}education/lizard-camp/`} class="learn-more">Learn more about Lizard Camp</a>
+						</div>
+					</div>
+
+					<div class="program-card fade-up">
+						<div class="program-card__photo-wrap">
+							<Image src={imgNetp} alt="NETP — Naturalist-Ecologist Training Program" class="program-card__photo" />
+						</div>
+						<div class="program-card__body">
+							<h2>Naturalist-Ecologist Training Program (NETP)</h2>
+							<p>
+								Developing curiosity and creativity in young researchers while they determine their next steps in science.
+							</p>
+							<a href={`${b}education/netp/`} class="learn-more">Learn more about NETP</a>
+						</div>
+					</div>
+
+					<div class="program-card fade-up">
+						<div class="program-card__photo-wrap">
+							<Image src={imgUgResearch} alt="Undergraduate research experiences" class="program-card__photo" />
+						</div>
+						<div class="program-card__body">
+							<h2>Undergraduate Research Experiences</h2>
+							<p>
+								Learn more about our past projects and find out about upcoming opportunities!
+							</p>
+							<a href={`${b}education/netp/`} class="learn-more">Learn more about undergrad research</a>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>

@@ -1,71 +1,150 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import imgPodarcis from '../../../assets/img/research/italian-wall-lizards/Podarcis sisulus.png';
+
+const b = import.meta.env.BASE_URL;
+function pdf(filename: string): string {
+	return `${b}pdf/${filename}`;
+}
 ---
 <style lang="scss">
 @use '../../../assets/css/_theme.scss' as *;
+@use '../../../assets/css/_mixins.scss' as *;
+
+.hero-photo {
+	width: 100%;
+	height: 480px;
+	object-fit: cover;
+	object-position: center 30%;
+	display: block;
+	margin-bottom: 12px;
+}
+
+.photo-credit {
+	font-family: "indivisible", sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: $font-light;
+	margin-bottom: 48px;
+}
+
+.focus-list {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 32px;
+
+	li {
+		padding: 12px 0;
+		border-bottom: 1px solid $border-subtle;
+		font-size: 0.95rem;
+		color: $font-mid;
+		display: flex;
+		gap: 12px;
+		align-items: baseline;
+
+		&:last-child { border-bottom: none; }
+
+		&::before {
+			content: '';
+			width: 4px;
+			height: 4px;
+			border-radius: 50%;
+			background: $green-light;
+			flex-shrink: 0;
+			margin-top: 8px;
+		}
+	}
+}
 
 .alert-box {
 	background: $secondary;
 	border-left: 3px solid $earth-warm;
 	padding: 16px 24px;
-	margin: 24px 0;
+	margin: 32px 0;
 
-	p {
-		margin: 0;
-		font-size: 0.95rem;
+	p { margin: 0; font-size: 0.95rem; }
+}
+
+.pub-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 24px;
+	font-family: "indivisible", sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.09em;
+	color: $green-dark;
+	border: 1px solid $green-light;
+	padding: 7px 14px;
+	transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+
+	&:hover {
+		background: $green-dark;
+		color: $text-on-green;
+		border-color: $green-dark;
 	}
 }
 </style>
-<Layout title="Italian Wall Lizards" description="Erell Institute research on invasive Italian wall lizards (Podarcis siculus) in Douglas County, Kansas — a community science project.">
+
+<Layout title="Italian Wall Lizards" description="Erell Institute community science research on invasive Italian wall lizards (Podarcis siculus) in Douglas County, Kansas.">
 	<main class="page-main">
 		<div class="pure-g center">
 			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+
 				<header class="page-header">
 					<h1>Italian Wall Lizards</h1>
 					<p class="page-header__lead">
-						Community science research on invasive <em>Podarcis siculus</em> in Douglas County, Kansas.
+						During COVID, we organized a community science-oriented research project on the invasive
+						<em>Podarcis siculus</em>, or Italian Wall Lizard, in Douglas County, KS!
 					</p>
 				</header>
 
+				<Image src={imgPodarcis} alt="Podarcis siculus, or Italian Wall Lizard" class="hero-photo fade-up" />
+				<p class="photo-credit">An image of <em>Podarcis siculus</em>, or Italian Wall Lizard. Superb photograph taken by Richard Bartz.</p>
+
 				<p>
-					The Italian wall lizard (<em>Podarcis siculus</em>) is an invasive species with large
-					populations established in Topeka and Lawrence, Kansas — as well as New York City,
-					Philadelphia, and Los Angeles. This project originated as a community science effort
-					during COVID-19, organized through the KU SEEDS Ecology Club and sponsored by Erell Institute.
+					We are a group of students, mainly undergraduate women, who are passionate about ecology
+					and curious about the world around us! Our sponsors are Doug and Maria Eifler.
 				</p>
 
 				<p>
-					The research is conducted by a team of undergraduate women, sponsored by Doug and Maria Eifler.
-					The focus is on understanding how this species thrives where it has been introduced,
-					and what that means for native wildlife.
+					There is a large population in Topeka and Lawrence, but also in New York City, Philadelphia,
+					and Los Angeles! They are especially fascinating because they are so great at adapting to
+					suburban and urban environments!
 				</p>
 
-				<h2 class="section-title">Research Focus Areas</h2>
-				<ul>
-					<li>Habitat preferences (Friestad et al. 2023)</li>
-					<li>Behavioral syndromes of successful invaders</li>
-					<li>Relationship between wall lizards and native skinks</li>
+				<p>
+					There are many fables about how Italian lizards arrived here in Lawrence but all we know
+					for sure is that it's important that they are not transported anywhere else.
+				</p>
+
+				<h2 class="section-title">Research Focus</h2>
+
+				<ul class="focus-list">
+					<li>We focused on habitat preferences (Friestad et al. 2023)</li>
+					<li>We are planning offshoot projects on behavioral syndromes of successful invaders</li>
+					<li>On the relationship between wall lizards and native skinks</li>
 				</ul>
 
-				<h2 class="section-title">Why This Matters</h2>
-				<p>
-					Invasive wall lizards can outcompete native lizard species, posing a threat to local
-					biodiversity. Understanding their habitat preferences and behavioral strategies is the
-					first step toward effective management.
-				</p>
+				<a href={pdf('2023 Friestad et al--Wall lizard and Skink [Herpetol Notes].pdf')} class="pub-link fade-up" target="_blank">
+					Read the full paper — Friestad et al. 2023
+				</a>
 
-				<div class="alert-box">
+				<div class="alert-box fade-up">
 					<p>
-						<strong>Important:</strong> If you encounter Italian wall lizards, please do not
-						touch or transport them. Contact us at
-						<a href="mailto:info@erell.ngo">info@erell.ngo</a> with sightings.
+						<strong>That is why it is so important that you do not touch or transport these lizards anywhere.</strong>
+						Questions? Contact the Italian Wall Lizard Task Force at
+						<a href="mailto:deifler@erell.ngo">deifler@erell.ngo</a>.
 					</p>
 				</div>
 
-				<p>
-					Questions about this project? Reach the Italian Wall Lizard Task Force at
-					<a href="mailto:info@erell.ngo">info@erell.ngo</a>.
+				<p class="photo-credit" style="margin-top: 32px;">
+					The project was carried out through KU SEEDS Ecology Club and sponsored by Erell Institute.
 				</p>
+
 			</div>
 		</div>
 	</main>

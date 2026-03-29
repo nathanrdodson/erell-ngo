@@ -223,6 +223,18 @@ const b = import.meta.env.BASE_URL;
 			margin: 0 auto;
 		}
 	}
+
+	// Override Pure's inline-block so cards stretch to equal height
+	> .pure-g > .pure-u-1 > .pure-g {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: stretch;
+
+		> [class*="pure-u-"] {
+			display: flex;
+			flex-direction: column;
+		}
+	}
 }
 
 .pillar-card {
@@ -231,6 +243,9 @@ const b = import.meta.env.BASE_URL;
 	margin: 8px;
 	background: $secondary;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
 	transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
 	            box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
 	            border-color 0.25s ease;
@@ -268,6 +283,7 @@ const b = import.meta.env.BASE_URL;
 		line-height: 1.75;
 		color: $font-mid;
 		margin-bottom: 24px;
+		flex: 1;
 	}
 
 	&__link {
@@ -276,29 +292,15 @@ const b = import.meta.env.BASE_URL;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
 		color: $green-dark;
-		position: relative;
-		padding-bottom: 3px;
-
-		&::after {
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 1px;
-			background: $green-light;
-			transform: scaleX(1);
-			transform-origin: left center;
-			transition: background 0.2s ease, transform 0.2s ease;
-		}
+		text-decoration: none;
+		border-bottom: 1px solid $green-light;
+		padding-bottom: 2px;
+		transition: color 0.2s ease, border-color 0.2s ease;
+		align-self: center;
 
 		&:hover {
 			color: $earth-brown;
-
-			&::after {
-				background: $earth-warm;
-				transform: scaleX(0.6);
-			}
+			border-color: $earth-warm;
 		}
 	}
 }
@@ -723,9 +725,9 @@ const b = import.meta.env.BASE_URL;
 			<div class="hero__tagline">Erell Institute · Since 2017</div>
 			<h1 class="hero__title">Education Through Research</h1>
 			<p class="hero__mission">
-				We develop the curiosity and creativity of the next generation of scientists —
-				organizing field research experiences in behavioral ecology that are open
-				to people from all backgrounds.
+				We aim to develop the curiosity and creativity of the next generation of scientists
+				in behavioral ecology. To do this we organize research experiences that enable
+				people from all backgrounds to take part in the process of science.
 			</p>
 			<div class="hero__ctas">
 				<a href={`${b}about/`} class="hero__cta">Our Mission</a>
@@ -755,7 +757,7 @@ const b = import.meta.env.BASE_URL;
 			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-4-5 pure-u-xxl-3-5">
 				<div class="pillars__heading fade-up">
 					<h2>What We Do</h2>
-					<p>Field research, mentorship, and education — open to everyone.</p>
+					<p>Each experience brings a team of diverse researchers together to develop a question, work together to collect and analyze data that will answer their question, and present their answers to the scientific community as well as the general public.</p>
 				</div>
 				<div class="pure-g">
 					<div class="pure-u-1 pure-u-md-1-3">
@@ -763,9 +765,7 @@ const b = import.meta.env.BASE_URL;
 							<i class="iconoir-graduation-cap pillar-card__icon"></i>
 							<h3>Education</h3>
 							<p>
-								Lizard Camp and NETP give students from all backgrounds real ownership
-								of the scientific process — from forming questions in the field
-								to publishing results.
+								Using hands on learning in desert ecosystems to teach students how to be a scientist!
 							</p>
 							<a href={`${b}education/`} class="pillar-card__link">Explore programs</a>
 						</div>
@@ -775,9 +775,7 @@ const b = import.meta.env.BASE_URL;
 							<i class="iconoir-binocular pillar-card__icon"></i>
 							<h3>Research</h3>
 							<p>
-								Movement ecology, social systems, and invasive species — studied
-								across desert ecosystems on four continents, with participants
-								at every level.
+								Our general research interests fall under two main themes: social systems and movement ecology.
 							</p>
 							<a href={`${b}research/`} class="pillar-card__link">Explore research</a>
 						</div>
@@ -787,8 +785,7 @@ const b = import.meta.env.BASE_URL;
 							<i class="iconoir-heart pillar-card__icon"></i>
 							<h3>Support</h3>
 							<p>
-								Erell Institute is a 501(c)(3) nonprofit. Donations fund field
-								expeditions, student travel, and the next generation of scientists.
+								We are a 501(c)(3) non-profit organization aiming to build a community of scholars pursuing education through ecological research.
 							</p>
 							<a href={`${b}support/`} class="pillar-card__link">Support our work</a>
 						</div>
@@ -803,17 +800,11 @@ const b = import.meta.env.BASE_URL;
 		<div class="pure-g center">
 			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
 				<div class="netp-callout__inner fade-up">
-					<div class="netp-callout__stat">
-						<strong>85%</strong>
-						<span>of NETP graduates continued as professional biologists</span>
-					</div>
 					<div class="netp-callout__content">
 						<div class="netp-callout__label">NETP — Naturalist-Ecologist Training Program</div>
-						<h2>Training the Next Generation</h2>
+						<h2>Naturalist-Ecologist Training Program</h2>
 						<p>
-							A post-baccalaureate experience for recently graduated women focused on professional
-							development, research skills, and preparation for graduate school or careers in biology.
-							Participants leave with real field experience, a peer network, and a path forward.
+							Developing curiosity and creativity in young researchers while they determine their next steps in science.
 						</p>
 						<a href={`${b}education/netp/`}>Learn more about NETP</a>
 					</div>
@@ -833,25 +824,8 @@ const b = import.meta.env.BASE_URL;
 				<div class="program-feature__label">Our Flagship Program</div>
 				<h2>Lizard Camp</h2>
 				<p>
-					Teams of undergraduate, post-baccalaureate, and graduate students work together
-					in desert ecosystems around the world. Each team develops a research question,
-					designs methods, collects and analyzes data, and presents results to the
-					scientific community and the public.
+					Using hands on learning in desert ecosystems to teach students how to be a scientist!
 				</p>
-				<div class="program-feature__stats">
-					<div>
-						<strong>9</strong>
-						<span>Seasons Running</span>
-					</div>
-					<div>
-						<strong>7+</strong>
-						<span>Field Sites</span>
-					</div>
-					<div>
-						<strong>10+</strong>
-						<span>Publications</span>
-					</div>
-				</div>
 				<a href={`${b}education/lizard-camp/`} class="program-feature__link">Explore Lizard Camp</a>
 			</div>
 		</div>
