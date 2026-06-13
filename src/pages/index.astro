@@ -9,6 +9,18 @@ import imgTeamwork   from '../assets/img/homepage/TEAMWORK.jpg';
 import imgDiscovery  from '../assets/img/homepage/DISCOVERY.jpg';
 import imgResearch   from '../assets/img/homepage/RESEARCH.jpg';
 import imgSupport    from '../assets/img/homepage/support-erell.jpg';
+import photoBreak    from '../assets/img/photos/collared-lizard.jpg';
+import siteAtacama   from '../assets/img/photos/site-atacama-chile.jpg';
+import siteChihuahua from '../assets/img/photos/site-chihuahua-desert-colorado.jpg';
+import siteChiricahua from '../assets/img/photos/site-chiricahua-mountains-arizona.jpg';
+import siteGobi      from '../assets/img/photos/site-gobi-desert-mongolia.jpg';
+import siteGreatBasin from '../assets/img/photos/site-great-basin-desert-oregon.jpg';
+import siteKalahari  from '../assets/img/photos/site-kalahari-desert-botswana.jpg';
+import siteKinoBay   from '../assets/img/photos/site-kino-bay-mexico.jpg';
+import siteLittleScrub from '../assets/img/photos/site-little-scrub-island-anguilla.jpg';
+import siteNamib     from '../assets/img/photos/site-namib-desert.jpg';
+import siteSierraLaLaguna from '../assets/img/photos/site-sierra-la-laguna-baja.jpg';
+import siteWichita   from '../assets/img/photos/site-wichita-mountains-oklahoma.jpg';
 const b = import.meta.env.BASE_URL;
 ---
 <style lang="scss">
@@ -24,10 +36,16 @@ const b = import.meta.env.BASE_URL;
 	to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes scrollPulse {
+	0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+	50%      { opacity: 0.85; transform: translateX(-50%) translateY(7px); }
+}
+
 .hero {
 	position: relative;
 	width: 100%;
-	min-height: 600px;
+	height: 100svh;
+	min-height: 580px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -35,6 +53,7 @@ const b = import.meta.env.BASE_URL;
 
 	@include respond-to('small-mx') {
 		min-height: 440px;
+		height: 100svh;
 	}
 
 	&__img {
@@ -52,10 +71,28 @@ const b = import.meta.env.BASE_URL;
 		inset: 0;
 		background: linear-gradient(
 			to bottom,
-			rgba(44, 36, 22, 0.25) 0%,
-			rgba(44, 36, 22, 0.65) 100%
+			rgba(44, 36, 22, 0.20) 0%,
+			rgba(44, 36, 22, 0.48) 100%
 		);
 		z-index: 1;
+	}
+
+	&__scroll {
+		position: absolute;
+		bottom: 28px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 2;
+		color: rgba(247, 243, 238, 0.55);
+		font-size: 26px;
+		text-decoration: none;
+		animation: scrollPulse 2.2s ease-in-out infinite;
+		line-height: 1;
+
+		&:hover {
+			color: rgba(247, 243, 238, 0.9);
+			animation-play-state: paused;
+		}
 	}
 
 	&__overlay {
@@ -75,28 +112,30 @@ const b = import.meta.env.BASE_URL;
 		font-size: 11px;
 		text-transform: uppercase;
 		letter-spacing: 0.18em;
-		color: rgba(247, 243, 238, 0.65);
+		color: rgba(247, 243, 238, 0.72);
 		margin-bottom: 18px;
 		animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
+		text-shadow: 0 1px 8px rgba(14, 10, 6, 0.55);
 	}
 
 	&__title {
 		font-family: "apparat-light", sans-serif;
 		font-weight: 300;
 		color: #F7F3EE;
-		font-size: 3.2rem;
-		line-height: 1.15;
-		margin-bottom: 24px;
-		letter-spacing: -0.02em;
+		font-size: 4.5rem;
+		line-height: 1.1;
+		margin-bottom: 28px;
+		letter-spacing: -0.03em;
 		animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.22s both;
+		text-shadow: 0 2px 24px rgba(14, 10, 6, 0.5);
 
 		@include respond-to('small-mx') {
-			font-size: 2.1rem;
+			font-size: 2.4rem;
 		}
 	}
 
 	&__mission {
-		color: rgba(247, 243, 238, 0.85);
+		color: rgba(247, 243, 238, 0.92);
 		font-size: 1.05rem;
 		line-height: 1.8;
 		margin-bottom: 40px;
@@ -104,6 +143,7 @@ const b = import.meta.env.BASE_URL;
 		margin-left: auto;
 		margin-right: auto;
 		animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.34s both;
+		text-shadow: 0 1px 12px rgba(14, 10, 6, 0.6);
 
 		@include respond-to('small-mx') {
 			font-size: 0.95rem;
@@ -128,6 +168,7 @@ const b = import.meta.env.BASE_URL;
 		font-size: 11px;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
+		text-shadow: 0 1px 8px rgba(14, 10, 6, 0.5);
 		transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 
 		&:hover {
@@ -330,7 +371,7 @@ const b = import.meta.env.BASE_URL;
 
 		img {
 			width: 100%;
-			height: 300px;
+			height: 420px;
 			object-fit: cover;
 			object-position: center;
 			display: block;
@@ -395,13 +436,14 @@ const b = import.meta.env.BASE_URL;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		padding: 48px 28px 22px;
-		background: linear-gradient(to top, rgba(44,36,22,0.72) 0%, transparent 100%);
+		padding: 56px 28px 22px;
+		background: linear-gradient(to top, rgba(44,36,22,0.82) 0%, transparent 100%);
 		font-family: "indivisible", sans-serif;
 		font-size: 10px;
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
-		color: rgba(247, 243, 238, 0.75);
+		color: rgba(247, 243, 238, 0.9);
+		text-shadow: 0 1px 6px rgba(14, 10, 6, 0.5);
 	}
 
 	&__content {
@@ -514,6 +556,59 @@ const b = import.meta.env.BASE_URL;
 		}
 	}
 
+	&__photos {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		gap: 3px;
+		margin-bottom: 56px;
+
+		@include respond-to('small-mx') {
+			overflow-x: auto;
+			grid-template-columns: repeat(11, minmax(160px, 1fr));
+			margin-bottom: 40px;
+		}
+	}
+
+	&__photo-item {
+		position: relative;
+		height: 200px;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			display: block;
+			transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		&:hover img {
+			transform: scale(1.06);
+		}
+
+		&__label {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			align-items: flex-end;
+			padding: 12px 14px;
+			background: linear-gradient(to top, rgba(35, 61, 37, 0.75) 0%, transparent 60%);
+			opacity: 0;
+			transition: opacity 0.3s ease;
+			font-family: "indivisible", sans-serif;
+			font-size: 9px;
+			text-transform: uppercase;
+			letter-spacing: 0.12em;
+			color: rgba(247, 243, 238, 0.9);
+			line-height: 1.4;
+		}
+
+		&:hover &__label {
+			opacity: 1;
+		}
+	}
+
 	&__region {
 		padding: 0 14px;
 
@@ -566,6 +661,56 @@ const b = import.meta.env.BASE_URL;
 				font-size: 9px;
 				text-transform: uppercase;
 				letter-spacing: 0.08em;
+			}
+		}
+	}
+}
+
+// ─────────────────────────────────────────────
+// Photo break
+// ─────────────────────────────────────────────
+
+.photo-break {
+	position: relative;
+	height: 55vh;
+	min-height: 320px;
+	overflow: hidden;
+
+	&__img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center 30%;
+		display: block;
+	}
+
+	&__quote {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(
+			to bottom,
+			rgba(44, 36, 22, 0.08) 0%,
+			rgba(44, 36, 22, 0.42) 100%
+		);
+
+		p {
+			font-family: "apparat-light", sans-serif;
+			font-size: 1.5rem;
+			font-weight: 300;
+			color: #F7F3EE;
+			text-align: center;
+			max-width: 36ch;
+			line-height: 1.5;
+			letter-spacing: -0.01em;
+			padding: 0 24px;
+			margin: 0;
+			text-shadow: 0 2px 20px rgba(14, 10, 6, 0.65);
+
+			@include respond-to('small-mx') {
+				font-size: 1.15rem;
 			}
 		}
 	}
@@ -750,10 +895,13 @@ const b = import.meta.env.BASE_URL;
 				<a href={`${b}education/`} class="hero__cta hero__cta--filled">Our Programs</a>
 			</div>
 		</div>
+		<a href="#upcoming" class="hero__scroll" aria-label="Scroll down">
+			<i class="iconoir-nav-arrow-down"></i>
+		</a>
 	</section>
 
 	<!-- Upcoming projects -->
-	<div class="upcoming fade-up">
+	<div id="upcoming" class="upcoming fade-up">
 		<div class="upcoming__label">Upcoming Field Research</div>
 		<div class="upcoming__projects">
 			<div class="upcoming__project">
@@ -846,6 +994,14 @@ const b = import.meta.env.BASE_URL;
 			</div>
 		</div>
 	</section>
+	<!-- Photo Break -->
+	<section class="photo-break">
+		<Image src={photoBreak} alt="Collared Lizard" class="photo-break__img" />
+		<div class="photo-break__quote">
+			<p>Every desert holds a story — we help people read it.</p>
+		</div>
+	</section>
+
 	<!-- Where We Work -->
 	<section class="field-sites fade-up">
 		<div class="pure-g center">
@@ -853,6 +1009,52 @@ const b = import.meta.env.BASE_URL;
 				<div class="field-sites__heading">
 					<h2>Where We Work</h2>
 					<p>Field sites spanning four continents, from the Gobi to the Chihuahuan Desert.</p>
+				</div>
+				<div class="field-sites__photos">
+					<div class="field-sites__photo-item">
+						<Image src={siteChihuahua} alt="Chihuahuan Desert, Colorado" width={400} />
+						<div class="field-sites__photo-item__label">Chihuahuan Desert</div>
+					</div>
+					<div class="field-sites__photo-item">
+						<Image src={siteGreatBasin} alt="Great Basin Desert, Oregon" width={400} loading="lazy" />
+						<div class="field-sites__photo-item__label">Great Basin Desert</div>
+					</div>
+					<div class="field-sites__photo-item">
+						<Image src={siteChiricahua} alt="Chiricahua Mountains, Arizona" width={400} loading="lazy" />
+						<div class="field-sites__photo-item__label">Chiricahua Mountains</div>
+					</div>
+					<div class="field-sites__photo-item">
+						<Image src={siteWichita} alt="Wichita Mountains, Oklahoma" width={400} loading="lazy" />
+						<div class="field-sites__photo-item__label">Wichita Mountains</div>
+					</div>
+					<div class="field-sites__photo-item">
+						<Image src={siteKinoBay} alt="Kino Bay, Mexico" width={400} loading="lazy" />
+						<div class="field-sites__photo-item__label">Kino Bay, Mexico</div>
+					</div>
+					<div class="field-sites__photo-item">
+						<Image src={siteSierraLaLaguna} alt="Sierra La Laguna, Baja" width={400} loading="lazy" />
+						<div class="field-sites__photo-item__label">Sierra La Laguna</div>
+					</div>
+					<div class="field-sites__photo-item">
+						<Image src={siteNamib} alt="Namib Desert, Namibia" width={400} loading="lazy" />
+						<div class="field-sites__photo-item__label">Namib Desert</div>
+					</div>
+					<div class="field-sites__photo-item">
+						<Image src={siteKalahari} alt="Kalahari, Botswana" width={400} loading="lazy" />
+						<div class="field-sites__photo-item__label">Kalahari Desert</div>
+					</div>
+					<div class="field-sites__photo-item">
+						<Image src={siteLittleScrub} alt="Little Scrub Island, Anguilla" width={400} loading="lazy" />
+						<div class="field-sites__photo-item__label">Little Scrub Island</div>
+					</div>
+					<div class="field-sites__photo-item">
+						<Image src={siteAtacama} alt="Atacama Desert, Chile" width={400} loading="lazy" />
+						<div class="field-sites__photo-item__label">Atacama Desert</div>
+					</div>
+					<div class="field-sites__photo-item">
+						<Image src={siteGobi} alt="Gobi Desert, Mongolia" width={400} loading="lazy" />
+						<div class="field-sites__photo-item__label">Gobi Desert</div>
+					</div>
 				</div>
 				<div class="pure-g">
 					<div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-4">
