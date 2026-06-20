@@ -47,8 +47,8 @@ const b = import.meta.env.BASE_URL;
 	height: 100svh;
 	min-height: 580px;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	align-items: flex-end;
+	justify-content: flex-start;
 	overflow: hidden;
 
 	@include respond-to('small-mx') {
@@ -71,8 +71,9 @@ const b = import.meta.env.BASE_URL;
 		inset: 0;
 		background: linear-gradient(
 			to bottom,
-			rgba(44, 36, 22, 0.20) 0%,
-			rgba(44, 36, 22, 0.48) 100%
+			rgba(14, 10, 6, 0.10) 0%,
+			rgba(14, 10, 6, 0.20) 40%,
+			rgba(14, 10, 6, 0.65) 100%
 		);
 		z-index: 1;
 	}
@@ -80,11 +81,10 @@ const b = import.meta.env.BASE_URL;
 	&__scroll {
 		position: absolute;
 		bottom: 28px;
-		left: 50%;
-		transform: translateX(-50%);
+		right: 48px;
 		z-index: 2;
-		color: rgba(247, 243, 238, 0.55);
-		font-size: 26px;
+		color: rgba(247, 243, 238, 0.45);
+		font-size: 22px;
 		text-decoration: none;
 		animation: scrollPulse 2.2s ease-in-out infinite;
 		line-height: 1;
@@ -98,62 +98,53 @@ const b = import.meta.env.BASE_URL;
 	&__overlay {
 		position: relative;
 		z-index: 2;
-		padding: 72px 56px;
-		max-width: 780px;
-		text-align: center;
+		padding: 0 72px 72px;
+		max-width: 900px;
+		text-align: left;
 
 		@include respond-to('small-mx') {
-			padding: 40px 24px;
+			padding: 0 24px 48px;
 		}
 	}
 
 	&__tagline {
 		font-family: "indivisible", sans-serif;
-		font-size: 11px;
+		font-size: 10px;
 		text-transform: uppercase;
-		letter-spacing: 0.18em;
-		color: rgba(247, 243, 238, 0.72);
-		margin-bottom: 18px;
+		letter-spacing: 0.2em;
+		color: rgba(247, 243, 238, 0.6);
+		margin-bottom: 20px;
 		animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
-		text-shadow: 0 1px 8px rgba(14, 10, 6, 0.55);
 	}
 
 	&__title {
 		font-family: "apparat-light", sans-serif;
 		font-weight: 300;
 		color: #F7F3EE;
-		font-size: 4.5rem;
-		line-height: 1.1;
+		font-size: clamp(3.2rem, 7vw, 6.4rem);
+		line-height: 1.05;
 		margin-bottom: 28px;
-		letter-spacing: -0.03em;
+		letter-spacing: -0.035em;
 		animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.22s both;
-		text-shadow: 0 2px 24px rgba(14, 10, 6, 0.5);
-
-		@include respond-to('small-mx') {
-			font-size: 2.4rem;
-		}
+		text-shadow: 0 2px 32px rgba(14, 10, 6, 0.4);
 	}
 
 	&__mission {
-		color: rgba(247, 243, 238, 0.92);
-		font-size: 1.05rem;
+		color: rgba(247, 243, 238, 0.82);
+		font-size: 1rem;
 		line-height: 1.8;
 		margin-bottom: 40px;
-		max-width: 54ch;
-		margin-left: auto;
-		margin-right: auto;
+		max-width: 52ch;
 		animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.34s both;
-		text-shadow: 0 1px 12px rgba(14, 10, 6, 0.6);
 
 		@include respond-to('small-mx') {
-			font-size: 0.95rem;
+			font-size: 0.93rem;
 		}
 	}
 
 	&__ctas {
 		display: flex;
-		gap: 14px;
-		justify-content: center;
+		gap: 12px;
 		flex-wrap: wrap;
 		animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.46s both;
 	}
@@ -162,28 +153,28 @@ const b = import.meta.env.BASE_URL;
 		display: inline-block;
 		background: transparent;
 		color: #F7F3EE;
-		border: 1px solid rgba(247, 243, 238, 0.6);
+		border: 1px solid rgba(247, 243, 238, 0.5);
 		padding: 13px 36px;
 		font-family: "indivisible", sans-serif;
-		font-size: 11px;
+		font-size: 10px;
 		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-shadow: 0 1px 8px rgba(14, 10, 6, 0.5);
-		transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+		letter-spacing: 0.12em;
+		transition: background 0.25s ease, border-color 0.25s ease;
 
 		&:hover {
-			background: rgba(247, 243, 238, 0.18);
-			border-color: rgba(247, 243, 238, 0.9);
+			background: rgba(247, 243, 238, 0.15);
+			border-color: rgba(247, 243, 238, 0.85);
 			color: #F7F3EE;
 		}
 
 		&--filled {
-			background: rgba(247, 243, 238, 0.15);
-			border-color: rgba(247, 243, 238, 0.7);
+			background: $green-dark;
+			border-color: $green-dark;
+			color: $text-on-green;
 
 			&:hover {
-				background: rgba(247, 243, 238, 0.28);
-				border-color: #F7F3EE;
+				background: $green-mid;
+				border-color: $green-mid;
 			}
 		}
 	}
@@ -194,47 +185,56 @@ const b = import.meta.env.BASE_URL;
 // ─────────────────────────────────────────────
 
 .upcoming {
-	background: $green-dark;
-	padding: 28px 24px;
-	text-align: center;
+	background: $surface;
+	padding: 26px 48px;
+	border-bottom: 1px solid $border-subtle;
+	display: flex;
+	align-items: center;
+	gap: 40px;
+
+	@include respond-to('small-mx') {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 16px;
+		padding: 24px;
+	}
 
 	&__label {
 		font-family: "indivisible", sans-serif;
-		font-size: 10px;
+		font-size: 9px;
 		text-transform: uppercase;
-		letter-spacing: 0.16em;
-		color: rgba(247, 243, 238, 0.45);
-		margin-bottom: 14px;
+		letter-spacing: 0.2em;
+		color: $earth-brown;
+		white-space: nowrap;
+		flex-shrink: 0;
 	}
 
 	&__projects {
 		display: flex;
-		justify-content: center;
-		gap: 56px;
+		gap: 48px;
 		flex-wrap: wrap;
 
 		@include respond-to('small-mx') {
-			gap: 20px;
+			gap: 16px;
 			flex-direction: column;
-			align-items: center;
 		}
 	}
 
 	&__project {
 		strong {
 			display: block;
-			font-size: 0.88rem;
-			color: $text-on-green;
+			font-size: 0.85rem;
+			color: $font-dark;
 			font-weight: 300;
-			margin-bottom: 3px;
+			margin-bottom: 2px;
 		}
 
 		span {
-			font-size: 0.72rem;
-			color: rgba(247, 243, 238, 0.48);
+			font-size: 0.7rem;
+			color: $font-light;
 			font-family: "indivisible", sans-serif;
 			text-transform: uppercase;
-			letter-spacing: 0.08em;
+			letter-spacing: 0.1em;
 		}
 	}
 }
@@ -245,99 +245,110 @@ const b = import.meta.env.BASE_URL;
 // ─────────────────────────────────────────────
 
 .pillars {
-	padding: 88px 24px;
+	padding: 96px 48px;
 	background: $primary;
 
-	.pillars__heading {
-		text-align: center;
+	@include respond-to('small-mx') {
+		padding: 64px 24px;
+	}
+
+	&__header {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 64px;
+		align-items: end;
 		margin-bottom: 52px;
+		padding-bottom: 40px;
+		border-bottom: 1px solid $border-subtle;
+
+		@media (max-width: 768px) {
+			grid-template-columns: 1fr;
+			gap: 20px;
+		}
 
 		h2 {
-			font-size: 1.7rem;
-			margin-bottom: 10px;
+			font-size: clamp(1.8rem, 3.5vw, 3rem);
+			letter-spacing: -0.03em;
+			line-height: 1.15;
+			margin-bottom: 0;
 		}
 
 		p {
 			color: $font-mid;
 			font-size: 0.95rem;
-			max-width: 46ch;
-			margin: 0 auto;
+			line-height: 1.8;
+			margin: 0;
 		}
 	}
 
-	// Override Pure's inline-block so cards stretch to equal height
-	> .pure-g > .pure-u-1 > .pure-g {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: stretch;
+	&__grid {
+		display: grid;
+		grid-template-columns: 2fr 1.5fr 1.5fr;
+		gap: 16px;
 
-		> [class*="pure-u-"] {
-			display: flex;
-			flex-direction: column;
+		@media (max-width: 900px) {
+			grid-template-columns: 1fr;
 		}
 	}
 }
 
 .pillar-card {
-	padding: 40px 28px;
+	padding: 48px 40px;
 	border: 1px solid $border-subtle;
-	margin: 8px;
 	background: $secondary;
-	text-align: center;
 	display: flex;
 	flex-direction: column;
-	flex: 1;
-	transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-	            box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-	            border-color 0.25s ease;
+	position: relative;
+	overflow: hidden;
 
-	@include respond-to('small-mx') {
-		margin: 8px 0;
+	&::before {
+		content: attr(data-num);
+		position: absolute;
+		top: -16px;
+		right: -6px;
+		font-family: "apparat-light", sans-serif;
+		font-size: 9rem;
+		font-weight: 300;
+		color: rgba(35, 61, 37, 0.07);
+		line-height: 1;
+		pointer-events: none;
+		letter-spacing: -0.04em;
 	}
 
-	&:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 16px 40px rgba(44, 36, 22, 0.09);
-		border-color: $green-light;
-	}
-
-	&__icon {
-		font-size: 48px;
-		color: $green-light;
-		display: block;
+	&__eyebrow {
+		font-family: "indivisible", sans-serif;
+		font-size: 9px;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: $earth-brown;
 		margin-bottom: 20px;
-		transition: color 0.2s ease;
-	}
-
-	&:hover &__icon {
-		color: $green-mid;
 	}
 
 	h3 {
-		font-size: 1.1rem;
-		margin-bottom: 12px;
+		font-size: 1.2rem;
+		margin-bottom: 14px;
 		color: $green-dark;
 	}
 
 	p {
-		font-size: 0.88rem;
-		line-height: 1.75;
+		font-size: 0.9rem;
+		line-height: 1.8;
 		color: $font-mid;
-		margin-bottom: 24px;
 		flex: 1;
+		margin-bottom: 28px;
 	}
 
 	&__link {
 		font-family: "indivisible", sans-serif;
-		font-size: 11px;
+		font-size: 10px;
 		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: $green-dark;
+		letter-spacing: 0.14em;
+		color: $font-mid;
 		text-decoration: none;
-		border-bottom: 1px solid $green-light;
-		padding-bottom: 2px;
+		border-bottom: 1px solid $border-subtle;
+		padding-bottom: 3px;
+		align-self: flex-start;
 		transition: color 0.2s ease, border-color 0.2s ease;
-		align-self: center;
 
 		&:hover {
 			color: $earth-brown;
@@ -371,7 +382,7 @@ const b = import.meta.env.BASE_URL;
 
 		img {
 			width: 100%;
-			height: 420px;
+			height: 480px;
 			object-fit: cover;
 			object-position: center;
 			display: block;
@@ -535,21 +546,22 @@ const b = import.meta.env.BASE_URL;
 // ─────────────────────────────────────────────
 
 .field-sites {
-	background: $green-dark;
+	background: $primary;
 	padding: 88px 24px;
+	border-top: 1px solid $border-subtle;
 
 	&__heading {
 		text-align: center;
-		margin-bottom: 60px;
+		margin-bottom: 56px;
 
 		h2 {
-			color: $text-on-green;
-			font-size: 1.7rem;
+			color: $green-dark;
+			font-size: 1.9rem;
 			margin-bottom: 10px;
 		}
 
 		p {
-			color: rgba(247, 243, 238, 0.55);
+			color: $font-mid;
 			font-size: 0.92rem;
 			max-width: 44ch;
 			margin: 0 auto;
@@ -558,20 +570,20 @@ const b = import.meta.env.BASE_URL;
 
 	&__photos {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		grid-template-columns: repeat(11, 1fr);
 		gap: 3px;
 		margin-bottom: 56px;
+		overflow-x: auto;
 
 		@include respond-to('small-mx') {
-			overflow-x: auto;
-			grid-template-columns: repeat(11, minmax(160px, 1fr));
+			grid-template-columns: repeat(11, minmax(130px, 1fr));
 			margin-bottom: 40px;
 		}
 	}
 
 	&__photo-item {
 		position: relative;
-		height: 200px;
+		height: 240px;
 		overflow: hidden;
 
 		img {
@@ -593,7 +605,7 @@ const b = import.meta.env.BASE_URL;
 			display: flex;
 			align-items: flex-end;
 			padding: 12px 14px;
-			background: linear-gradient(to top, rgba(35, 61, 37, 0.75) 0%, transparent 60%);
+			background: linear-gradient(to top, rgba(14, 10, 6, 0.7) 0%, transparent 60%);
 			opacity: 0;
 			transition: opacity 0.3s ease;
 			font-family: "indivisible", sans-serif;
@@ -622,11 +634,11 @@ const b = import.meta.env.BASE_URL;
 		font-family: "indivisible", sans-serif;
 		font-size: 9px;
 		text-transform: uppercase;
-		letter-spacing: 0.14em;
-		color: rgba(247, 243, 238, 0.35);
+		letter-spacing: 0.16em;
+		color: $earth-brown;
 		margin-bottom: 16px;
 		padding-bottom: 12px;
-		border-bottom: 1px solid rgba(247, 243, 238, 0.1);
+		border-bottom: 1px solid $border-subtle;
 	}
 
 	&__sites {
@@ -636,27 +648,20 @@ const b = import.meta.env.BASE_URL;
 
 		li {
 			font-size: 0.87rem;
-			color: rgba(247, 243, 238, 0.82);
-			padding: 7px 0;
+			color: $font-mid;
+			padding: 6px 0;
 			display: flex;
 			align-items: baseline;
 			gap: 10px;
 			font-family: "apparat-light", sans-serif;
 			line-height: 1.4;
+			border-bottom: 1px solid $border-subtle;
 
-			&::before {
-				content: '';
-				width: 4px;
-				height: 4px;
-				border-radius: 50%;
-				background: $green-light;
-				flex-shrink: 0;
-				margin-top: 6px;
-			}
+			&:last-child { border-bottom: none; }
 
 			em {
 				font-style: normal;
-				color: rgba(247, 243, 238, 0.38);
+				color: $earth-brown;
 				font-family: "indivisible", sans-serif;
 				font-size: 9px;
 				text-transform: uppercase;
@@ -721,68 +726,42 @@ const b = import.meta.env.BASE_URL;
 // ─────────────────────────────────────────────
 
 .netp-callout {
-	background: $primary;
+	background: $surface;
 	border-top: 1px solid $border-subtle;
-	padding: 72px 24px;
+	border-bottom: 1px solid $border-subtle;
+	padding: 64px 48px;
 
-	&__inner {
-		display: flex;
-		align-items: center;
-		gap: 64px;
-
-		@media (max-width: 768px) {
-			flex-direction: column;
-			gap: 36px;
-		}
+	@include respond-to('small-mx') {
+		padding: 48px 24px;
 	}
 
-	&__stat {
-		flex-shrink: 0;
-		text-align: center;
-		border: 1px solid $border-subtle;
-		padding: 36px 40px;
-		background: $secondary;
+	&__inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 80px;
+		align-items: center;
 
-		strong {
-			display: block;
-			font-family: "apparat-light", sans-serif;
-			font-size: 3.6rem;
-			font-weight: 300;
-			color: $green-dark;
-			line-height: 1;
-			margin-bottom: 8px;
-			letter-spacing: -0.02em;
-		}
-
-		span {
-			font-family: "indivisible", sans-serif;
-			font-size: 10px;
-			text-transform: uppercase;
-			letter-spacing: 0.12em;
-			color: $font-light;
-			line-height: 1.6;
-			display: block;
-			max-width: 14ch;
-			margin: 0 auto;
+		@media (max-width: 768px) {
+			grid-template-columns: 1fr;
+			gap: 32px;
 		}
 	}
 
 	&__content {
-		flex: 1;
-
 		.netp-callout__label {
 			font-family: "indivisible", sans-serif;
-			font-size: 10px;
+			font-size: 9px;
 			text-transform: uppercase;
-			letter-spacing: 0.14em;
-			color: $green-mid;
-			margin-bottom: 12px;
+			letter-spacing: 0.2em;
+			color: $earth-brown;
+			margin-bottom: 16px;
 		}
 
 		h2 {
-			font-size: 1.7rem;
+			font-size: clamp(1.6rem, 2.8vw, 2.4rem);
 			margin-bottom: 16px;
 			color: $green-dark;
+			letter-spacing: -0.02em;
 		}
 
 		p {
@@ -790,33 +769,68 @@ const b = import.meta.env.BASE_URL;
 			line-height: 1.8;
 			color: $font-mid;
 			margin-bottom: 28px;
-			max-width: 52ch;
+			max-width: 48ch;
 		}
 
 		a {
 			font-family: "indivisible", sans-serif;
-			font-size: 11px;
+			font-size: 10px;
 			text-transform: uppercase;
-			letter-spacing: 0.09em;
-			color: $green-dark;
-			position: relative;
+			letter-spacing: 0.14em;
+			color: $font-mid;
+			text-decoration: none;
+			border-bottom: 1px solid $border-subtle;
 			padding-bottom: 3px;
-
-			&::after {
-				content: '';
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-				height: 1px;
-				background: $green-light;
-				transition: background 0.2s ease;
-			}
+			transition: color 0.2s, border-color 0.2s;
 
 			&:hover {
 				color: $earth-brown;
-				&::after { background: $earth-warm; }
+				border-color: $earth-warm;
 			}
+		}
+	}
+
+	&__visual {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2px;
+
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
+
+	&__stat {
+		background: $secondary;
+		border: 1px solid $border-subtle;
+		padding: 32px 28px;
+
+		strong {
+			display: block;
+			font-family: "apparat-light", sans-serif;
+			font-size: 3rem;
+			font-weight: 300;
+			color: $green-dark;
+			line-height: 1;
+			margin-bottom: 6px;
+			letter-spacing: -0.03em;
+		}
+
+		span {
+			font-family: "indivisible", sans-serif;
+			font-size: 9px;
+			text-transform: uppercase;
+			letter-spacing: 0.14em;
+			color: $font-light;
+			line-height: 1.6;
+			display: block;
+		}
+
+		&--accent {
+			background: $green-dark;
+
+			strong { color: $text-on-green; }
+			span { color: rgba(247,243,238,0.5); }
 		}
 	}
 }
@@ -883,16 +897,14 @@ const b = import.meta.env.BASE_URL;
 	<section class="hero">
 		<Image src={mainBanner} alt="Erell Institute field research in the Chihuahuan Desert" class="hero__img" />
 		<div class="hero__overlay">
-			<div class="hero__tagline">Erell Institute · Since 2017</div>
+			<div class="hero__tagline">Erell Institute &middot; Est. 2017 &middot; Behavioral Ecology</div>
 			<h1 class="hero__title">Education Through Research</h1>
 			<p class="hero__mission">
-				We aim to develop the curiosity and creativity of the next generation of scientists
-				in behavioral ecology. To do this we organize research experiences that enable
-				people from all backgrounds to take part in the process of science.
+				We develop the curiosity and creativity of the next generation of field scientists — through research experiences that welcome people from all backgrounds into the process of science.
 			</p>
 			<div class="hero__ctas">
-				<a href={`${b}about/`} class="hero__cta">Our Mission</a>
 				<a href={`${b}education/`} class="hero__cta hero__cta--filled">Our Programs</a>
+				<a href={`${b}about/`} class="hero__cta">Our Mission</a>
 			</div>
 		</div>
 		<a href="#upcoming" class="hero__scroll" aria-label="Scroll down">
@@ -917,61 +929,65 @@ const b = import.meta.env.BASE_URL;
 
 	<!-- Pillar cards -->
 	<section class="pillars">
-		<div class="pure-g center">
-			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-4-5 pure-u-xxl-3-5">
-				<div class="pillars__heading fade-up">
-					<h2>What We Do</h2>
-					<p>Each experience brings a team of diverse researchers together to develop a question, work together to collect and analyze data that will answer their question, and present their answers to the scientific community as well as the general public.</p>
-				</div>
-				<div class="pure-g">
-					<div class="pure-u-1 pure-u-md-1-3">
-						<div class="pillar-card fade-up">
-							<i class="iconoir-graduation-cap pillar-card__icon"></i>
-							<h3>Education</h3>
-							<p>
-								Using hands on learning in desert ecosystems to teach students how to be a scientist!
-							</p>
-							<a href={`${b}education/`} class="pillar-card__link">Explore programs</a>
-						</div>
-					</div>
-					<div class="pure-u-1 pure-u-md-1-3">
-						<div class="pillar-card fade-up">
-							<i class="iconoir-binocular pillar-card__icon"></i>
-							<h3>Research</h3>
-							<p>
-								Our general research interests fall under two main themes: social systems and movement ecology.
-							</p>
-							<a href={`${b}research/`} class="pillar-card__link">Explore research</a>
-						</div>
-					</div>
-					<div class="pure-u-1 pure-u-md-1-3">
-						<div class="pillar-card fade-up">
-							<i class="iconoir-heart pillar-card__icon"></i>
-							<h3>Support</h3>
-							<p>
-								We are a 501(c)(3) non-profit organization aiming to build a community of scholars pursuing education through ecological research.
-							</p>
-							<a href={`${b}support/`} class="pillar-card__link">Support our work</a>
-						</div>
-					</div>
-				</div>
+		<div class="pillars__header fade-up">
+			<h2>Science is learned by doing it.</h2>
+			<p>Each expedition brings a team of diverse researchers together to develop a question, collect data, and present their findings — to each other, and to the world.</p>
+		</div>
+		<div class="pillars__grid">
+			<div class="pillar-card fade-up" data-num="1">
+				<div class="pillar-card__eyebrow">Program &middot; 01</div>
+				<h3>Education</h3>
+				<p>
+					Hands-on research in desert ecosystems teaches participants what it means to actually be a scientist — not through textbooks, but through live questions, real data, and honest uncertainty.
+				</p>
+				<a href={`${b}education/`} class="pillar-card__link">Explore programs →</a>
+			</div>
+			<div class="pillar-card fade-up" data-num="2">
+				<div class="pillar-card__eyebrow">Program &middot; 02</div>
+				<h3>Research</h3>
+				<p>
+					Our research spans social systems and movement ecology. Every expedition generates publishable data — and every participant contributes to it, regardless of background.
+				</p>
+				<a href={`${b}research/`} class="pillar-card__link">Explore research →</a>
+			</div>
+			<div class="pillar-card fade-up" data-num="3">
+				<div class="pillar-card__eyebrow">Program &middot; 03</div>
+				<h3>Support</h3>
+				<p>
+					We are a 501(c)(3) non-profit. Your support keeps expeditions accessible to researchers from all walks of life.
+				</p>
+				<a href={`${b}support/`} class="pillar-card__link">Support our work →</a>
 			</div>
 		</div>
 	</section>
 
 	<!-- NETP Callout -->
 	<section class="netp-callout">
-		<div class="pure-g center">
-			<div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
-				<div class="netp-callout__inner fade-up">
-					<div class="netp-callout__content">
-						<div class="netp-callout__label">NETP — Naturalist-Ecologist Training Program</div>
-						<h2>Naturalist-Ecologist Training Program</h2>
-						<p>
-							Developing curiosity and creativity in young researchers while they determine their next steps in science.
-						</p>
-						<a href={`${b}education/netp/`}>Learn more about NETP</a>
-					</div>
+		<div class="netp-callout__inner fade-up">
+			<div class="netp-callout__content">
+				<div class="netp-callout__label">NETP — Naturalist-Ecologist Training Program</div>
+				<h2>Training the next generation of field scientists</h2>
+				<p>
+					Developing curiosity and creativity in young researchers while they determine their next steps in science — through real expeditions, real data, and real uncertainty in the field.
+				</p>
+				<a href={`${b}education/netp/`}>Learn more about NETP →</a>
+			</div>
+			<div class="netp-callout__visual">
+				<div class="netp-callout__stat">
+					<strong>2017</strong>
+					<span>Est. field research</span>
+				</div>
+				<div class="netp-callout__stat netp-callout__stat--accent">
+					<strong>340+</strong>
+					<span>Species recorded</span>
+				</div>
+				<div class="netp-callout__stat netp-callout__stat--accent">
+					<strong>4</strong>
+					<span>Continents active</span>
+				</div>
+				<div class="netp-callout__stat">
+					<strong>12+</strong>
+					<span>Expeditions to date</span>
 				</div>
 			</div>
 		</div>
