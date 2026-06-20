@@ -1,4 +1,6 @@
 routes:
+  /:
+    template: index
   /about/:
     data: page.about
     template: page
