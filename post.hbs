@@ -1,0 +1,77 @@
+{{!< default}}
+
+<main class="page-main">
+  <div class="pure-g center">
+    <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+
+      <article class="post-header">
+        {{#if primary_tag}}
+        <div class="post-meta">
+          <a href="{{primary_tag.url}}" class="post-meta__tag">{{primary_tag.name}}</a>
+          <span class="post-meta__sep">&middot;</span>
+          <time class="post-meta__date">{{date published_at format="MMMM D, YYYY"}}</time>
+        </div>
+        {{else}}
+        <div class="post-meta">
+          <time class="post-meta__date">{{date published_at format="MMMM D, YYYY"}}</time>
+        </div>
+        {{/if}}
+
+        <h1 class="post-title">{{title}}</h1>
+
+        {{#if custom_excerpt}}
+        <p class="post-excerpt">{{custom_excerpt}}</p>
+        {{/if}}
+
+        {{#if feature_image}}
+        <figure class="post-feature-image">
+          <img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+          {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+        </figure>
+        {{/if}}
+      </article>
+
+      <div class="post-content">
+        {{content}}
+      </div>
+
+      {{#if tags}}
+      <div class="post-tags">
+        {{#foreach tags}}
+        <a href="{{url}}" class="post-tags__tag">{{name}}</a>
+        {{/foreach}}
+      </div>
+      {{/if}}
+
+    </div>
+  </div>
+</main>
+
+{{#if @blog.posts}}
+<section class="page-main" style="padding-top: 0;">
+  <div class="pure-g center">
+    <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+      <h2 class="section-title">More from the Blog</h2>
+      <div class="post-feed">
+        {{#get "posts" limit="3" filter="id:-{{id}}"}}
+        {{#foreach posts}}
+        <article class="post-card fade-up">
+          {{#if feature_image}}
+          <div class="post-card__img-wrap">
+            <img src="{{feature_image}}" alt="{{title}}" class="post-card__img" loading="lazy" />
+          </div>
+          {{/if}}
+          <div class="post-card__body">
+            <div class="post-card__meta">{{date published_at format="MMM D, YYYY"}}</div>
+            <h3 class="post-card__title">{{title}}</h3>
+            {{#if excerpt}}<p class="post-card__excerpt">{{excerpt}}</p>{{/if}}
+            <a href="{{url}}" class="post-card__link">Read more &rarr;</a>
+          </div>
+        </article>
+        {{/foreach}}
+        {{/get}}
+      </div>
+    </div>
+  </div>
+</section>
+{{/if}}

@@ -1,0 +1,48 @@
+@use './_theme.scss' as *;
+
+.outcome-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+	margin: 24px 0;
+
+	@media (max-width: 550px) { grid-template-columns: 1fr; }
+}
+
+.outcome-item {
+	background: $secondary;
+	border: 1px solid $border-subtle;
+	padding: 20px;
+
+	&__number {
+		font-size: 2rem;
+		color: $green-dark;
+		line-height: 1;
+		margin-bottom: 4px;
+	}
+
+	&__label { font-size: 0.9rem; color: $font-mid; }
+}
+
+.skills-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		padding: 10px 0;
+		border-bottom: 1px solid $border-subtle;
+		color: $font-mid;
+		display: flex;
+		align-items: flex-start;
+		gap: 10px;
+
+		&:last-child { border-bottom: none; }
+
+		&::before {
+			content: "—";
+			color: $green-light;
+			flex-shrink: 0;
+		}
+	}
+}

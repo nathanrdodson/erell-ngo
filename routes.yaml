@@ -1,0 +1,24 @@
+routes:
+  /about/: page: about
+  /contact/: page: contact
+  /support/: page: support
+  /photos/: page: photos
+  /education/: page: education
+  /education/lizard-camp/: page: lizard-camp
+  /education/netp/: page: netp
+  /research/: page: research
+  /research/social-systems/: page: social-systems
+  /research/movement-ecology/: page: movement-ecology
+  /research/italian-wall-lizards/: page: italian-wall-lizards
+  /research/publications/: page: publications
+  /about/meet-the-team/: page: meet-the-team
+  /about/newsletter-archive/: page: newsletter-archive
+
+collections:
+  /blog/:
+    permalink: /blog/{slug}/
+    template: post
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

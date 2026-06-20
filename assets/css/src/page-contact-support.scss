@@ -1,0 +1,93 @@
+@use './_theme.scss' as *;
+
+// ── Contact ───────────────────────────────────────────────────────
+
+.contact-block {
+	border: 1px solid $border-subtle;
+	padding: 32px;
+	margin-bottom: 24px;
+	background: $secondary;
+
+	h2 { font-size: 1.1rem; margin-bottom: 12px; }
+
+	p {
+		margin-bottom: 8px;
+		font-size: 0.95rem;
+
+		&:last-child { margin-bottom: 0; }
+	}
+
+	a { color: $green-dark; font-weight: 400; }
+
+	&__label {
+		font-family: "indivisible", sans-serif;
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: $font-light;
+		margin-bottom: 4px;
+	}
+}
+
+// ── Support ───────────────────────────────────────────────────────
+
+.support-block {
+	border: 1px solid $border-subtle;
+	padding: 32px;
+	margin-bottom: 24px;
+	background: $secondary;
+
+	h2 { font-size: 1.3rem; margin-bottom: 12px; }
+}
+
+.donate-cta {
+	display: inline-block;
+	background: $green-dark;
+	color: $text-on-green;
+	padding: 14px 36px;
+	font-family: "indivisible", sans-serif;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	margin-top: 16px;
+	text-decoration: none;
+	transition: background 0.15s ease;
+
+	&:hover {
+		background: $green-mid;
+		color: $text-on-green;
+	}
+}
+
+.paypal-wrap {
+	margin: 24px auto;
+	max-width: 400px;
+}
+
+.tax-note {
+	font-size: 0.85rem;
+	color: $font-light;
+	margin-top: 8px;
+}
+
+.involvement-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		padding: 10px 0;
+		border-bottom: 1px solid $border-subtle;
+		color: $font-mid;
+		display: flex;
+		gap: 10px;
+
+		&:last-child { border-bottom: none; }
+
+		&::before {
+			content: "—";
+			color: $green-light;
+			flex-shrink: 0;
+		}
+	}
+}

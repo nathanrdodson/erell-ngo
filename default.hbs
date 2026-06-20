@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{meta_title}}</title>
+  <meta name="description" content="{{meta_description}}" />
+  <link rel="canonical" href="{{canonical_url}}" />
+
+  <!-- Pure.css grid system -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://use.typekit.net/yhr4fyr.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css"/>
+
+  <!-- Theme stylesheet -->
+  <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+
+  {{ghost_head}}
+</head>
+<body class="{{body_class}}">
+
+  {{> navigation}}
+
+  {{{body}}}
+
+  {{> footer}}
+
+  <script src="{{asset "js/navigation.js"}}"></script>
+  <script src="{{asset "js/main.js"}}"></script>
+
+  {{ghost_foot}}
+</body>
+</html>

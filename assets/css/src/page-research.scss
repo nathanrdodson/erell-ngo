@@ -1,0 +1,47 @@
+@use './_theme.scss' as *;
+
+.research-card {
+	border: 1px solid $border-subtle;
+	border-left: 3px solid $green-light;
+	padding: 32px;
+	margin-bottom: 20px;
+	background: $secondary;
+	transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+	            box-shadow 0.22s ease,
+	            border-color 0.22s ease;
+
+	&:hover {
+		transform: translateX(4px);
+		box-shadow: 0 6px 24px rgba(44, 36, 22, 0.07);
+		border-left-color: $green-mid;
+	}
+
+	h2 { font-size: 1.25rem; margin-bottom: 10px; }
+	p { margin-bottom: 20px; font-size: 0.95rem; }
+
+	a.learn-more {
+		font-family: "indivisible", sans-serif;
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $green-dark;
+		position: relative;
+		padding-bottom: 3px;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background: $green-light;
+			transition: background 0.2s ease;
+		}
+
+		&:hover {
+			color: $earth-brown;
+			&::after { background: $earth-warm; }
+		}
+	}
+}

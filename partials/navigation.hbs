@@ -1,0 +1,94 @@
+<nav id="site-nav">
+
+  <!-- Fixed donate button -->
+  <button id="global__donate" onclick="window.location='/support/'">Donate</button>
+
+  <div class="nav__inner">
+
+    <!-- Left: social icons + main nav -->
+    <div class="nav__left">
+      <div class="nav__social">
+        <a href="https://www.facebook.com/erellinstitute" aria-label="Facebook" target="_blank" rel="noopener">
+          <i class="iconoir-facebook-tag"></i>
+        </a>
+        <a href="https://www.instagram.com/erellinstitute" aria-label="Instagram" target="_blank" rel="noopener">
+          <i class="iconoir-instagram"></i>
+        </a>
+        <a href="https://www.researchgate.net" aria-label="ResearchGate" target="_blank" rel="noopener">
+          <i class="iconoir-brain-research"></i>
+        </a>
+      </div>
+      <div class="nav__links">
+        <div class="nav__dropdown">
+          <a href="/about/">About <i class="iconoir-nav-arrow-down"></i></a>
+          <div class="nav__submenu">
+            <a href="/about/meet-the-team/">Meet the Team</a>
+            <a href="/about/newsletter-archive/">Archive</a>
+          </div>
+        </div>
+        <div class="nav__dropdown">
+          <a href="/education/">Education <i class="iconoir-nav-arrow-down"></i></a>
+          <div class="nav__submenu">
+            <a href="/education/lizard-camp/">Lizard Camp</a>
+            <a href="/education/netp/">NETP</a>
+          </div>
+        </div>
+        <div class="nav__dropdown">
+          <a href="/research/">Research <i class="iconoir-nav-arrow-down"></i></a>
+          <div class="nav__submenu">
+            <a href="/research/social-systems/">Social Systems</a>
+            <a href="/research/movement-ecology/">Movement Ecology</a>
+            <a href="/research/italian-wall-lizards/">Italian Wall Lizards</a>
+            <a href="/research/publications/">Publications</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center: logo -->
+    <a href="/" class="nav__logo">
+      <img src="{{asset "images/logo.svg"}}" alt="Erell Institute" />
+    </a>
+
+    <!-- Right: nav + donate -->
+    <div class="nav__right">
+      <div class="nav__links">
+        <a href="/photos/" class="nav__link">Photo Gallery</a>
+        <a href="/support/" class="nav__link">Support</a>
+        <a href="/contact/" class="nav__link">Contact</a>
+      </div>
+      <a href="/support/" class="nav__donate">Donate</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button class="nav__hamburger" id="nav-toggle" aria-label="Toggle menu">
+      <i class="iconoir-menu" id="nav-icon"></i>
+    </button>
+
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="nav__drawer" id="nav-drawer">
+    <a href="/about/">About</a>
+    <div class="nav__drawer-sub">
+      <a href="/about/meet-the-team/">Meet the Team</a>
+      <a href="/about/newsletter-archive/">Archive</a>
+    </div>
+    <a href="/education/">Education</a>
+    <div class="nav__drawer-sub">
+      <a href="/education/lizard-camp/">Lizard Camp</a>
+      <a href="/education/netp/">NETP</a>
+    </div>
+    <a href="/research/">Research</a>
+    <div class="nav__drawer-sub">
+      <a href="/research/social-systems/">Social Systems</a>
+      <a href="/research/movement-ecology/">Movement Ecology</a>
+      <a href="/research/italian-wall-lizards/">Italian Wall Lizards</a>
+      <a href="/research/publications/">Publications</a>
+    </div>
+    <a href="/photos/">Photo Gallery</a>
+    <a href="/contact/">Contact</a>
+    <a href="/support/" class="nav__drawer-donate">Donate</a>
+  </div>
+
+</nav>

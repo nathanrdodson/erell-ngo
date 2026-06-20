@@ -1,24 +1,22 @@
 {
-  "name": "erell-ngo",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+  "name": "erell-ghost-theme",
+  "description": "Custom Ghost theme for Erell Institute — warm desert design",
+  "version": "1.0.0",
+  "engines": {
+    "ghost": ">=5.0.0"
   },
-  "dependencies": {
-    "@astrojs/react": "^3.6.2",
-    "@nextui-org/react": "^2.4.8",
-    "astro": "^4.3.2",
-    "framer-motion": "^11.11.11",
-    "iconoir": "^7.3.0",
-    "react": "^18.3.1",
-    "tailwind": "^4.0.0"
+  "license": "MIT",
+  "keywords": [
+    "ghost-theme"
+  ],
+  "config": {
+    "posts_per_page": 10,
+    "image_sizes": {}
   },
   "devDependencies": {
     "sass": "^1.70.0"
+  },
+  "scripts": {
+    "build:css": "sass assets/css/src/main.scss assets/css/screen.css --style=compressed --no-source-map"
   }
 }

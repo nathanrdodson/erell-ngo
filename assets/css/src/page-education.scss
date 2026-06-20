@@ -1,0 +1,86 @@
+@use './_theme.scss' as *;
+@use './_mixins.scss' as *;
+
+.programs-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 24px;
+}
+
+.program-card {
+	border: 1px solid $border-subtle;
+	background: $secondary;
+	overflow: hidden;
+	display: grid;
+	grid-template-columns: 280px 1fr;
+	transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+	            box-shadow 0.22s ease,
+	            border-color 0.22s ease;
+
+	@include respond-to('small-mx') {
+		grid-template-columns: 1fr;
+	}
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 36px rgba(44, 36, 22, 0.09);
+		border-color: $green-light;
+	}
+
+	&__photo {
+		width: 100%;
+		height: 100%;
+		min-height: 220px;
+		object-fit: cover;
+		object-position: center;
+		display: block;
+		transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	&:hover &__photo { transform: scale(1.03); }
+
+	&__photo-wrap {
+		overflow: hidden;
+
+		@include respond-to('small-mx') { height: 200px; }
+	}
+
+	&__body {
+		padding: 28px 32px 32px;
+		border-left: 3px solid $green-light;
+
+		@include respond-to('small-mx') {
+			border-left: none;
+			border-top: 3px solid $green-light;
+		}
+	}
+
+	h2 { font-size: 1.25rem; margin-bottom: 10px; }
+	p { margin-bottom: 20px; font-size: 0.95rem; }
+
+	a.learn-more {
+		font-family: "indivisible", sans-serif;
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $green-dark;
+		position: relative;
+		padding-bottom: 3px;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background: $green-light;
+			transition: background 0.2s ease;
+		}
+
+		&:hover {
+			color: $earth-brown;
+			&::after { background: $earth-warm; }
+		}
+	}
+}

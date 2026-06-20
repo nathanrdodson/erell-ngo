@@ -1,0 +1,184 @@
+@use './_theme.scss' as *;
+@use './_mixins.scss' as *;
+
+.mission-block {
+	padding: 80px 0 64px;
+
+	h1 {
+		font-size: clamp(2rem, 5vw, 3rem);
+		line-height: 1.2;
+		color: $green-dark;
+		margin-bottom: 28px;
+	}
+
+	&__lead {
+		font-size: 1.2rem;
+		line-height: 1.85;
+		color: $font-mid;
+		max-width: 58ch;
+		margin-bottom: 0;
+	}
+}
+
+.approach {
+	background: $secondary;
+	padding: 72px 40px;
+
+	@include respond-to('small-mx') {
+		padding: 48px 24px;
+	}
+
+	&__heading {
+		text-align: center;
+		margin-bottom: 48px;
+
+		h2 {
+			font-size: 1.6rem;
+			color: $green-dark;
+			margin-bottom: 10px;
+		}
+
+		p { color: $font-light; font-size: 0.95rem; }
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 24px;
+		max-width: 960px;
+		margin: 0 auto;
+
+		@include respond-to('medium-mx') {
+			grid-template-columns: 1fr;
+			max-width: 560px;
+		}
+	}
+
+	&__card {
+		background: $primary;
+		padding: 32px 28px;
+
+		&__num {
+			font-family: "indivisible", sans-serif;
+			font-size: 11px;
+			text-transform: uppercase;
+			letter-spacing: 0.14em;
+			color: $green-light;
+			margin-bottom: 14px;
+		}
+
+		h3 { font-size: 1rem; color: $green-dark; margin-bottom: 10px; }
+		p { font-size: 0.9rem; line-height: 1.75; color: $font-mid; margin: 0; }
+	}
+}
+
+.values {
+	padding: 72px 40px;
+
+	@include respond-to('small-mx') { padding: 48px 24px; }
+
+	&__heading {
+		margin-bottom: 40px;
+		h2 { font-size: 1.5rem; color: $green-dark; }
+	}
+
+	&__list {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 24px 48px;
+
+		@include respond-to('small-mx') { grid-template-columns: 1fr; }
+	}
+
+	&__item {
+		border-top: 2px solid $green-light;
+		padding-top: 18px;
+
+		h3 {
+			font-size: 0.95rem;
+			color: $green-dark;
+			text-transform: uppercase;
+			letter-spacing: 0.07em;
+			margin-bottom: 8px;
+		}
+
+		p { font-size: 0.9rem; line-height: 1.75; color: $font-mid; margin: 0; }
+	}
+}
+
+.updates {
+	background: $green-dark;
+	padding: 72px 40px;
+
+	@include respond-to('small-mx') { padding: 48px 24px; }
+
+	&__heading {
+		margin-bottom: 40px;
+
+		h2 { font-size: 1.5rem; color: $primary; }
+		p { color: rgba(247, 243, 238, 0.6); font-size: 0.9rem; margin-top: 6px; }
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+		max-width: 960px;
+
+		@include respond-to('medium-mx') {
+			grid-template-columns: 1fr;
+			max-width: 560px;
+		}
+	}
+
+	&__card {
+		background: rgba(247, 243, 238, 0.07);
+		border: 1px solid rgba(247, 243, 238, 0.12);
+		padding: 28px 24px;
+
+		&__tag {
+			font-family: "indivisible", sans-serif;
+			font-size: 9px;
+			text-transform: uppercase;
+			letter-spacing: 0.15em;
+			color: $green-light;
+			margin-bottom: 12px;
+		}
+
+		h3 { font-size: 0.9rem; color: $primary; line-height: 1.5; margin-bottom: 10px; }
+		p { font-size: 0.82rem; line-height: 1.7; color: rgba(247, 243, 238, 0.55); margin: 0; }
+	}
+}
+
+.about-ctas {
+	padding: 64px 40px;
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+
+	@include respond-to('small-mx') {
+		padding: 48px 24px;
+		flex-direction: column;
+	}
+
+	a {
+		font-family: "indivisible", sans-serif;
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		padding: 14px 32px;
+		border: 1px solid $green-dark;
+		color: $green-dark;
+		text-decoration: none;
+		transition: background 0.2s ease, color 0.2s ease;
+
+		&:hover { background: $green-dark; color: $primary; }
+
+		&.filled {
+			background: $green-dark;
+			color: $primary;
+
+			&:hover { background: $green-mid; border-color: $green-mid; }
+		}
+	}
+}

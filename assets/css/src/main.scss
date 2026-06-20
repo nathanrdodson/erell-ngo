@@ -1,0 +1,29 @@
+// ──────────────────────────────────────────────────────────────────
+// Erell Ghost Theme — Master SCSS
+// Imports all component and page-level styles
+// ──────────────────────────────────────────────────────────────────
+
+@use 'global';
+@use 'navigation';
+@use 'donate';
+
+// ── Footer ────────────────────────────────────────────────────────
+// (inline in Astro Footer.astro — extracted here)
+@use 'footer';
+
+// ── Page-specific styles ──────────────────────────────────────────
+@use 'page-index';
+@use 'page-about';
+@use 'page-contact-support';
+@use 'page-photos';
+@use 'page-education';
+@use 'page-lizard-camp';
+@use 'page-netp';
+@use 'page-research';
+@use 'page-social-systems';
+@use 'page-movement-ecology';
+@use 'page-italian-wall-lizards';
+@use 'page-publications';
+@use 'page-meet-the-team';
+@use 'page-newsletter-archive';
+@use 'page-post';

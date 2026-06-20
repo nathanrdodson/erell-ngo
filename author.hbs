@@ -1,0 +1,35 @@
+{{!< default}}
+
+<main class="page-main">
+  <div class="pure-g center">
+    <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+      <header class="page-header">
+        {{#if profile_image}}
+        <img src="{{profile_image}}" alt="{{name}}" class="author-photo" />
+        {{/if}}
+        <h1>{{name}}</h1>
+        {{#if bio}}<p class="page-header__lead">{{bio}}</p>{{/if}}
+      </header>
+
+      <div class="post-feed">
+        {{#foreach posts}}
+        <article class="post-card fade-up">
+          {{#if feature_image}}
+          <div class="post-card__img-wrap">
+            <img src="{{feature_image}}" alt="{{title}}" class="post-card__img" loading="lazy" />
+          </div>
+          {{/if}}
+          <div class="post-card__body">
+            <div class="post-card__meta">{{date published_at format="MMM D, YYYY"}}</div>
+            <h3 class="post-card__title">{{title}}</h3>
+            {{#if excerpt}}<p class="post-card__excerpt">{{excerpt}}</p>{{/if}}
+            <a href="{{url}}" class="post-card__link">Read more &rarr;</a>
+          </div>
+        </article>
+        {{/foreach}}
+      </div>
+
+      {{pagination}}
+    </div>
+  </div>
+</main>

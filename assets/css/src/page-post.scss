@@ -1,0 +1,204 @@
+@use './_theme.scss' as *;
+
+// ── Ghost blog post styles ────────────────────────────────────────
+
+.post-header {
+	margin-bottom: 48px;
+	padding-bottom: 32px;
+	border-bottom: 1px solid $border-subtle;
+}
+
+.post-meta {
+	font-family: "indivisible", sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: $font-light;
+	margin-bottom: 20px;
+}
+
+.post-title {
+	font-size: clamp(1.8rem, 4vw, 2.8rem);
+	color: $green-dark;
+	line-height: 1.2;
+	margin-bottom: 16px;
+}
+
+.post-excerpt {
+	font-size: 1.05rem;
+	color: $font-mid;
+	line-height: 1.8;
+	max-width: 60ch;
+}
+
+.post-feature-image {
+	width: 100%;
+	max-height: 480px;
+	object-fit: cover;
+	display: block;
+	margin-bottom: 48px;
+}
+
+.post-content {
+	font-size: 1rem;
+	line-height: 1.85;
+	color: $font-mid;
+	max-width: 72ch;
+
+	h2 { font-size: 1.5rem; margin-top: 48px; margin-bottom: 16px; }
+	h3 { font-size: 1.2rem; margin-top: 36px; margin-bottom: 12px; }
+	h4 { font-size: 1rem; margin-top: 28px; margin-bottom: 10px; }
+
+	p { margin-bottom: 20px; }
+
+	ul, ol {
+		padding-left: 1.5em;
+		margin-bottom: 20px;
+
+		li { margin-bottom: 6px; }
+	}
+
+	blockquote {
+		border-left: 3px solid $green-light;
+		padding: 16px 24px;
+		margin: 32px 0;
+		background: $secondary;
+		font-style: italic;
+		color: $font-mid;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin: 24px 0;
+	}
+
+	a {
+		color: $green-dark;
+		border-bottom: 1px solid $green-light;
+		transition: color 0.2s, border-color 0.2s;
+		&:hover { color: $earth-brown; border-color: $earth-warm; }
+	}
+
+	code {
+		background: $surface;
+		padding: 2px 6px;
+		font-size: 0.88em;
+		font-family: monospace;
+	}
+
+	pre {
+		background: $surface;
+		padding: 20px;
+		overflow-x: auto;
+		margin-bottom: 24px;
+
+		code { background: none; padding: 0; }
+	}
+
+	hr {
+		border: none;
+		border-top: 1px solid $border-subtle;
+		margin: 48px 0;
+	}
+}
+
+.post-tags {
+	margin-top: 48px;
+	padding-top: 24px;
+	border-top: 1px solid $border-subtle;
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.post-tag {
+	font-family: "indivisible", sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: $font-light;
+	border: 1px solid $border-subtle;
+	padding: 4px 12px;
+	text-decoration: none;
+	transition: color 0.2s, border-color 0.2s;
+
+	&:hover { color: $green-dark; border-color: $green-mid; }
+}
+
+// ── Post listing (index) ──────────────────────────────────────────
+
+.post-feed {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 24px;
+	margin-top: 40px;
+}
+
+.post-card {
+	border: 1px solid $border-subtle;
+	background: $secondary;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.22s ease, box-shadow 0.22s ease;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 32px rgba(44, 36, 22, 0.09);
+	}
+
+	&__img {
+		width: 100%;
+		height: 200px;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.5s ease;
+	}
+
+	&:hover &__img { transform: scale(1.03); }
+
+	&__img-wrap { overflow: hidden; }
+
+	&__body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+
+	&__meta {
+		font-family: "indivisible", sans-serif;
+		font-size: 9px;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: $font-light;
+		margin-bottom: 12px;
+	}
+
+	&__title {
+		font-size: 1.1rem;
+		color: $green-dark;
+		margin-bottom: 10px;
+		line-height: 1.35;
+		flex: 1;
+	}
+
+	&__excerpt {
+		font-size: 0.9rem;
+		color: $font-mid;
+		line-height: 1.7;
+		margin-bottom: 20px;
+	}
+
+	&__link {
+		font-family: "indivisible", sans-serif;
+		font-size: 10px;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: $earth-brown;
+		text-decoration: none;
+		align-self: flex-start;
+		padding-bottom: 2px;
+		border-bottom: 1px solid transparent;
+		transition: border-color 0.2s;
+
+		&:hover { border-color: $earth-warm; }
+	}
+}

@@ -1,0 +1,18 @@
+{{!< default}}
+
+<main class="page-main">
+  <div class="pure-g center">
+    <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
+      <header class="page-header">
+        <h1>{{statusCode}}</h1>
+        <p class="page-header__lead">
+          {{#if message}}{{message}}{{else}}Page not found.{{/if}}
+        </p>
+      </header>
+      <p>
+        The page you were looking for doesn't exist.
+        <a href="/">Return to the homepage</a> or use the navigation above.
+      </p>
+    </div>
+  </div>
+</main>
