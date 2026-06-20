@@ -1,18 +1,46 @@
 routes:
-  /about/: page: about
-  /contact/: page: contact
-  /support/: page: support
-  /photos/: page: photos
-  /education/: page: education
-  /education/lizard-camp/: page: lizard-camp
-  /education/netp/: page: netp
-  /research/: page: research
-  /research/social-systems/: page: social-systems
-  /research/movement-ecology/: page: movement-ecology
-  /research/italian-wall-lizards/: page: italian-wall-lizards
-  /research/publications/: page: publications
-  /about/meet-the-team/: page: meet-the-team
-  /about/newsletter-archive/: page: newsletter-archive
+  /about/:
+    data: page.about
+    template: page
+  /contact/:
+    data: page.contact
+    template: page
+  /support/:
+    data: page.support
+    template: page-support
+  /photos/:
+    data: page.photos
+    template: page
+  /education/:
+    data: page.education
+    template: page
+  /education/lizard-camp/:
+    data: page.lizard-camp
+    template: page
+  /education/netp/:
+    data: page.netp
+    template: page
+  /research/:
+    data: page.research
+    template: page
+  /research/social-systems/:
+    data: page.social-systems
+    template: page
+  /research/movement-ecology/:
+    data: page.movement-ecology
+    template: page
+  /research/italian-wall-lizards/:
+    data: page.italian-wall-lizards
+    template: page
+  /research/publications/:
+    data: page.publications
+    template: page
+  /about/meet-the-team/:
+    data: page.meet-the-team
+    template: page
+  /about/newsletter-archive/:
+    data: page.newsletter-archive
+    template: page-newsletter-archive
 
 collections:
   /blog/:
