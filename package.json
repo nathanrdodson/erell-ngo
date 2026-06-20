@@ -5,6 +5,9 @@
   "engines": {
     "ghost": ">=5.0.0"
   },
+  "author": {
+    "email": "nathanrdodson@gmail.com"
+  },
   "license": "MIT",
   "keywords": [
     "ghost-theme"

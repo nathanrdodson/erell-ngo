@@ -3348,3 +3348,13 @@ footer {
 .post-card__link:hover {
   border-color: #D4915C;
 }
+
+/* Koenig card width classes — required by Ghost theme spec */
+.kg-width-wide {
+  margin-left: calc(50% - 50vw + 2rem);
+  margin-right: calc(50% - 50vw + 2rem);
+}
+.kg-width-full {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
