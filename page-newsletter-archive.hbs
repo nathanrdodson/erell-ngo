@@ -5,314 +5,36 @@
     <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
 
       <header class="page-header">
-        <h1>Archive</h1>
-        <p class="page-header__lead">
-          Field updates, research results, program news, and events from Erell Institute.
-        </p>
-        <a href="#presentations" class="jump-link">Jump to Presentations <i class="iconoir-arrow-down"></i></a>
+        <h1>{{title}}</h1>
+        {{#if custom_excerpt}}<p class="page-header__lead">{{custom_excerpt}}</p>{{/if}}
       </header>
 
+      <h2 class="section-title">Newsletters &amp; Field Updates</h2>
+
+      {{#get "posts" filter="tag:newsletter" limit="all"}}
       <div class="archive-feed">
-
-        <h2 class="section-title">Newsletters and Announcements</h2>
-
-        <h3 class="archive-subheading">Newsletter Archive</h3>
-
-        <!-- July 2025 Edition -->
-        <div class="archive-entry fade-up">
-          <div class="archive-entry__eyebrow">July 2025 &middot; Newsletter Edition</div>
-          <h2 class="archive-entry__title">July 2025 Edition</h2>
-          <div class="archive-entry__body">
-            <p>
-              The latest edition covers the Mongolia research expedition, the new SEEDS
-              ecology club chapter in eastern Kansas, a movement ecology workshop, and
-              collaborations in Mexico.
-            </p>
-          </div>
-          <a href="{{asset "pdf/Erell Newsletter 07.2025.pdf"}}" class="archive-entry__pdf" target="_blank" rel="noopener">Read Newsletter</a>
-        </div>
-
-        <!-- Mongolia Research -->
-        <div class="archive-entry archive-entry--img fade-up">
-          <img src="{{asset "images/newsletter-archive/mongolia-research-expedition.jpg"}}" alt="Mongolia research expedition" class="archive-entry__img" />
+        {{#foreach posts}}
+        <article class="archive-entry{{#if feature_image}} archive-entry--img{{/if}} fade-up">
+          {{#if feature_image}}
+          <img src="{{feature_image}}" alt="{{title}}" class="archive-entry__img" />
+          {{/if}}
           <div class="archive-entry__content">
-            <div class="archive-entry__eyebrow">July–August 2024 &middot; Field Research</div>
-            <h2 class="archive-entry__title">Mongolia Research Expedition</h2>
-            <div class="archive-entry__body">
-              <p>
-                Doug, Maria, and two US students collaborated with Bazartseren Boldgiv
-                of the National University of Mongolia in the Gobi Desert. Over three weeks,
-                the team studied movement patterns in adult male, adult female, and juvenile
-                toad-headed agama lizards (<em>Phrynocephalus versicolor</em>) — comparing
-                behavior across demographics in one of the world's most extreme arid environments.
-              </p>
-              <p>
-                The project was published as Utsumi et al. 2025 in <em>Diversity</em>.
-              </p>
-            </div>
+            <div class="archive-entry__eyebrow">{{date published_at format="MMMM YYYY"}}</div>
+            <h2 class="archive-entry__title"><a href="{{url}}">{{title}}</a></h2>
+            {{#if excerpt}}<div class="archive-entry__body"><p>{{excerpt}}</p></div>{{/if}}
+            <a href="{{url}}" class="archive-entry__pdf">Read more &rarr;</a>
           </div>
-        </div>
-
-        <!-- New SEEDS Chapter -->
-        <div class="archive-entry archive-entry--img fade-up">
-          <img src="{{asset "images/newsletter-archive/erell-seeds.png"}}" alt="Erell SEEDS ecology club" class="archive-entry__img" />
-          <div class="archive-entry__content">
-            <div class="archive-entry__eyebrow">October 2024 &middot; Program News</div>
-            <h2 class="archive-entry__title">New Ecology Club Formed</h2>
-            <div class="archive-entry__body">
-              <p>
-                Erell Institute formed a new regional Ecological Society of America SEEDS
-                chapter, recruiting high school, undergraduate, and graduate students from
-                eastern Kansas and western Missouri. The club provides hands-on outdoor
-                activities and introduces students from underrepresented backgrounds to
-                careers in the ecological sciences.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Movement Workshop -->
-        <div class="archive-entry archive-entry--img fade-up">
-          <img src="{{asset "images/newsletter-archive/movement-workshop.jpg"}}" alt="Movement ecology workshop at Baker University Wetlands" class="archive-entry__img" />
-          <div class="archive-entry__content">
-            <div class="archive-entry__eyebrow">2024 &middot; Education</div>
-            <h2 class="archive-entry__title">Movement Ecology Workshop</h2>
-            <div class="archive-entry__body">
-              <p>
-                Erell facilitated a movement ecology workshop at the Baker University
-                Wetlands Discovery Center focused on collaborative research methods and
-                science communication. The workshop brought together students and
-                educators for hands-on field activities.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mexico Collaboration -->
-        <div class="archive-entry fade-up">
-          <div class="archive-entry__eyebrow">May 2024 &middot; Collaboration</div>
-          <h2 class="archive-entry__title">Mexico Collaboration</h2>
-          <div class="archive-entry__body">
-            <p>
-              Doug and Maria visited the Ecology &amp; Behavior Lab in Toluca, Mexico,
-              attending the ribbon-cutting for a newly renovated lab facility and the
-              Master's defense of Ingrid Morales M&eacute;ndez, whose thesis examined the effects
-              of temperature on cognitive performance in <em>Aspidoscelis costatus</em> lizards.
-              The visit included seminars and planning for future collaborative field projects.
-            </p>
-          </div>
-        </div>
-
-        <!-- Mia Phillips PhD -->
-        <div class="archive-entry fade-up">
-          <div class="archive-entry__eyebrow">June 2024 &middot; Congratulations</div>
-          <h2 class="archive-entry__title">Mia Phillips Completes PhD at Dartmouth</h2>
-          <div class="archive-entry__body">
-            <p>
-              Mia Phillips, a member of the Erell Institute Scientific Advisory Board,
-              successfully defended her doctoral dissertation at Dartmouth College.
-              Her PhD research focused on vibrational communication in beetles —
-              a remarkable contribution to our understanding of animal signaling.
-            </p>
-          </div>
-        </div>
-
-        <!-- Chihuahuan / Lizard Camp '25 -->
-        <div class="archive-entry archive-entry--img fade-up">
-          <img src="{{asset "images/newsletter-archive/lizard-camp-chihuahuan-2025.png"}}" alt="Lizard Camp 2025 — Chihuahuan Canyonlands, SW Texas" class="archive-entry__img" />
-          <div class="archive-entry__content">
-            <div class="archive-entry__eyebrow">Summer 2025 &middot; Field Research</div>
-            <h2 class="archive-entry__title">Lizard Camp — Chihuahuan Canyonlands, SW Texas</h2>
-            <div class="archive-entry__body">
-              <p>
-                Lizard Camp 2025 took place in the Chihuahuan Canyonlands of southwest
-                Texas — a training experience for emerging women in science that combines
-                field research with professional mentorship.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tunisian Lizard Camp -->
-        <div class="archive-entry archive-entry--img fade-up">
-          <img src="{{asset "images/newsletter-archive/lizard-camp-tunisia-2023.jpg"}}" alt="Lizard Camp 2023 — Tunisia" class="archive-entry__img" />
-          <div class="archive-entry__content">
-            <div class="archive-entry__eyebrow">2023 &middot; Field Research</div>
-            <h2 class="archive-entry__title">Lizard Camp — Tunisia</h2>
-            <div class="archive-entry__body">
-              <p>
-                Read the full report from Lizard Camp in Tunisia.
-              </p>
-            </div>
-            <a href="https://zenodo.org/records/10144602" class="archive-entry__pdf" target="_blank" rel="noopener">Read the Zine</a>
-          </div>
-        </div>
-
-        <!-- Wall Lizard Publication -->
-        <div class="archive-entry fade-up">
-          <div class="archive-entry__eyebrow">2023 &middot; Publication</div>
-          <h2 class="archive-entry__title">Wall Lizard Task Force Publication</h2>
-          <div class="archive-entry__body">
-            <p>
-              New research from the Wall Lizard Task Force explores competition between
-              invasive Italian Wall Lizards and native Five-lined Skinks in the Lawrence,
-              Kansas area. The study investigates how an introduced species establishes
-              itself within an existing ecological community.
-            </p>
-          </div>
-        </div>
-
-        <!-- Tunisia Talk -->
-        <div class="archive-entry archive-entry--img fade-up">
-          <img src="{{asset "images/newsletter-archive/pres-2023-01-tunisia.jpg"}}" alt="Erell talk in Tunisia flyer" class="archive-entry__img" />
-          <div class="archive-entry__content">
-            <div class="archive-entry__eyebrow">January 2023 &middot; Seminar</div>
-            <h2 class="archive-entry__title">Erell Gives Talk in Tunisia</h2>
-            <div class="archive-entry__body">
-              <p>
-                Doug, Maria, and Makenna presented at a seminar organized in partnership
-                with Harvard's Center for Middle Eastern Studies, sharing Erell Institute's
-                research on lizard ecology and conservation in North African desert ecosystems.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- SEEDS Konza 2023 -->
-        <div class="archive-entry fade-up">
-          <div class="archive-entry__eyebrow">October 2023 &middot; SEEDS Field Trip</div>
-          <h2 class="archive-entry__title">SEEDS National Field Trip — Konza Prairie</h2>
-          <div class="archive-entry__body">
-            <p>
-              Erell Institute members served as mentors during a SEEDS national field
-              trip to Konza Prairie, Kansas. Students from California, Hawaii, Minnesota,
-              Puerto Rico, and the Virgin Islands participated in field ecology activities
-              and research projects, with Erell members guiding mentorship and inquiry.
-            </p>
-          </div>
-        </div>
-
-        <!-- Kaera Thesis -->
-        <div class="archive-entry fade-up">
-          <div class="archive-entry__eyebrow">2022 &middot; Publication</div>
-          <h2 class="archive-entry__title">Kaera's Master's Thesis Published</h2>
-          <div class="archive-entry__body">
-            <p>
-              Kaera Utsumi's master's thesis research on social networks in lizard populations
-              was published during 2022.
-            </p>
-          </div>
-        </div>
-
-        <!-- SEEDS Meetup 2022 -->
-        <div class="archive-entry fade-up">
-          <div class="archive-entry__eyebrow">2022 &middot; SEEDS</div>
-          <h2 class="archive-entry__title">SEEDS Meetup — Colorado</h2>
-          <div class="archive-entry__body">
-            <p>
-              A camping weekend with the Colorado SEEDS chapter took members to Comanche
-              National Grassland, Great Sand Dunes, and TCN Zapata Ranch. The trip was
-              supported by ESA funding and organized by Makenna Orton.
-            </p>
-          </div>
-        </div>
-
-        <h3 class="archive-subheading">Announcement Archive</h3>
-
-        <!-- Recent Presentations -->
-        <div class="archive-entry fade-up" id="presentations">
-          <div class="archive-entry__eyebrow">2023–2024 &middot; Presentations</div>
-          <h2 class="archive-entry__title">Recent Presentations</h2>
-          <div class="talk-grid">
-
-            <div class="talk-card">
-              <div class="talk-card__thumb">
-                <img src="{{asset "images/newsletter-archive/pres-2024-10-colgate.png"}}" alt="Healthy Ways and Dangerous Liaisons flyer" class="talk-card__img" />
-              </div>
-              <div class="talk-card__info">
-                <div class="talk-card__title">Healthy Ways and Dangerous Liaisons: Reptiles, Movement and Connectivity</div>
-                <div class="talk-card__meta">Doug Eifler<br>Colgate University<br>Oct 25, 2024</div>
-              </div>
-            </div>
-
-            <div class="talk-card">
-              <div class="talk-card__thumb">
-                <img src="{{asset "images/newsletter-archive/pres-2024-04-baker.png"}}" alt="Risky business: Decisions in the fear landscape flyer" class="talk-card__img" />
-              </div>
-              <div class="talk-card__info">
-                <div class="talk-card__title">Risky business: Decisions in the fear landscape</div>
-                <div class="talk-card__meta">Doug Eifler<br>Baker University<br>Apr 10, 2024</div>
-              </div>
-            </div>
-
-            <div class="talk-card">
-              <div class="talk-card__thumb">
-                <img src="{{asset "images/newsletter-archive/pres-2024-05-mexico.png"}}" alt="Movement ecology Mexico flyer" class="talk-card__img" />
-              </div>
-              <div class="talk-card__info">
-                <div class="talk-card__title">I like to move it, move it &amp; Movement ecology: lizards and the path to enlightenment</div>
-                <div class="talk-card__meta">Doug &amp; Maria Eifler<br>UAEM Toluca, Mexico<br>May 21–27, 2024</div>
-              </div>
-            </div>
-
-            <div class="talk-card">
-              <div class="talk-card__thumb">
-                <img src="{{asset "images/newsletter-archive/pres-2024-05-movement-ecology.png"}}" alt="Movement Ecology flyer" class="talk-card__img" />
-              </div>
-              <div class="talk-card__info">
-                <div class="talk-card__title">Movement Ecology</div>
-                <div class="talk-card__meta">Maria Eifler<br>Baker Wetlands Discovery Center<br>May 9, 2024</div>
-              </div>
-            </div>
-
-            <div class="talk-card">
-              <div class="talk-card__thumb">
-                <img src="{{asset "images/newsletter-archive/pres-2024-04-reptiles-kansas.png"}}" alt="Reptiles and Amphibians of Kansas flyer" class="talk-card__img" />
-              </div>
-              <div class="talk-card__info">
-                <div class="talk-card__title">Reptiles and Amphibians of Kansas</div>
-                <div class="talk-card__meta">Maria Eifler<br>Baker Wetlands Discovery Center<br>Apr 25, 2024</div>
-              </div>
-            </div>
-
-            <div class="talk-card">
-              <div class="talk-card__thumb">
-                <img src="{{asset "images/newsletter-archive/pres-2023-01-tunisia.jpg"}}" alt="Tunisia seminar flyer" class="talk-card__img" />
-              </div>
-              <div class="talk-card__info">
-                <div class="talk-card__title">Lizard Ecology and Conservation in North African Desert Ecosystems</div>
-                <div class="talk-card__meta">Doug, Maria &amp; Makenna<br>Tunisia / Harvard CMES<br>Jan 2023</div>
-              </div>
-            </div>
-
-            <div class="talk-card">
-              <div class="talk-card__thumb">
-                <div class="talk-card__placeholder">
-                  <i class="iconoir-presentation"></i>
-                </div>
-              </div>
-              <div class="talk-card__info">
-                <div class="talk-card__title">Movement ecology: lizards and the path to enlightenment</div>
-                <div class="talk-card__meta">Doug Eifler<br>Rhodes College, Memphis<br>Oct 9, 2023</div>
-              </div>
-            </div>
-
-            <div class="talk-card">
-              <div class="talk-card__thumb">
-                <div class="talk-card__placeholder">
-                  <i class="iconoir-presentation"></i>
-                </div>
-              </div>
-              <div class="talk-card__info">
-                <div class="talk-card__title">Lizard Tales: Creative Challenges to Life's Solutions</div>
-                <div class="talk-card__meta">Doug Eifler<br>Baker Wetlands Discovery Center<br>Dec 2, 2023</div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
+        </article>
+        {{/foreach}}
       </div>
+      {{/get}}
+
+      {{#if content}}
+      <div class="post-content">
+        {{content}}
+      </div>
+      {{/if}}
+
     </div>
   </div>
 </main>
