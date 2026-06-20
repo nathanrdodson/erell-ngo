@@ -17,6 +17,7 @@
     "sass": "^1.70.0"
   },
   "scripts": {
+    "dev": "node scripts/preview-server.js",
     "build:css": "sass assets/css/src/main.scss assets/css/screen.css --style=compressed --no-source-map"
   }
 }
