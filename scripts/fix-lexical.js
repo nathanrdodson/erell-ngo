@@ -5,10 +5,10 @@
 const crypto = require('crypto');
 const http = require('http');
 
-const KEY_ID = '6a3695594f8a9313dac9be89';
-const KEY_SECRET = '075baf9fbd1be478034d1c2f2dd7a488a1f5b24939914a15af68393ee3901752';
-const HOST = '127.0.0.1';
-const PORT = 2369;
+const [KEY_ID, KEY_SECRET] = (process.env.GHOST_ADMIN_KEY || '').split(':');
+const HOST = process.env.GHOST_HOST || '127.0.0.1';
+const PORT = parseInt(process.env.GHOST_PORT || '2369', 10);
+if (!KEY_ID || !KEY_SECRET) { console.error('Set GHOST_ADMIN_KEY=id:secret'); process.exit(1); }
 
 const SLUGS = [
   'about', 'contact', 'support', 'photos', 'education',
