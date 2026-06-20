@@ -8,14 +8,23 @@
 	box-sizing: border-box;
 }
 
+@font-face {
+	font-family: 'Century Old Style';
+	src: url('../fonts/CenturyOldStyle-Regular.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
 body {
 	margin: 0;
 	background-color: $primary;
-	font-family: "apparat-light", sans-serif;
+	font-family: 'DM Sans', sans-serif;
 	font-weight: 300;
-	font-style: normal;
+	font-size: 16px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	color: $font-dark;
 }
 
 // ─────────────────────────────────────────────
@@ -23,26 +32,27 @@ body {
 // ─────────────────────────────────────────────
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "apparat-light", sans-serif;
-	font-weight: 300;
+	font-family: 'Cormorant Garamond', serif;
+	font-weight: 700;
 	color: $green-dark;
-	line-height: 1.2;
+	line-height: 1.0;
 	margin-top: 0;
-	letter-spacing: -0.02em;
+	letter-spacing: -0.03em;
 }
 
-h1 { font-size: 2.8rem; }
-h2 { font-size: 1.9rem; }
-h3 { font-size: 1.3rem; }
+h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); }
+h2 { font-size: clamp(2rem, 3.5vw, 3.2rem); }
+h3 { font-size: clamp(1.5rem, 2.5vw, 2.2rem); }
 
 p {
 	color: $font-mid;
-	line-height: 1.75;
+	line-height: 1.8;
+	font-weight: 300;
 	margin-top: 0;
 }
 
 a {
-	color: $earth-brown;
+	color: $gold;
 	text-decoration: none;
 	transition: color 0.2s ease;
 
@@ -53,6 +63,67 @@ a {
 
 em {
 	font-style: italic;
+}
+
+// ─────────────────────────────────────────────
+// Shared section eyebrow label
+// ─────────────────────────────────────────────
+
+.section-eyebrow {
+	font-family: 'DM Sans', sans-serif;
+	font-size: 10px;
+	letter-spacing: 4px;
+	text-transform: uppercase;
+	color: $gold;
+	font-weight: 600;
+	display: block;
+	margin-bottom: 16px;
+}
+
+// ─────────────────────────────────────────────
+// Shared button styles
+// ─────────────────────────────────────────────
+
+.btn {
+	display: inline-block;
+	text-decoration: none;
+	font-family: 'DM Sans', sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	border-radius: 8px;
+	transition: background 0.2s ease, opacity 0.2s ease;
+
+	&--dark {
+		background: $green-dark;
+		color: $text-on-dark;
+		padding: 15px 36px;
+
+		&:hover { opacity: 0.85; color: $text-on-dark; }
+	}
+
+	&--gold {
+		background: $gold;
+		color: $text-on-dark;
+		padding: 15px 36px;
+
+		&:hover { opacity: 0.88; color: $text-on-dark; }
+	}
+
+	&--outline-light {
+		border: 1.5px solid rgba(243, 240, 230, 0.25);
+		color: $text-on-dark;
+		padding: 15px 36px;
+
+		&:hover { border-color: rgba(243, 240, 230, 0.55); color: $text-on-dark; }
+	}
+
+	&--outline-gold {
+		border: 1.5px solid rgba(184, 146, 42, 0.5);
+		color: $gold;
+		padding: 13px 28px;
+
+		&:hover { border-color: $gold; color: $gold; }
+	}
 }
 
 // ─────────────────────────────────────────────
@@ -68,7 +139,6 @@ em {
 
 // ─────────────────────────────────────────────
 // Pure CSS xxl breakpoint (≥ 1600px)
-// Pure's responsive grids stop at xl (1280px); these extend the system.
 // ─────────────────────────────────────────────
 
 @media (min-width: 1600px) {
@@ -82,7 +152,7 @@ em {
 }
 
 // ─────────────────────────────────────────────
-// Page structure
+// Page structure (inner pages)
 // ─────────────────────────────────────────────
 
 .page-main {
@@ -105,13 +175,13 @@ em {
 }
 
 // ─────────────────────────────────────────────
-// Section title accent
+// Section title accent (inner pages)
 // ─────────────────────────────────────────────
 
 .section-title {
-	font-family: "indivisible", sans-serif;
+	font-family: 'DM Sans', sans-serif;
 	font-size: 0.7rem;
-	font-weight: 400;
+	font-weight: 500;
 	text-transform: uppercase;
 	letter-spacing: 0.12em;
 	color: $green-mid;
@@ -136,7 +206,6 @@ em {
 	}
 }
 
-// Stagger when siblings
 .fade-up:nth-child(2) { transition-delay: 80ms; }
 .fade-up:nth-child(3) { transition-delay: 160ms; }
 .fade-up:nth-child(4) { transition-delay: 240ms; }

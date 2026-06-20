@@ -2,27 +2,26 @@
 @use './_mixins.scss' as *;
 
 footer {
-	background: $font-dark;
-	color: rgba(247, 243, 238, 0.55);
-	font-family: "indivisible", sans-serif;
+	background: $green-dark;
+	color: rgba(243, 240, 230, 0.4);
 }
 
 .footer-body {
-	padding: 72px 40px 56px;
+	padding: 80px 72px 56px;
 	display: grid;
-	grid-template-columns: 1.6fr 1fr 1fr 1fr;
-	gap: 48px;
-	max-width: 1200px;
-	margin: 0 auto;
+	grid-template-columns: 2fr 1fr 1fr 1fr;
+	gap: 56px;
+	border-bottom: 1px solid rgba(243, 240, 230, 0.08);
 
 	@include respond-to('medium-mx') {
 		grid-template-columns: 1fr 1fr;
 		gap: 40px;
+		padding: 56px 40px 40px;
 	}
 
 	@include respond-to('small-mx') {
 		grid-template-columns: 1fr;
-		padding: 48px 24px 40px;
+		padding: 48px 24px 36px;
 		gap: 36px;
 	}
 }
@@ -30,7 +29,7 @@ footer {
 .footer-brand {
 	&__logo {
 		display: block;
-		margin-bottom: 20px;
+		margin-bottom: 24px;
 		width: 72px;
 		opacity: 0.75;
 		filter: brightness(0) invert(1);
@@ -42,146 +41,89 @@ footer {
 	}
 
 	&__tagline {
-		font-size: 0.82rem;
-		line-height: 1.75;
-		color: rgba(247, 243, 238, 0.5);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 14px;
+		font-weight: 300;
+		line-height: 1.8;
+		color: rgba(243, 240, 230, 0.32);
 		margin-bottom: 28px;
 		max-width: 26ch;
-		font-family: "apparat-light", sans-serif;
 	}
 
 	&__social {
 		display: flex;
-		gap: 6px;
+		gap: 20px;
 
 		a {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 34px;
-			height: 34px;
-			border: 1px solid rgba(247, 243, 238, 0.12);
-			color: rgba(247, 243, 238, 0.45);
-			font-size: 16px;
-			transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+			font-family: 'DM Sans', sans-serif;
+			font-size: 13px;
+			font-weight: 400;
+			color: rgba(243, 240, 230, 0.3);
+			text-decoration: none;
+			transition: color 0.2s ease;
 
-			&:hover {
-				border-color: rgba(247, 243, 238, 0.35);
-				color: rgba(247, 243, 238, 0.9);
-				background: rgba(247, 243, 238, 0.06);
-			}
+			&:hover { color: rgba(243, 240, 230, 0.8); }
 		}
 	}
 }
 
 .footer-col {
 	&__heading {
-		font-size: 9px;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 11px;
+		letter-spacing: 2px;
 		text-transform: uppercase;
-		letter-spacing: 0.15em;
-		color: rgba(247, 243, 238, 0.28);
-		margin-bottom: 18px;
-		padding-bottom: 12px;
-		border-bottom: 1px solid rgba(247, 243, 238, 0.07);
+		color: $gold;
+		font-weight: 600;
+		margin-bottom: 24px;
 	}
 
 	ul {
 		list-style: none;
 		padding: 0;
 		margin: 0;
-
-		li { margin-bottom: 10px; }
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
 
 		a {
-			font-size: 12px;
-			letter-spacing: 0.04em;
-			color: rgba(247, 243, 238, 0.55);
+			font-family: 'DM Sans', sans-serif;
+			font-size: 14px;
+			font-weight: 300;
+			color: rgba(243, 240, 230, 0.4);
 			text-decoration: none;
-			text-transform: uppercase;
 			transition: color 0.2s ease;
 
-			&:hover { color: rgba(247, 243, 238, 0.95); }
-		}
-
-		li.footer-col__sub a {
-			font-size: 11px;
-			color: rgba(247, 243, 238, 0.35);
-			padding-left: 10px;
-
-			&:hover { color: rgba(247, 243, 238, 0.75); }
-		}
-	}
-}
-
-.footer-contact {
-	p, address {
-		font-style: normal;
-		font-size: 11px;
-		line-height: 1.8;
-		color: rgba(247, 243, 238, 0.45);
-		font-family: "apparat-light", sans-serif;
-		margin-bottom: 16px;
-	}
-
-	a {
-		color: rgba(247, 243, 238, 0.55);
-		text-decoration: none;
-		transition: color 0.2s ease;
-
-		&:hover { color: rgba(247, 243, 238, 0.9); }
-	}
-
-	&__donate {
-		display: inline-block;
-		margin-top: 8px;
-		font-family: "indivisible", sans-serif;
-		font-size: 10px;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		color: rgba(247, 243, 238, 0.8);
-		border: 1px solid rgba(247, 243, 238, 0.25);
-		padding: 10px 20px;
-		text-decoration: none;
-		transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
-
-		&:hover {
-			background: rgba(247, 243, 238, 0.08);
-			border-color: rgba(247, 243, 238, 0.5);
-			color: rgba(247, 243, 238, 0.95);
+			&:hover { color: rgba(243, 240, 230, 0.85); }
 		}
 	}
 }
 
 .footer-bottom {
-	border-top: 1px solid rgba(247, 243, 238, 0.07);
-	padding: 20px 40px;
+	padding: 28px 72px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: 16px;
-	max-width: 1200px;
-	margin: 0 auto;
 	flex-wrap: wrap;
 
 	@include respond-to('small-mx') {
-		padding: 20px 24px;
+		padding: 24px;
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 8px;
 	}
 
 	&__copy {
-		font-size: 10px;
-		letter-spacing: 0.06em;
-		color: rgba(247, 243, 238, 0.22);
-		text-transform: uppercase;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 12px;
+		color: rgba(243, 240, 230, 0.18);
 	}
 
 	&__legal {
-		font-size: 10px;
-		letter-spacing: 0.05em;
-		color: rgba(247, 243, 238, 0.18);
-		text-transform: uppercase;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 12px;
+		color: rgba(243, 240, 230, 0.18);
 		text-align: right;
 
 		@include respond-to('small-mx') {

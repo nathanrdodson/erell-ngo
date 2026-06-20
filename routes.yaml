@@ -36,7 +36,7 @@ routes:
     template: page
   /research/publications/:
     data: page.publications
-    template: page
+    template: page-publications
   /about/meet-the-team/:
     data: page.meet-the-team
     template: page-meet-the-team

@@ -44,7 +44,7 @@
 	}
 
 	&__number {
-		font-family: "apparat-light", sans-serif;
+		font-family: 'DM Sans', sans-serif;
 		font-size: 2.2rem;
 		font-weight: 300;
 		color: $text-on-green;
@@ -54,7 +54,7 @@
 	}
 
 	&__label {
-		font-family: "indivisible", sans-serif;
+		font-family: 'DM Sans', sans-serif;
 		font-size: 9px;
 		text-transform: uppercase;
 		letter-spacing: 0.13em;
@@ -117,7 +117,7 @@
 	}
 
 	&__year-bg {
-		font-family: "apparat-light", sans-serif;
+		font-family: 'DM Sans', sans-serif;
 		font-size: 7rem;
 		font-weight: 300;
 		color: $green-light;
@@ -134,7 +134,7 @@
 	}
 
 	&__location {
-		font-family: "indivisible", sans-serif;
+		font-family: 'DM Sans', sans-serif;
 		font-size: 10px;
 		text-transform: uppercase;
 		letter-spacing: 0.13em;
@@ -150,7 +150,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 8px;
-		font-family: "indivisible", sans-serif;
+		font-family: 'DM Sans', sans-serif;
 		font-size: 10px;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
@@ -167,7 +167,7 @@
 
 	&__students {
 		margin-top: 16px;
-		font-family: "indivisible", sans-serif;
+		font-family: 'DM Sans', sans-serif;
 		font-size: 10px;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;

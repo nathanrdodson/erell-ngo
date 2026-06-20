@@ -145,7 +145,10 @@ const server = http.createServer((req, res) => {
 
   // Serve files from assets/
   if (pathname.startsWith('/assets/')) {
-    const filePath = path.join(ROOT, pathname);
+    // Decode %20 / %5B etc. so filenames with spaces and brackets resolve
+    let decodedPath = pathname;
+    try { decodedPath = decodeURIComponent(pathname); } catch (e) { /* keep raw on malformed input */ }
+    const filePath = path.join(ROOT, decodedPath);
     if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
       const ext = path.extname(filePath);
       res.writeHead(200, { 'Content-Type': mime[ext] || 'application/octet-stream' });

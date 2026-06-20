@@ -11,7 +11,7 @@
 	@include respond-to('small-mx') { padding: 28px 24px; }
 
 	&__label {
-		font-family: "indivisible", sans-serif;
+		font-family: 'DM Sans', sans-serif;
 		font-size: 10px;
 		text-transform: uppercase;
 		letter-spacing: 0.15em;
@@ -68,7 +68,7 @@
 }
 
 .related-item__cite {
-	font-family: "indivisible", sans-serif;
+	font-family: 'DM Sans', sans-serif;
 	font-size: 10px;
 	text-transform: uppercase;
 	letter-spacing: 0.07em;
@@ -77,7 +77,7 @@
 
 .related-item__pdf {
 	flex-shrink: 0;
-	font-family: "indivisible", sans-serif;
+	font-family: 'DM Sans', sans-serif;
 	font-size: 9px;
 	text-transform: uppercase;
 	letter-spacing: 0.09em;

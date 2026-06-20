@@ -1,24 +1,27 @@
 // theme-related constants
 
 // Backgrounds
-$primary:      #F9F7F4;   // clean off-white — page background
-$secondary:    #EEEBE4;   // warm cream — nav, card backgrounds
-$surface:      #E2DDD3;   // muted tan — dividers, active states
+$primary:      #F3F0E6;   // parchment — page background
+$secondary:    #E8E4D8;   // slightly darker parchment — card, hover surfaces
+$surface:      #C8DDB8;   // sage green — research column bg, about image bg
 
 // Brand greens
-$green-dark:   #233D25;   // deep forest, near-black — headings, CTA
-$green-mid:    #4E7550;   // saturated sage — accents, hover
-$green-light:  #89B08C;   // fresh sage — tags, highlights
+$green-dark:   #162C1A;   // deep forest, near-black — headings, dark sections, CTA
+$green-mid:    #4E8040;   // saturated sage — accents, NETP tag, hover
+$green-light:  #8AB87A;   // fresh sage — lighter accents
 
-// Desert accents
-$earth-brown:  #B5642A;   // sienna — accent links
-$earth-warm:   #D4915C;   // amber — CTA hover
+// Gold accent
+$gold:         #B8922A;   // amber gold — primary accent, links, badges, mission band
+$earth-brown:  #B8922A;   // alias kept for backward-compat with inner page SCSS
+$earth-warm:   #D4A84C;   // lighter gold — hover state
 
 // Typography
-$font-dark:    #141210;   // warm near-black — primary text
-$font-mid:     #352A1C;   // warm dark brown — body text
-$font-light:   #6B5840;   // muted — captions, meta
+$font-dark:    #162C1A;   // warm near-black — primary text
+$font-mid:     rgba(22, 44, 26, 0.7);   // warm brown — body text
+$font-light:   rgba(22, 44, 26, 0.45);  // muted — captions, meta
 
 // Semantic
-$text-on-green: #F9F7F4;  // text on dark green backgrounds
-$border-subtle: #D5CEBF;  // soft warm border
+$text-on-dark:  #F3F0E6;  // text on dark green backgrounds
+$text-on-green: #F3F0E6;  // alias for backward-compat with inner page SCSS
+$text-on-gold:  #F3F0E6;  // text on gold backgrounds
+$border-subtle: rgba(22, 44, 26, 0.1);  // soft warm border
