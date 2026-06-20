@@ -12,13 +12,13 @@ routes:
     template: page-support
   /photos/:
     data: page.photos
-    template: page
+    template: page-photos
   /education/:
     data: page.education
     template: page
   /education/lizard-camp/:
     data: page.lizard-camp
-    template: page
+    template: page-lizard-camp
   /education/netp/:
     data: page.netp
     template: page
@@ -39,7 +39,7 @@ routes:
     template: page
   /about/meet-the-team/:
     data: page.meet-the-team
-    template: page
+    template: page-meet-the-team
   /about/newsletter-archive/:
     data: page.newsletter-archive
     template: page-newsletter-archive
