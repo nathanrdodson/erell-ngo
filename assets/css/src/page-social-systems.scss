@@ -1,6 +1,69 @@
 @use './_theme.scss' as *;
 @use './_mixins.scss' as *;
 
+// ─────────────────────────────────────────────
+// Shared research page header (also used by movement-ecology)
+// ─────────────────────────────────────────────
+
+.research-header {
+	background: $primary;
+	padding: 64px 72px 56px;
+	border-bottom: 1px solid $border-subtle;
+
+	@include respond-to('medium-mx') { padding: 48px 24px 40px; }
+
+	&__inner { max-width: 680px; }
+
+	&__title {
+		font-size: clamp(56px, 7vw, 96px);
+		line-height: 0.9;
+		letter-spacing: -0.04em;
+		margin-bottom: 24px;
+	}
+
+	&__lead {
+		font-size: 17px;
+		line-height: 1.75;
+		color: $font-mid;
+		margin: 0;
+	}
+}
+
+.research-body {
+	padding: 64px 72px 100px;
+	max-width: 860px;
+
+	@include respond-to('medium-mx') { padding: 48px 24px 72px; }
+}
+
+.research-list-title {
+	font-size: clamp(24px, 3vw, 32px);
+	letter-spacing: -0.025em;
+	color: $green-dark;
+	margin: 64px 0 24px;
+	padding-top: 40px;
+	border-top: 2px solid $green-dark;
+}
+
+.research-pubs-link {
+	margin-top: 32px;
+
+	a {
+		font-family: 'DM Sans', sans-serif;
+		font-size: 13px;
+		font-weight: 500;
+		color: $green-mid;
+		border-bottom: 1px solid rgba(78, 128, 64, 0.3);
+		padding-bottom: 1px;
+
+		&:hover { color: $green-dark; }
+	}
+}
+
+// ─────────────────────────────────────────────
+// Project feature cards
+// ─────────────────────────────────────────────
+
 .project-feature {
 	background: $secondary;
 	border: 1px solid $border-subtle;

@@ -1,4 +1,9 @@
 @use './_theme.scss' as *;
+@use './_mixins.scss' as *;
+
+// Inherits .research-header, .research-body, .research-list-title,
+// .research-pubs-link, .project-feature, .related-list, .related-item
+// from page-social-systems.scss (both files imported in main.scss).
 
 .project-block {
 	padding: 16px 0;

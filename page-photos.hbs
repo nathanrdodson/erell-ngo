@@ -1,232 +1,229 @@
 {{!< default}}
 
-<main class="page-main">
-  <div class="pure-g center">
-    <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-4-5 pure-u-xxl-3-5">
+<!-- ══ PAGE HEADER ══ -->
+<div class="photos-header">
+  <span class="section-eyebrow">Photography</span>
+  <h1 class="photos-header__title">Photo Gallery</h1>
+  <p class="photos-header__lead">Study species and field sites from Erell Institute research around the world.</p>
+</div>
 
-      <header class="page-header">
-        <h1>Photo Gallery</h1>
-        <p class="page-header__lead">
-          Study species and field sites from Erell Institute research around the world.
-        </p>
-      </header>
+<!-- ══ GALLERY BODY ══ -->
+<div class="photos-body">
 
-      <h2 class="section-title">Study Species</h2>
+  <h2 class="photos-section-title">Study Species</h2>
 
-      <div class="gallery-section fade-up">
-        <div class="gallery-section__heading">Agamidae</div>
-        <div class="photo-grid">
-          <div class="photo-item" data-src="{{asset "images/photos/ground-agama.jpg"}}" data-caption="Ground agama — Agama aculeata">
-            <img src="{{asset "images/photos/ground-agama.jpg"}}" alt="Ground agama (Agama aculeata)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Ground agama</strong><em>Agama aculeata</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/tuvan-toad-headed-agama.jpg"}}" data-caption="Tuvan toad-headed agama — Phrynocephalus versicolor">
-            <img src="{{asset "images/photos/tuvan-toad-headed-agama.jpg"}}" alt="Tuvan toad-headed agama (Phrynocephalus versicolor)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Tuvan toad-headed agama</strong><em>Phrynocephalus versicolor</em></div>
-          </div>
-        </div>
+  <div class="gallery-section fade-up">
+    <div class="gallery-section__heading">Agamidae</div>
+    <div class="photo-grid">
+      <div class="photo-item" data-src="{{asset "images/photos/ground-agama.jpg"}}" data-caption="Ground agama — Agama aculeata">
+        <img src="{{asset "images/photos/ground-agama.jpg"}}" alt="Ground agama (Agama aculeata)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Ground agama</strong><em>Agama aculeata</em></div>
       </div>
-
-      <div class="gallery-section fade-up">
-        <div class="gallery-section__heading">Cordylidae</div>
-        <div class="photo-grid">
-          <div class="photo-item" data-src="{{asset "images/photos/graceful-crag-lizard.jpg"}}" data-caption="Graceful crag lizard — Hemicordylus capensis">
-            <img src="{{asset "images/photos/graceful-crag-lizard.jpg"}}" alt="Graceful crag lizard (Hemicordylus capensis)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Graceful crag lizard</strong><em>Hemicordylus capensis</em></div>
-          </div>
-        </div>
+      <div class="photo-item" data-src="{{asset "images/photos/tuvan-toad-headed-agama.jpg"}}" data-caption="Tuvan toad-headed agama — Phrynocephalus versicolor">
+        <img src="{{asset "images/photos/tuvan-toad-headed-agama.jpg"}}" alt="Tuvan toad-headed agama (Phrynocephalus versicolor)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Tuvan toad-headed agama</strong><em>Phrynocephalus versicolor</em></div>
       </div>
-
-      <div class="gallery-section fade-up">
-        <div class="gallery-section__heading">Crotaphytidae</div>
-        <div class="photo-grid">
-          <div class="photo-item" data-src="{{asset "images/photos/collared-lizard.jpg"}}" data-caption="Collared lizard — Crotaphytus collaris">
-            <img src="{{asset "images/photos/collared-lizard.jpg"}}" alt="Collared lizard (Crotaphytus collaris)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Collared lizard</strong><em>Crotaphytus collaris</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/long-nosed-leopard-lizard.jpg"}}" data-caption="Long-nosed leopard lizard — Gambelia wislizenii">
-            <img src="{{asset "images/photos/long-nosed-leopard-lizard.jpg"}}" alt="Long-nosed leopard lizard (Gambelia wislizenii)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Long-nosed leopard lizard</strong><em>Gambelia wislizenii</em></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-section fade-up">
-        <div class="gallery-section__heading">Dactyloidae</div>
-        <div class="photo-grid">
-          <div class="photo-item" data-src="{{asset "images/photos/water-anole.jpg"}}" data-caption="Water anole — Anolis aquaticus">
-            <img src="{{asset "images/photos/water-anole.jpg"}}" alt="Water anole (Anolis aquaticus)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Water anole</strong><em>Anolis aquaticus</em></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-section fade-up">
-        <div class="gallery-section__heading">Gekkonidae</div>
-        <div class="photo-grid">
-          <div class="photo-item" data-src="{{asset "images/photos/turners-thick-toed-gecko.jpg"}}" data-caption="Turner's thick-toed gecko — Chondrodactylus turneri">
-            <img src="{{asset "images/photos/turners-thick-toed-gecko.jpg"}}" alt="Turner's thick-toed gecko (Chondrodactylus turneri)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Turner's thick-toed gecko</strong><em>Chondrodactylus turneri</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/palmato-gecko.jpg"}}" data-caption="Palmato gecko — Pachydactylus rangei">
-            <img src="{{asset "images/photos/palmato-gecko.jpg"}}" alt="Palmato gecko (Pachydactylus rangei)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Palmato gecko</strong><em>Pachydactylus rangei</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/namib-day-gecko.jpg"}}" data-caption="Namib day gecko — Rhoptropus afer">
-            <img src="{{asset "images/photos/namib-day-gecko.jpg"}}" alt="Namib day gecko (Rhoptropus afer)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Namib day gecko</strong><em>Rhoptropus afer</em></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-section fade-up">
-        <div class="gallery-section__heading">Lacertidae</div>
-        <div class="photo-grid">
-          <div class="photo-item" data-src="{{asset "images/photos/nidua-fringe-toed-lizard.jpg"}}" data-caption="Nidua fringe-toed lizard — Acanthodactylus scutellatus">
-            <img src="{{asset "images/photos/nidua-fringe-toed-lizard.jpg"}}" alt="Nidua fringe-toed lizard (Acanthodactylus scutellatus)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Nidua fringe-toed lizard</strong><em>Acanthodactylus scutellatus</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/bushveld-lizard.jpg"}}" data-caption="Bushveld lizard — Heliobolus lugubris">
-            <img src="{{asset "images/photos/bushveld-lizard.jpg"}}" alt="Bushveld lizard (Heliobolus lugubris)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Bushveld lizard</strong><em>Heliobolus lugubris</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/wedge-snouted-sand-lizard.jpg"}}" data-caption="Wedge-snouted sand lizard — Meroles cuneirostris">
-            <img src="{{asset "images/photos/wedge-snouted-sand-lizard.jpg"}}" alt="Wedge-snouted sand lizard (Meroles cuneirostris)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Wedge-snouted sand lizard</strong><em>Meroles cuneirostris</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/namaqua-sand-lizard.jpg"}}" data-caption="Namaqua sand lizard — Pedioplanis namaquensis">
-            <img src="{{asset "images/photos/namaqua-sand-lizard.jpg"}}" alt="Namaqua sand lizard (Pedioplanis namaquensis)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Namaqua sand lizard</strong><em>Pedioplanis namaquensis</em></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-section fade-up">
-        <div class="gallery-section__heading">Liolaemidae</div>
-        <div class="photo-grid">
-          <div class="photo-item" data-src="{{asset "images/photos/liolaemus-silvai.jpg"}}" data-caption="Liolaemus silvai — Liolaemus silvai">
-            <img src="{{asset "images/photos/liolaemus-silvai.jpg"}}" alt="Liolaemus silvai" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Liolaemus silvai</strong><em>Liolaemus silvai</em></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-section fade-up">
-        <div class="gallery-section__heading">Phrynosomatidae</div>
-        <div class="photo-grid">
-          <div class="photo-item" data-src="{{asset "images/photos/lesser-earless-lizard.jpg"}}" data-caption="Lesser earless lizard — Holbrookia maculata">
-            <img src="{{asset "images/photos/lesser-earless-lizard.jpg"}}" alt="Lesser earless lizard (Holbrookia maculata)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Lesser earless lizard</strong><em>Holbrookia maculata</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/baja-california-rock-lizard.jpg"}}" data-caption="Baja California rock lizard — Petrosaurus thalassinus">
-            <img src="{{asset "images/photos/baja-california-rock-lizard.jpg"}}" alt="Baja California rock lizard (Petrosaurus thalassinus)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Baja California rock lizard</strong><em>Petrosaurus thalassinus</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/texas-horned-lizard.jpg"}}" data-caption="Texas horned lizard — Phrynosoma cornutum">
-            <img src="{{asset "images/photos/texas-horned-lizard.jpg"}}" alt="Texas horned lizard (Phrynosoma cornutum)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Texas horned lizard</strong><em>Phrynosoma cornutum</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/desert-horned-lizard-juvenile.jpg"}}" data-caption="Desert horned lizard (juvenile) — Phrynosoma platyrhinos">
-            <img src="{{asset "images/photos/desert-horned-lizard-juvenile.jpg"}}" alt="Desert horned lizard juvenile (Phrynosoma platyrhinos)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Desert horned lizard (juvenile)</strong><em>Phrynosoma platyrhinos</em></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-section fade-up">
-        <div class="gallery-section__heading">Teiidae</div>
-        <div class="photo-grid">
-          <div class="photo-item" data-src="{{asset "images/photos/little-striped-whiptail.jpg"}}" data-caption="Little striped whiptail — Aspidoscelis inornatus">
-            <img src="{{asset "images/photos/little-striped-whiptail.jpg"}}" alt="Little striped whiptail (Aspidoscelis inornatus)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Little striped whiptail</strong><em>Aspidoscelis inornatus</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/colorado-checkered-whiptail.jpg"}}" data-caption="Colorado checkered whiptail — Aspidoscelis neotesselatus">
-            <img src="{{asset "images/photos/colorado-checkered-whiptail.jpg"}}" alt="Colorado checkered whiptail (Aspidoscelis neotesselatus)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Colorado checkered whiptail</strong><em>Aspidoscelis neotesselatus</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/desert-grassland-whiptail.jpg"}}" data-caption="Desert grassland whiptail — Aspidoscelis uniparens">
-            <img src="{{asset "images/photos/desert-grassland-whiptail.jpg"}}" alt="Desert grassland whiptail (Aspidoscelis uniparens)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Desert grassland whiptail</strong><em>Aspidoscelis uniparens</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/little-scrub-island-ground-lizard.jpg"}}" data-caption="Little Scrub Island ground lizard — Pholidoscelis corax">
-            <img src="{{asset "images/photos/little-scrub-island-ground-lizard.jpg"}}" alt="Little Scrub Island ground lizard (Pholidoscelis corax)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Little Scrub Island ground lizard</strong><em>Pholidoscelis corax</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/dominican-ground-lizard.jpg"}}" data-caption="Dominican ground lizard — Pholidoscelis fuscatus">
-            <img src="{{asset "images/photos/dominican-ground-lizard.jpg"}}" alt="Dominican ground lizard (Pholidoscelis fuscatus)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Dominican ground lizard</strong><em>Pholidoscelis fuscatus</em></div>
-          </div>
-          <div class="photo-item" data-src="{{asset "images/photos/red-tegu.jpg"}}" data-caption="Red tegu — Salvator rufescens">
-            <img src="{{asset "images/photos/red-tegu.jpg"}}" alt="Red tegu (Salvator rufescens)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Red tegu</strong><em>Salvator rufescens</em></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-section fade-up">
-        <div class="gallery-section__heading">Tropiduridae</div>
-        <div class="photo-grid">
-          <div class="photo-item" data-src="{{asset "images/photos/atacama-pacific-iguana.jpg"}}" data-caption="Atacama Pacific iguana — Microlophus atacamensis">
-            <img src="{{asset "images/photos/atacama-pacific-iguana.jpg"}}" alt="Atacama Pacific iguana (Microlophus atacamensis)" class="photo-item__img" loading="lazy" />
-            <div class="photo-item__caption"><strong>Atacama Pacific iguana</strong><em>Microlophus atacamensis</em></div>
-          </div>
-        </div>
-      </div>
-
-      <h2 class="section-title" style="margin-top: 32px;">Field Sites</h2>
-
-      <div class="gallery-section fade-up">
-        <div class="site-grid">
-          <div class="site-item" data-src="{{asset "images/photos/site-gobi-desert-mongolia.jpg"}}" data-caption="Gobi Desert, Dornogovi, Mongolia">
-            <img src="{{asset "images/photos/site-gobi-desert-mongolia.jpg"}}" alt="Gobi Desert, Dornogovi, Mongolia" class="site-item__img" loading="lazy" />
-            <div class="site-item__caption"><strong>Gobi Desert, Dornogovi, Mongolia</strong></div>
-          </div>
-          <div class="site-item" data-src="{{asset "images/photos/site-namib-desert.jpg"}}" data-caption="Namib Desert dunes">
-            <img src="{{asset "images/photos/site-namib-desert.jpg"}}" alt="Namib Desert dunes" class="site-item__img" loading="lazy" />
-            <div class="site-item__caption"><strong>Namib Desert dunes</strong></div>
-          </div>
-          <div class="site-item" data-src="{{asset "images/photos/site-wichita-mountains-oklahoma.jpg"}}" data-caption="Wichita Mountains National Wildlife Refuge, Oklahoma">
-            <img src="{{asset "images/photos/site-wichita-mountains-oklahoma.jpg"}}" alt="Wichita Mountains National Wildlife Refuge, Oklahoma" class="site-item__img" loading="lazy" />
-            <div class="site-item__caption"><strong>Wichita Mountains National Wildlife Refuge, Oklahoma</strong></div>
-          </div>
-          <div class="site-item" data-src="{{asset "images/photos/site-great-basin-desert-oregon.jpg"}}" data-caption="Great Basin Desert, southeastern Oregon">
-            <img src="{{asset "images/photos/site-great-basin-desert-oregon.jpg"}}" alt="Great Basin Desert, southeastern Oregon" class="site-item__img" loading="lazy" />
-            <div class="site-item__caption"><strong>Great Basin Desert, southeastern Oregon</strong></div>
-          </div>
-          <div class="site-item" data-src="{{asset "images/photos/site-little-scrub-island-anguilla.jpg"}}" data-caption="Little Scrub Island, Anguilla">
-            <img src="{{asset "images/photos/site-little-scrub-island-anguilla.jpg"}}" alt="Little Scrub Island, Anguilla" class="site-item__img" loading="lazy" />
-            <div class="site-item__caption"><strong>Little Scrub Island, Anguilla</strong></div>
-          </div>
-          <div class="site-item" data-src="{{asset "images/photos/site-kino-bay-mexico.jpg"}}" data-caption="Kino Bay, Sonora, Mexico">
-            <img src="{{asset "images/photos/site-kino-bay-mexico.jpg"}}" alt="Kino Bay, Sonora, Mexico" class="site-item__img" loading="lazy" />
-            <div class="site-item__caption"><strong>Kino Bay, Sonora, Mexico</strong></div>
-          </div>
-          <div class="site-item" data-src="{{asset "images/photos/site-chihuahua-desert-colorado.jpg"}}" data-caption="Chihuahua Desert, Colorado">
-            <img src="{{asset "images/photos/site-chihuahua-desert-colorado.jpg"}}" alt="Chihuahua Desert, Colorado" class="site-item__img" loading="lazy" />
-            <div class="site-item__caption"><strong>Chihuahua Desert, Colorado</strong></div>
-          </div>
-          <div class="site-item" data-src="{{asset "images/photos/site-atacama-chile.jpg"}}" data-caption="Huasco Province, Atacama Region, Chile">
-            <img src="{{asset "images/photos/site-atacama-chile.jpg"}}" alt="Huasco Province, Atacama Region, Chile" class="site-item__img" loading="lazy" />
-            <div class="site-item__caption"><strong>Huasco Province, Atacama Region, Chile</strong></div>
-          </div>
-          <div class="site-item" data-src="{{asset "images/photos/site-kalahari-desert-botswana.jpg"}}" data-caption="Kalahari Desert, Botswana">
-            <img src="{{asset "images/photos/site-kalahari-desert-botswana.jpg"}}" alt="Kalahari Desert, Botswana" class="site-item__img" loading="lazy" />
-            <div class="site-item__caption"><strong>Kalahari Desert, Botswana</strong></div>
-          </div>
-          <div class="site-item" data-src="{{asset "images/photos/site-chiricahua-mountains-arizona.jpg"}}" data-caption="Chiricahua Mountains, Cochise Co., Arizona">
-            <img src="{{asset "images/photos/site-chiricahua-mountains-arizona.jpg"}}" alt="Chiricahua Mountains, Cochise Co., Arizona" class="site-item__img" loading="lazy" />
-            <div class="site-item__caption"><strong>Chiricahua Mountains, Cochise Co., Arizona</strong></div>
-          </div>
-          <div class="site-item" data-src="{{asset "images/photos/site-sierra-la-laguna-baja.jpg"}}" data-caption="Sierra La Laguna, Baja California Sur, Mexico">
-            <img src="{{asset "images/photos/site-sierra-la-laguna-baja.jpg"}}" alt="Sierra La Laguna, Baja California Sur, Mexico" class="site-item__img" loading="lazy" />
-            <div class="site-item__caption"><strong>Sierra La Laguna, Baja California Sur, Mexico</strong></div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
-</main>
+
+  <div class="gallery-section fade-up">
+    <div class="gallery-section__heading">Cordylidae</div>
+    <div class="photo-grid">
+      <div class="photo-item" data-src="{{asset "images/photos/graceful-crag-lizard.jpg"}}" data-caption="Graceful crag lizard — Hemicordylus capensis">
+        <img src="{{asset "images/photos/graceful-crag-lizard.jpg"}}" alt="Graceful crag lizard (Hemicordylus capensis)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Graceful crag lizard</strong><em>Hemicordylus capensis</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section fade-up">
+    <div class="gallery-section__heading">Crotaphytidae</div>
+    <div class="photo-grid">
+      <div class="photo-item" data-src="{{asset "images/photos/collared-lizard.jpg"}}" data-caption="Collared lizard — Crotaphytus collaris">
+        <img src="{{asset "images/photos/collared-lizard.jpg"}}" alt="Collared lizard (Crotaphytus collaris)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Collared lizard</strong><em>Crotaphytus collaris</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/long-nosed-leopard-lizard.jpg"}}" data-caption="Long-nosed leopard lizard — Gambelia wislizenii">
+        <img src="{{asset "images/photos/long-nosed-leopard-lizard.jpg"}}" alt="Long-nosed leopard lizard (Gambelia wislizenii)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Long-nosed leopard lizard</strong><em>Gambelia wislizenii</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section fade-up">
+    <div class="gallery-section__heading">Dactyloidae</div>
+    <div class="photo-grid">
+      <div class="photo-item" data-src="{{asset "images/photos/water-anole.jpg"}}" data-caption="Water anole — Anolis aquaticus">
+        <img src="{{asset "images/photos/water-anole.jpg"}}" alt="Water anole (Anolis aquaticus)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Water anole</strong><em>Anolis aquaticus</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section fade-up">
+    <div class="gallery-section__heading">Gekkonidae</div>
+    <div class="photo-grid">
+      <div class="photo-item" data-src="{{asset "images/photos/turners-thick-toed-gecko.jpg"}}" data-caption="Turner's thick-toed gecko — Chondrodactylus turneri">
+        <img src="{{asset "images/photos/turners-thick-toed-gecko.jpg"}}" alt="Turner's thick-toed gecko (Chondrodactylus turneri)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Turner's thick-toed gecko</strong><em>Chondrodactylus turneri</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/palmato-gecko.jpg"}}" data-caption="Palmato gecko — Pachydactylus rangei">
+        <img src="{{asset "images/photos/palmato-gecko.jpg"}}" alt="Palmato gecko (Pachydactylus rangei)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Palmato gecko</strong><em>Pachydactylus rangei</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/namib-day-gecko.jpg"}}" data-caption="Namib day gecko — Rhoptropus afer">
+        <img src="{{asset "images/photos/namib-day-gecko.jpg"}}" alt="Namib day gecko (Rhoptropus afer)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Namib day gecko</strong><em>Rhoptropus afer</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section fade-up">
+    <div class="gallery-section__heading">Lacertidae</div>
+    <div class="photo-grid">
+      <div class="photo-item" data-src="{{asset "images/photos/nidua-fringe-toed-lizard.jpg"}}" data-caption="Nidua fringe-toed lizard — Acanthodactylus scutellatus">
+        <img src="{{asset "images/photos/nidua-fringe-toed-lizard.jpg"}}" alt="Nidua fringe-toed lizard (Acanthodactylus scutellatus)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Nidua fringe-toed lizard</strong><em>Acanthodactylus scutellatus</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/bushveld-lizard.jpg"}}" data-caption="Bushveld lizard — Heliobolus lugubris">
+        <img src="{{asset "images/photos/bushveld-lizard.jpg"}}" alt="Bushveld lizard (Heliobolus lugubris)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Bushveld lizard</strong><em>Heliobolus lugubris</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/wedge-snouted-sand-lizard.jpg"}}" data-caption="Wedge-snouted sand lizard — Meroles cuneirostris">
+        <img src="{{asset "images/photos/wedge-snouted-sand-lizard.jpg"}}" alt="Wedge-snouted sand lizard (Meroles cuneirostris)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Wedge-snouted sand lizard</strong><em>Meroles cuneirostris</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/namaqua-sand-lizard.jpg"}}" data-caption="Namaqua sand lizard — Pedioplanis namaquensis">
+        <img src="{{asset "images/photos/namaqua-sand-lizard.jpg"}}" alt="Namaqua sand lizard (Pedioplanis namaquensis)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Namaqua sand lizard</strong><em>Pedioplanis namaquensis</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section fade-up">
+    <div class="gallery-section__heading">Liolaemidae</div>
+    <div class="photo-grid">
+      <div class="photo-item" data-src="{{asset "images/photos/liolaemus-silvai.jpg"}}" data-caption="Liolaemus silvai — Liolaemus silvai">
+        <img src="{{asset "images/photos/liolaemus-silvai.jpg"}}" alt="Liolaemus silvai" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Liolaemus silvai</strong><em>Liolaemus silvai</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section fade-up">
+    <div class="gallery-section__heading">Phrynosomatidae</div>
+    <div class="photo-grid">
+      <div class="photo-item" data-src="{{asset "images/photos/lesser-earless-lizard.jpg"}}" data-caption="Lesser earless lizard — Holbrookia maculata">
+        <img src="{{asset "images/photos/lesser-earless-lizard.jpg"}}" alt="Lesser earless lizard (Holbrookia maculata)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Lesser earless lizard</strong><em>Holbrookia maculata</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/baja-california-rock-lizard.jpg"}}" data-caption="Baja California rock lizard — Petrosaurus thalassinus">
+        <img src="{{asset "images/photos/baja-california-rock-lizard.jpg"}}" alt="Baja California rock lizard (Petrosaurus thalassinus)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Baja California rock lizard</strong><em>Petrosaurus thalassinus</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/texas-horned-lizard.jpg"}}" data-caption="Texas horned lizard — Phrynosoma cornutum">
+        <img src="{{asset "images/photos/texas-horned-lizard.jpg"}}" alt="Texas horned lizard (Phrynosoma cornutum)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Texas horned lizard</strong><em>Phrynosoma cornutum</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/desert-horned-lizard-juvenile.jpg"}}" data-caption="Desert horned lizard (juvenile) — Phrynosoma platyrhinos">
+        <img src="{{asset "images/photos/desert-horned-lizard-juvenile.jpg"}}" alt="Desert horned lizard juvenile (Phrynosoma platyrhinos)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Desert horned lizard (juvenile)</strong><em>Phrynosoma platyrhinos</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section fade-up">
+    <div class="gallery-section__heading">Teiidae</div>
+    <div class="photo-grid">
+      <div class="photo-item" data-src="{{asset "images/photos/little-striped-whiptail.jpg"}}" data-caption="Little striped whiptail — Aspidoscelis inornatus">
+        <img src="{{asset "images/photos/little-striped-whiptail.jpg"}}" alt="Little striped whiptail (Aspidoscelis inornatus)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Little striped whiptail</strong><em>Aspidoscelis inornatus</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/colorado-checkered-whiptail.jpg"}}" data-caption="Colorado checkered whiptail — Aspidoscelis neotesselatus">
+        <img src="{{asset "images/photos/colorado-checkered-whiptail.jpg"}}" alt="Colorado checkered whiptail (Aspidoscelis neotesselatus)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Colorado checkered whiptail</strong><em>Aspidoscelis neotesselatus</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/desert-grassland-whiptail.jpg"}}" data-caption="Desert grassland whiptail — Aspidoscelis uniparens">
+        <img src="{{asset "images/photos/desert-grassland-whiptail.jpg"}}" alt="Desert grassland whiptail (Aspidoscelis uniparens)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Desert grassland whiptail</strong><em>Aspidoscelis uniparens</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/little-scrub-island-ground-lizard.jpg"}}" data-caption="Little Scrub Island ground lizard — Pholidoscelis corax">
+        <img src="{{asset "images/photos/little-scrub-island-ground-lizard.jpg"}}" alt="Little Scrub Island ground lizard (Pholidoscelis corax)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Little Scrub Island ground lizard</strong><em>Pholidoscelis corax</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/dominican-ground-lizard.jpg"}}" data-caption="Dominican ground lizard — Pholidoscelis fuscatus">
+        <img src="{{asset "images/photos/dominican-ground-lizard.jpg"}}" alt="Dominican ground lizard (Pholidoscelis fuscatus)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Dominican ground lizard</strong><em>Pholidoscelis fuscatus</em></div>
+      </div>
+      <div class="photo-item" data-src="{{asset "images/photos/red-tegu.jpg"}}" data-caption="Red tegu — Salvator rufescens">
+        <img src="{{asset "images/photos/red-tegu.jpg"}}" alt="Red tegu (Salvator rufescens)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Red tegu</strong><em>Salvator rufescens</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section fade-up">
+    <div class="gallery-section__heading">Tropiduridae</div>
+    <div class="photo-grid">
+      <div class="photo-item" data-src="{{asset "images/photos/atacama-pacific-iguana.jpg"}}" data-caption="Atacama Pacific iguana — Microlophus atacamensis">
+        <img src="{{asset "images/photos/atacama-pacific-iguana.jpg"}}" alt="Atacama Pacific iguana (Microlophus atacamensis)" class="photo-item__img" loading="lazy" />
+        <div class="photo-item__caption"><strong>Atacama Pacific iguana</strong><em>Microlophus atacamensis</em></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="photos-section-title">Field Sites</h2>
+
+  <div class="gallery-section fade-up">
+    <div class="site-grid">
+      <div class="site-item" data-src="{{asset "images/photos/site-gobi-desert-mongolia.jpg"}}" data-caption="Gobi Desert, Dornogovi, Mongolia">
+        <img src="{{asset "images/photos/site-gobi-desert-mongolia.jpg"}}" alt="Gobi Desert, Dornogovi, Mongolia" class="site-item__img" loading="lazy" />
+        <div class="site-item__caption"><strong>Gobi Desert, Dornogovi, Mongolia</strong></div>
+      </div>
+      <div class="site-item" data-src="{{asset "images/photos/site-namib-desert.jpg"}}" data-caption="Namib Desert dunes">
+        <img src="{{asset "images/photos/site-namib-desert.jpg"}}" alt="Namib Desert dunes" class="site-item__img" loading="lazy" />
+        <div class="site-item__caption"><strong>Namib Desert dunes</strong></div>
+      </div>
+      <div class="site-item" data-src="{{asset "images/photos/site-wichita-mountains-oklahoma.jpg"}}" data-caption="Wichita Mountains National Wildlife Refuge, Oklahoma">
+        <img src="{{asset "images/photos/site-wichita-mountains-oklahoma.jpg"}}" alt="Wichita Mountains National Wildlife Refuge, Oklahoma" class="site-item__img" loading="lazy" />
+        <div class="site-item__caption"><strong>Wichita Mountains National Wildlife Refuge, Oklahoma</strong></div>
+      </div>
+      <div class="site-item" data-src="{{asset "images/photos/site-great-basin-desert-oregon.jpg"}}" data-caption="Great Basin Desert, southeastern Oregon">
+        <img src="{{asset "images/photos/site-great-basin-desert-oregon.jpg"}}" alt="Great Basin Desert, southeastern Oregon" class="site-item__img" loading="lazy" />
+        <div class="site-item__caption"><strong>Great Basin Desert, southeastern Oregon</strong></div>
+      </div>
+      <div class="site-item" data-src="{{asset "images/photos/site-little-scrub-island-anguilla.jpg"}}" data-caption="Little Scrub Island, Anguilla">
+        <img src="{{asset "images/photos/site-little-scrub-island-anguilla.jpg"}}" alt="Little Scrub Island, Anguilla" class="site-item__img" loading="lazy" />
+        <div class="site-item__caption"><strong>Little Scrub Island, Anguilla</strong></div>
+      </div>
+      <div class="site-item" data-src="{{asset "images/photos/site-kino-bay-mexico.jpg"}}" data-caption="Kino Bay, Sonora, Mexico">
+        <img src="{{asset "images/photos/site-kino-bay-mexico.jpg"}}" alt="Kino Bay, Sonora, Mexico" class="site-item__img" loading="lazy" />
+        <div class="site-item__caption"><strong>Kino Bay, Sonora, Mexico</strong></div>
+      </div>
+      <div class="site-item" data-src="{{asset "images/photos/site-chihuahua-desert-colorado.jpg"}}" data-caption="Chihuahua Desert, Colorado">
+        <img src="{{asset "images/photos/site-chihuahua-desert-colorado.jpg"}}" alt="Chihuahua Desert, Colorado" class="site-item__img" loading="lazy" />
+        <div class="site-item__caption"><strong>Chihuahua Desert, Colorado</strong></div>
+      </div>
+      <div class="site-item" data-src="{{asset "images/photos/site-atacama-chile.jpg"}}" data-caption="Huasco Province, Atacama Region, Chile">
+        <img src="{{asset "images/photos/site-atacama-chile.jpg"}}" alt="Huasco Province, Atacama Region, Chile" class="site-item__img" loading="lazy" />
+        <div class="site-item__caption"><strong>Huasco Province, Atacama Region, Chile</strong></div>
+      </div>
+      <div class="site-item" data-src="{{asset "images/photos/site-kalahari-desert-botswana.jpg"}}" data-caption="Kalahari Desert, Botswana">
+        <img src="{{asset "images/photos/site-kalahari-desert-botswana.jpg"}}" alt="Kalahari Desert, Botswana" class="site-item__img" loading="lazy" />
+        <div class="site-item__caption"><strong>Kalahari Desert, Botswana</strong></div>
+      </div>
+      <div class="site-item" data-src="{{asset "images/photos/site-chiricahua-mountains-arizona.jpg"}}" data-caption="Chiricahua Mountains, Cochise Co., Arizona">
+        <img src="{{asset "images/photos/site-chiricahua-mountains-arizona.jpg"}}" alt="Chiricahua Mountains, Cochise Co., Arizona" class="site-item__img" loading="lazy" />
+        <div class="site-item__caption"><strong>Chiricahua Mountains, Cochise Co., Arizona</strong></div>
+      </div>
+      <div class="site-item" data-src="{{asset "images/photos/site-sierra-la-laguna-baja.jpg"}}" data-caption="Sierra La Laguna, Baja California Sur, Mexico">
+        <img src="{{asset "images/photos/site-sierra-la-laguna-baja.jpg"}}" alt="Sierra La Laguna, Baja California Sur, Mexico" class="site-item__img" loading="lazy" />
+        <div class="site-item__caption"><strong>Sierra La Laguna, Baja California Sur, Mexico</strong></div>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <div class="lightbox" id="lightbox">
   <button class="lightbox__close" id="lightbox-close" aria-label="Close"><i class="iconoir-xmark"></i></button>

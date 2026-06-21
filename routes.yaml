@@ -2,8 +2,7 @@ routes:
   /:
     template: index
   /about/:
-    data: page.about
-    template: page
+    template: page-about
   /contact/:
     data: page.contact
     template: page
@@ -26,16 +25,13 @@ routes:
     data: page.research
     template: page
   /research/social-systems/:
-    data: page.social-systems
-    template: page
+    template: page-social-systems
   /research/movement-ecology/:
-    data: page.movement-ecology
-    template: page
+    template: page-movement-ecology
   /research/italian-wall-lizards/:
     data: page.italian-wall-lizards
     template: page
   /research/publications/:
-    data: page.publications
     template: page-publications
   /about/meet-the-team/:
     data: page.meet-the-team

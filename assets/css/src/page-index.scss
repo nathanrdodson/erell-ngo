@@ -151,7 +151,6 @@
 .hero__photo {
 	flex: 1;
 	overflow: hidden;
-	border-radius: 0 0 0 24px;
 
 	img {
 		width: 100%;
@@ -314,7 +313,6 @@
 	flex: 1;
 	min-height: 400px;
 	overflow: hidden;
-	border-radius: 0 0 0 20px;
 	margin: 24px 24px 0 0;
 
 	@include respond-to('medium-mx') {
@@ -448,7 +446,6 @@
 
 .program-card__photo {
 	height: 320px;
-	border-radius: 12px;
 	overflow: hidden;
 	margin-bottom: 36px;
 	background: #1E3822;

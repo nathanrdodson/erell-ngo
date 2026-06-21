@@ -1,13 +1,37 @@
 @use './_theme.scss' as *;
 @use './_mixins.scss' as *;
 
-.camp-intro {
-	padding: 64px 24px 56px;
+.camp-header {
+	background: $green-dark;
+	border-bottom: 3px solid $gold;
+	padding: 80px 72px 72px;
 
-	p {
-		font-size: 0.95rem;
-		line-height: 1.8;
-		margin-bottom: 16px;
+	@include respond-to('medium-mx') { padding: 56px 24px 48px; }
+
+	&__inner { max-width: 720px; }
+
+	&__title {
+		font-size: clamp(56px, 7vw, 96px);
+		line-height: 0.9;
+		letter-spacing: -0.04em;
+		color: $text-on-dark;
+		margin-bottom: 24px;
+	}
+
+	&__lead {
+		font-size: 18px;
+		line-height: 1.75;
+		color: rgba(243, 240, 230, 0.65);
+		max-width: 560px;
+		margin-bottom: 32px;
+	}
+
+	&__body p {
+		font-size: 14px;
+		line-height: 1.85;
+		color: rgba(243, 240, 230, 0.45);
+		margin-bottom: 12px;
+		max-width: 620px;
 
 		&:last-child { margin-bottom: 0; }
 	}

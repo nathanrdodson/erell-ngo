@@ -7,7 +7,7 @@
       <article class="post-header">
         {{#if primary_tag}}
         <div class="post-meta">
-          <a href="{{primary_tag.url}}" class="post-meta__tag">{{primary_tag.name}}</a>
+          <a href="/tag/{{primary_tag.slug}}/" class="post-meta__tag">{{primary_tag.name}}</a>
           <span class="post-meta__sep">&middot;</span>
           <time class="post-meta__date">{{date published_at format="MMMM D, YYYY"}}</time>
         </div>
@@ -38,7 +38,7 @@
       {{#if tags}}
       <div class="post-tags">
         {{#foreach tags}}
-        <a href="{{url}}" class="post-tags__tag">{{name}}</a>
+        <a href="/tag/{{slug}}/" class="post-tags__tag">{{name}}</a>
         {{/foreach}}
       </div>
       {{/if}}
