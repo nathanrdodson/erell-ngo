@@ -29,6 +29,11 @@ jobs:
       - name: Compile SCSS
         run: npm run build:css
 
+      - name: Check compiled CSS is committed
+        run: |
+          git diff --exit-code assets/css/screen.css || {
+            echo "::error::assets/css/screen.css is out of date — run 'npm run build:css' and commit it"; exit 1; }
+
       - name: Validate theme with gscan
         run: npx --yes gscan --fatal .
 
@@ -44,7 +49,8 @@ jobs:
       DEPLOY_USER: ${{ vars.DEPLOY_USER || 'root' }}
       GHOST_PATH: ${{ vars.GHOST_PATH || '/var/www/ghost' }}
       GHOST_SERVICE: ${{ vars.GHOST_SERVICE || 'ghost_erell-ngo' }}
-      THEME_NAME: ${{ vars.THEME_NAME || 'erell-ghost-theme' }}
+      THEME_DIR: ${{ vars.THEME_DIR || '/opt/erell-ngo' }}
+      GHOST_USER: ${{ vars.GHOST_USER || 'ghost-user' }}
     steps:
       - name: Check deploy configuration
         run: |
@@ -56,17 +62,6 @@ jobs:
         env:
           DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
           DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Compile SCSS
-        run: npm install --no-audit --no-fund && npm run build:css
 
       - name: Configure SSH
         run: |
@@ -85,26 +80,18 @@ jobs:
           DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
           DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
 
-      - name: Sync theme files
+      # $THEME_DIR is a clone of this repo; $GHOST_PATH/content/themes/erell-ngo symlinks to it.
+      - name: Update theme checkout and routes
         run: |
-          rsync -az --delete --chown=ghost:ghost \
-            --exclude='.git/' \
-            --exclude='.github/' \
-            --exclude='.claude/' \
-            --exclude='.vscode/' \
-            --exclude='node_modules/' \
-            --exclude='scripts/' \
-            --exclude='www.erell.ngo/' \
-            --exclude='assets/css/src/' \
-            --exclude='publications.md' \
-            --exclude='*.code-workspace' \
-            --exclude='.DS_Store' \
-            --exclude='.gitignore' \
-            ./ "deploy:$GHOST_PATH/content/themes/$THEME_NAME/"
-
-      - name: Upload routes.yaml
-        run: |
-          rsync -az --chown=ghost:ghost routes.yaml "deploy:$GHOST_PATH/content/settings/routes.yaml"
+          ssh deploy bash -s -- "$THEME_DIR" "$GITHUB_SHA" "$GHOST_PATH" "$GHOST_USER" <<'EOF'
+          set -euo pipefail
+          theme_dir=$1 sha=$2 ghost_path=$3 ghost_user=$4
+          cd "$theme_dir"
+          git fetch --quiet origin main
+          git reset --hard "$sha"
+          install -o "$ghost_user" -g "$ghost_user" -m 644 routes.yaml "$ghost_path/content/settings/routes.yaml"
+          git log --oneline -1
+          EOF
 
       - name: Restart Ghost
         run: ssh deploy "systemctl restart '$GHOST_SERVICE' && systemctl is-active '$GHOST_SERVICE'"

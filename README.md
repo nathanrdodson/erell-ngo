@@ -209,22 +209,19 @@ Production runs Ghost 6 on an IONOS server (`74.208.159.184`), fronted by Cloudf
 
 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs on every push and PR:
 
-1. **build** — compiles SCSS and validates the theme with `gscan --fatal`.
-2. **deploy** (pushes to `main` only) — rsyncs the theme into `$GHOST_PATH/content/themes/erell-ghost-theme/`, copies `routes.yaml` to `$GHOST_PATH/content/settings/`, restarts the Ghost service, and smoke-tests the site.
+1. **build** — compiles SCSS, fails if the committed `assets/css/screen.css` is stale, and validates the theme with `gscan --fatal`.
+2. **deploy** (pushes to `main` only) — SSHes to the server, resets the theme checkout at `/opt/erell-ngo` (a clone of this repo, symlinked as `/var/www/ghost/content/themes/erell-ngo`) to the pushed commit, installs `routes.yaml` into `/var/www/ghost/content/settings/`, restarts `ghost_erell-ngo`, and smoke-tests the site.
 
-Theme files are deployed over SSH rather than via the Admin API because `assets/pdf/` pushes the theme past Cloudflare's 100 MB upload limit.
+**Don't hand-edit files in `/opt/erell-ngo`** — the next deploy's `git reset --hard` discards them. Commit changes here instead.
 
 ### Required GitHub settings
 
 | Name | Kind | Value |
 | ---- | ---- | ----- |
-| `DEPLOY_SSH_KEY` | Secret | Private key for a deploy keypair (public half in the server's `authorized_keys`) |
+| `DEPLOY_SSH_KEY` | Secret | Private key whose public half is in the server's `/root/.ssh/authorized_keys` |
 | `DEPLOY_KNOWN_HOSTS` | Secret | Output of `ssh-keyscan 74.208.159.184` |
-| `GHOST_PATH` | Variable (optional) | Ghost install directory — defaults to `/var/www/ghost` |
-| `GHOST_SERVICE` | Variable (optional) | systemd unit — defaults to `ghost_erell-ngo` |
-| `DEPLOY_HOST` / `DEPLOY_USER` / `THEME_NAME` | Variable (optional) | Default to `74.208.159.184` / `root` / `erell-ghost-theme` |
 
-The deploy user must be able to `chown` files to `ghost:ghost` and run `systemctl restart`, so either use `root` or grant a dedicated user the equivalent via sudoers.
+Optional variables override the defaults: `DEPLOY_HOST` (`74.208.159.184`), `DEPLOY_USER` (`root`), `GHOST_PATH` (`/var/www/ghost`), `GHOST_SERVICE` (`ghost_erell-ngo`), `THEME_DIR` (`/opt/erell-ngo`), `GHOST_USER` (`ghost-user`).
 
 ---
 
