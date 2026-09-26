@@ -203,6 +203,31 @@ Edit the publications content in Ghost Admin (Page: `publications`). PDF files l
 
 ---
 
+## Deployment
+
+Production runs Ghost 6 on an IONOS server (`74.208.159.184`), fronted by Cloudflare at `https://erell-ngo.nrdod.io`.
+
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs on every push and PR:
+
+1. **build** — compiles SCSS and validates the theme with `gscan --fatal`.
+2. **deploy** (pushes to `main` only) — rsyncs the theme into `$GHOST_PATH/content/themes/erell-ghost-theme/`, copies `routes.yaml` to `$GHOST_PATH/content/settings/`, restarts the Ghost service, and smoke-tests the site.
+
+Theme files are deployed over SSH rather than via the Admin API because `assets/pdf/` pushes the theme past Cloudflare's 100 MB upload limit.
+
+### Required GitHub settings
+
+| Name | Kind | Value |
+| ---- | ---- | ----- |
+| `DEPLOY_SSH_KEY` | Secret | Private key for a deploy keypair (public half in the server's `authorized_keys`) |
+| `DEPLOY_KNOWN_HOSTS` | Secret | Output of `ssh-keyscan 74.208.159.184` |
+| `GHOST_PATH` | Variable (optional) | Ghost install directory — defaults to `/var/www/ghost` |
+| `GHOST_SERVICE` | Variable (optional) | systemd unit — defaults to `ghost_erell-ngo` |
+| `DEPLOY_HOST` / `DEPLOY_USER` / `THEME_NAME` | Variable (optional) | Default to `74.208.159.184` / `root` / `erell-ghost-theme` |
+
+The deploy user must be able to `chown` files to `ghost:ghost` and run `systemctl restart`, so either use `root` or grant a dedicated user the equivalent via sudoers.
+
+---
+
 ## Theme Validation
 
 ```bash
