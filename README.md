@@ -203,6 +203,28 @@ Edit the publications content in Ghost Admin (Page: `publications`). PDF files l
 
 ---
 
+## Deployment
+
+Production runs Ghost 6 on an IONOS server (`74.208.159.184`), fronted by Cloudflare at `https://erell-ngo.nrdod.io`.
+
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs on every push and PR:
+
+1. **build** — compiles SCSS, fails if the committed `assets/css/screen.css` is stale, and validates the theme with `gscan --fatal`.
+2. **deploy** (pushes to `main` only) — SSHes to the server, resets the theme checkout at `/opt/erell-ngo` (a clone of this repo, symlinked as `/var/www/ghost/content/themes/erell-ngo`) to the pushed commit, installs `routes.yaml` into `/var/www/ghost/content/settings/`, restarts `ghost_erell-ngo`, and smoke-tests the site.
+
+**Don't hand-edit files in `/opt/erell-ngo`** — the next deploy's `git reset --hard` discards them. Commit changes here instead.
+
+### Required GitHub settings
+
+| Name | Kind | Value |
+| ---- | ---- | ----- |
+| `DEPLOY_SSH_KEY` | Secret | Private key whose public half is in the server's `/root/.ssh/authorized_keys` |
+| `DEPLOY_KNOWN_HOSTS` | Secret | Output of `ssh-keyscan 74.208.159.184` |
+
+Optional variables override the defaults: `DEPLOY_HOST` (`74.208.159.184`), `DEPLOY_USER` (`root`), `GHOST_PATH` (`/var/www/ghost`), `GHOST_SERVICE` (`ghost_erell-ngo`), `THEME_DIR` (`/opt/erell-ngo`), `GHOST_USER` (`ghost-user`).
+
+---
+
 ## Theme Validation
 
 ```bash

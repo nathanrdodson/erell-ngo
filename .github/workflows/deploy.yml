@@ -1,18 +1,14 @@
-name: Deploy to GitHub Pages
+name: Deploy theme to Ghost (IONOS)
 
 on:
   push:
     branches:
       - main
+  pull_request:
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 concurrency:
-  group: pages
+  group: deploy-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -22,29 +18,89 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 22
 
       - name: Install dependencies
-        run: bun install
+        run: npm install --no-audit --no-fund
 
-      - name: Build site
-        run: bun run build
+      - name: Compile SCSS
+        run: npm run build:css
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: dist/
+      - name: Check compiled CSS is committed
+        run: |
+          git diff --exit-code assets/css/screen.css || {
+            echo "::error::assets/css/screen.css is out of date — run 'npm run build:css' and commit it"; exit 1; }
+
+      - name: Validate theme with gscan
+        run: npx --yes gscan --fatal .
 
   deploy:
     needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      name: production
+      url: https://erell-ngo.nrdod.io
+    env:
+      DEPLOY_HOST: ${{ vars.DEPLOY_HOST || '74.208.159.184' }}
+      DEPLOY_USER: ${{ vars.DEPLOY_USER || 'root' }}
+      GHOST_PATH: ${{ vars.GHOST_PATH || '/var/www/ghost' }}
+      GHOST_SERVICE: ${{ vars.GHOST_SERVICE || 'ghost_erell-ngo' }}
+      THEME_DIR: ${{ vars.THEME_DIR || '/opt/erell-ngo' }}
+      GHOST_USER: ${{ vars.GHOST_USER || 'ghost-user' }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Check deploy configuration
+        run: |
+          missing=0
+          for s in DEPLOY_SSH_KEY DEPLOY_KNOWN_HOSTS; do
+            if [ -z "${!s}" ]; then echo "::error::Secret $s is not set"; missing=1; fi
+          done
+          exit $missing
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+
+      - name: Configure SSH
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<EOF
+          Host deploy
+            HostName $DEPLOY_HOST
+            User $DEPLOY_USER
+            IdentityFile ~/.ssh/id_deploy
+            IdentitiesOnly yes
+          EOF
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+
+      # $THEME_DIR is a clone of this repo; $GHOST_PATH/content/themes/erell-ngo symlinks to it.
+      - name: Update theme checkout and routes
+        run: |
+          ssh deploy bash -s -- "$THEME_DIR" "$GITHUB_SHA" "$GHOST_PATH" "$GHOST_USER" <<'EOF'
+          set -euo pipefail
+          theme_dir=$1 sha=$2 ghost_path=$3 ghost_user=$4
+          cd "$theme_dir"
+          git fetch --quiet origin main
+          git reset --hard "$sha"
+          install -o "$ghost_user" -g "$ghost_user" -m 644 routes.yaml "$ghost_path/content/settings/routes.yaml"
+          git log --oneline -1
+          EOF
+
+      - name: Restart Ghost
+        run: ssh deploy "systemctl restart '$GHOST_SERVICE' && systemctl is-active '$GHOST_SERVICE'"
+
+      - name: Smoke test
+        run: |
+          for i in $(seq 1 12); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' https://erell-ngo.nrdod.io/ || true)
+            [ "$code" = "200" ] && { echo "Site is up ($code)"; exit 0; }
+            echo "Waiting for Ghost (got $code)..."; sleep 5
+          done
+          echo "::error::Site did not return 200 after restart"; exit 1

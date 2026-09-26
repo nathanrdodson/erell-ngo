@@ -1,5 +1,6 @@
 {{!< default}}
 
+{{#post}}
 <main class="page-main">
   <div class="pure-g center">
     <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
@@ -47,13 +48,15 @@
   </div>
 </main>
 
-{{#if @blog.posts}}
+{{/post}}
+
+{{#get "posts" limit="3" filter="id:-{{id}}"}}
+{{#if posts}}
 <section class="page-main" style="padding-top: 0;">
   <div class="pure-g center">
     <div class="pure-u-1 pure-u-md-4-5 pure-u-lg-3-5 pure-u-xxl-1-2">
       <h2 class="section-title">More from the Blog</h2>
       <div class="post-feed">
-        {{#get "posts" limit="3" filter="id:-{{id}}"}}
         {{#foreach posts}}
         <article class="post-card fade-up">
           {{#if feature_image}}
@@ -69,9 +72,9 @@
           </div>
         </article>
         {{/foreach}}
-        {{/get}}
       </div>
     </div>
   </div>
 </section>
 {{/if}}
+{{/get}}
